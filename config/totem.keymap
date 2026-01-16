@@ -16,11 +16,11 @@
 
 / {
     macros {
-        fr_eacute: fr_eacute {
+        mc_fr_eacute: mc_fr_eacute {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE &kp E>;
-            label = "É";
+            label = "MC_FR_EACUTE";
         };
 
         fr_diac: fr_diac {
@@ -98,26 +98,69 @@
             require-prior-idle-ms = <150>;
             hold-trigger-on-release;
         };
+
+        layers_switch: layers_switch {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYERS_SWITCH";
+            bindings = <&mo>, <&to>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        xapp2xtxt {
+            bindings = <&to 0>;
+            key-positions = <20 31>;
+            layers = <5>;
+        };
+
+        x2xapp {
+            bindings = <&to 5>;
+            key-positions = <20 31>;
+            layers = <0 2>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        os {
+        x_edit {
             bindings = <
-         &none  &none  &none  &kp C_VOL_UP  &none    &kp ESC  &kp ESC         &kp ESC         &kp ESC          &kp ESC
-         &none  &none  &none  &kp C_VOL_DN  &none    &none    &kp BSPC        &kp UP_ARROW    &kp DEL          &none
-&kp ESC  &none  &none  &none  &none         &none    &sl 1    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none    &kp ENTER
-                       &none  &kp SPACE     &none    &none    &none           &none
+         &none  &none  &none  &none  &none    &none  &none           &none           &none            &none
+         &none  &none  &none  &none  &none    &none  &kp BSPC        &kp UP_ARROW    &kp DEL          &none
+&kp ESC  &none  &none  &none  &none  &none    &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &kp ENTER
+                       &none  &none  &none    &none  &none           &none
             >;
         };
 
         txt {
             bindings = <
-         &kp Q  &fr_eacute              &kp N                      &kp M                      &td_semicomma     &td_dotcolon    &kp P                      &kp L                      &kp V                   &kp J
-         &kp W  &ht_hrm_strong LCTRL E  &ht_hrm_strong LEFT_ALT S  &ht_hrm_strong LEFT_GUI A  &td_semicomma     &td_dotcolon    &ht_hrm_strong LEFT_GUI I  &ht_hrm_strong LEFT_ALT T  &ht_hrm_strong LCTRL C  &kp C
-&kp ESC  &kp B  &kp G                   &kp H                      &kp O                      &kp LEFT_SHIFT    &kp LEFT_SHIFT  &kp U                      &kp D                      &kp F                   &kp Y  &kp ENTER
-                                        &kp LEFT_GUI               &kp SPACE                  &kp TAB           &key_repeat     &kp R                      &kp RIGHT_ALT
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        x_txt {
+            bindings = <
+         &kp Q  &mc_fr_eacute           &kp N                      &kp M                        &td_semicomma         &td_dotcolon        &kp P                        &kp L                      &kp V                   &kp J
+         &kp W  &ht_hrm_strong LCTRL E  &ht_hrm_strong LEFT_ALT S  &ht_hrm_strong LEFT_SHIFT A  &td_semicomma         &td_dotcolon        &ht_hrm_strong LEFT_SHIFT I  &ht_hrm_strong LEFT_ALT T  &ht_hrm_strong LCTRL C  &kp C
+&kp ESC  &kp B  &kp G                   &kp H                      &kp O                        &layers_switch 0 0    &layers_switch 0 0  &kp U                        &kp D                      &kp F                   &kp Y  &kp ENTER
+                                        &kp LEFT_GUI               &kp SPACE                    &kp TAB               &kp ENTER           &kp R                        &mo 7
+            >;
+        };
+
+        edit {
+            bindings = <
+         &none  &none  &none  &kp C_VOL_UP  &none    &kp ESC  &kp ESC         &kp ESC         &kp ESC          &kp ESC
+         &none  &none  &none  &kp C_VOL_DN  &none    &none    &kp BSPC        &kp UP_ARROW    &kp DEL          &none
+&kp ESC  &none  &none  &none  &none         &none    &sl 2    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none    &kp ENTER
+                       &none  &kp SPACE     &none    &none    &none           &none
             >;
         };
 
@@ -130,21 +173,39 @@
             >;
         };
 
-        edit {
+        x_app {
             bindings = <
-                   &kp LA(BACKSPACE)   &kp BACKSPACE  &kp UP     &kp DELETE     &kp LA(DELETE)        &kp N5      &kp N6           &kp N7       &kp N8    &kp N9
-                   &kp LA(LEFT_ARROW)  &kp LEFT       &kp DOWN   &kp RIGHT      &kp LA(RIGHT)         &kp N0      &kp N1           &kp N2       &kp N3    &kp N4
-&kp LG(BACKSPACE)  &kp LG(UP_ARROW)    &kp LG(LEFT)   &kp ENTER  &kp LG(RIGHT)  &kp LG(DOWN_ARROW)    &kp PERIOD  &kp PLUS         &kp MINUS    &kp STAR  &kp FSLH  &kp CARET
-                                                      &trans     &trans         &trans                &kp EQUAL   &kp RIGHT_SHIFT  &kp PERCENT
+         &kp TAB    &kp Q  &kp W     &kp E      &kp R    &kp I  &kp O  &kp P  &kp DOT    &kp EQUAL
+         &kp LSHFT  &kp A  &kp S     &kp D      &kp F    &kp U  &kp J  &kp L  &kp COMMA  &kp MINUS
+&kp ESC  &kp LCTRL  &kp Z  &kp X     &kp C      &kp V    &kp Y  &kp H  &kp K  &kp N      &kp F5     &kp F9
+                           &kp LALT  &kp SPACE  &kp B    &kp T  &kp G  &kp M
             >;
         };
 
-        app {
+        appn {
             bindings = <
-         &kp ESC  &fr_eacute  &kp N         &kp M                 &kp SQT          &kp MINUS     &kp P            &kp L          &kp V  &kp J
-         &kp W    &kp E       &kp S         &kp A                 &td_semicomma    &td_dotcolon  &kp I            &kp R          &kp T  &kp C
-&kp TAB  &kp B    &kp G       &kp H         &kp O                 &kp Q            &kp N         &kp D            &kp U          &kp F  &kp Y  &kp ENTER
-                              &kp LEFT_ALT  &mt LEFT_GUI FR_EURO  &kp SPACE        &kp SPACE     &kp RIGHT_SHIFT  &kp RIGHT_ALT
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        tr_7 {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        os {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
