@@ -20,7 +20,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE &kp E>;
-            label = "FR_EACUTE";
+            label = "É";
         };
 
         fr_diac: fr_diac {
