@@ -210,67 +210,49 @@
         compatible = "zmk,combos";
 
         xapp2xtxt {
-            bindings = <&to 3>;
+            bindings = <&to 0>;
             key-positions = <20 31>;
-            layers = <6>;
+            layers = <4>;
         };
 
         x2xapp {
-            bindings = <&to 6>;
+            bindings = <&to 4>;
             key-positions = <20 31>;
-            layers = <3 1>;
+            layers = <0 1>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        x_os {
+        select_toggle {
             bindings = <
-         &trans  &kp LA(LC(W))  &kp LC(LA(E))       &kp LC(LA(R))   &trans    &kp K_VOLUME_UP  &kp J      &kp LS(GT)          &kp L      &trans
-         &trans  &trans         &trans              &trans          &trans    &kp K_VOL_DN     &kp LEFT   &kp K_PLAY_PAUSE    &kp RIGHT  &trans
-&kp ESC  &trans  &trans         &trans              &trans          &trans    &trans           &kp COMMA  &kp LS(LT)          &kp DOT    &trans  &trans
-                                &kp LG(LEFT_SHIFT)  &kp LEFT_SHIFT  &trans    &none            &trans     &layers_switch 1 1
-            >;
-        };
-
-        x_txt {
-            bindings = <
-         &kp Q  &fr_agrave        &kp C                &kp H                  &td_semicomma    &kp K         &kp W                  &kp M                &kp V             &kp P
-         &kp S  &hrm_WkL LCTRL A  &hrm_StL LEFT_ALT N  &hrm_StL LEFT_SHIFT U  &mm_comQuote     &td_dotcolon  &hrm_StR LEFT_SHIFT E  &hrm_StR LEFT_ALT T  &hrm_WkR LCTRL O  &kp L
-&kp ESC  &kp B  &kp G             &kp V                &kp Y                  &kp Z            &kp X         &kp I                  &kp D                &kp J             &kp F  &kp ENTER
-                                  &ht_hl_ol 8 8        &kp SPACE              &kp TAB          &none         &kp R                  &layers_switch 3 3
-            >;
-        };
-
-        edit {
-            bindings = <
-         &none  &none  &none  &none      &none    &kp ESC  &kp ESC         &kp ESC         &kp ESC          &kp ESC
-         &none  &none  &none  &none      &none    &none    &kp BSPC        &kp UP_ARROW    &kp DEL          &none
-&kp ESC  &none  &none  &none  &none      &none    &sl 1    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none    &kp ENTER
-                       &none  &kp SPACE  &none    &none    &none           &none
-            >;
-        };
-
-        x_edit {
-            bindings = <
-         &kp LG(Q)  &kp LG(W)  &kp LG(E)      &kp LG(R)  &kp T             &none  &none           &none               &none            &none
-         &kp A      &kp S      &kp D          &kp F      &kp G             &none  &kp BSPC        &kp UP_ARROW        &kp DEL          &none
-&kp ESC  &kp LG(Z)  &kp LG(X)  &kp LG(C)      &kp LG(V)  &kp LG(B)         &none  &kp LEFT_ARROW  &kp DOWN_ARROW      &kp RIGHT_ARROW  &none  &kp ENTER
-                               &ht_hl_ol 8 8  &none      &kp LEFT_SHIFT    &none  &none           &layers_switch 1 1
+         &kp LG(Q)  &kp LG(W)  &kp LG(E)      &kp LG(R)  &kp T             &none         &none           &none               &none            &none
+         &kp A      &kp S      &kp D          &kp F      &kp G             &none         &kp BSPC        &kp UP_ARROW        &kp DEL          &kp LEFT_SHIFT
+&kp ESC  &kp LG(Z)  &kp LG(X)  &kp LG(C)      &kp LG(V)  &kp LG(B)         &none         &kp LEFT_ARROW  &kp DOWN_ARROW      &kp RIGHT_ARROW  &none           &kp ENTER
+                               &ht_hl_ol 6 6  &none      &kp LEFT_SHIFT    &kp LEFT_GUI  &kp LEFT_ALT    &layers_switch 1 1
             >;
         };
 
         txt {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+         &kp Q  &fr_agrave        &kp C                &kp H                  &td_semicomma    &kp K         &kp W                  &kp M                &kp V             &kp P
+         &kp S  &hrm_WkL LCTRL A  &hrm_StL LEFT_ALT N  &hrm_StL LEFT_SHIFT U  &mm_comQuote     &td_dotcolon  &hrm_StR LEFT_SHIFT E  &hrm_StR LEFT_ALT T  &hrm_WkR LCTRL O  &kp L
+&kp ESC  &kp B  &kp G             &kp V                &kp Y                  &kp Z            &kp X         &kp I                  &kp D                &kp J             &kp F  &kp ENTER
+                                  &ht_hl_ol 6 6        &kp SPACE              &kp TAB          &none         &kp R                  &layers_switch 2 0
             >;
         };
 
-        sym {
+        select_hold {
+            bindings = <
+         &none  &none  &none  &none      &none    &kp ESC  &kp ESC         &kp ESC         &kp ESC          &kp ESC
+         &none  &none  &none  &none      &none    &none    &kp BSPC        &kp UP_ARROW    &kp DEL          &none
+&kp ESC  &none  &none  &none  &none      &none    &sl 1    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none    &kp ENTER
+                       &none  &kp SPACE  &none    &none    &none           &trans
+            >;
+        };
+
+        sym_hold {
             bindings = <
                    &kp LA(BACKSPACE)   &kp BACKSPACE  &kp UP     &kp DELETE     &kp LA(DELETE)        &kp N5      &kp N6           &kp N7       &kp N8    &kp N9
                    &kp LA(LEFT_ARROW)  &kp LEFT       &kp DOWN   &kp RIGHT      &kp LA(RIGHT)         &kp N0      &kp N1           &kp N2       &kp N3    &kp N4
@@ -279,7 +261,7 @@
             >;
         };
 
-        x_app {
+        app_toggle {
             bindings = <
          &kp TAB    &kp Q  &kp W     &kp E      &kp R    &kp I  &kp O  &kp P  &kp DOT    &kp EQUAL
          &kp LSHFT  &kp A  &kp S     &kp D      &kp F    &kp U  &kp J  &kp L  &kp COMMA  &kp MINUS
@@ -288,7 +270,7 @@
             >;
         };
 
-        appn {
+        apn_hold {
             bindings = <
         &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
         &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
@@ -297,7 +279,7 @@
             >;
         };
 
-        os {
+        util {
             bindings = <
          &kp LG(LS(TAB))  &kp LA(LC(W))  &kp LC(LA(E))       &kp LC(LA(R))   &trans    &kp K_VOLUME_UP  &kp J      &kp LS(GT)          &kp L      &trans
          &kp LG(TAB)      &trans         &trans              &trans          &trans    &kp K_VOL_DN     &kp LEFT   &kp K_PLAY_PAUSE    &kp RIGHT  &trans
