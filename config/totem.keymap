@@ -64,6 +64,22 @@
             bindings = <&kp LA(C)>;
             label = "FR_CCEDIL";
         };
+
+        tpl_mc_activateXLayers: tpl_mc_activateXLayers {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&ltg_layerOn 0 &ltg_layerOn 0>;
+            label = "TPL_MC_ACTIVATEXLAYERS";
+        };
+
+        mc_ltgAlphaHml: mc_ltgAlphaHml {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 1 &ltg_layerOn 6>;
+            label = "MC_LTGALPHAHML";
+            wait-ms = <0>;
+            tap-ms = <20>;
+        };
     };
 
     behaviors {
@@ -204,6 +220,36 @@
             hold-trigger-on-release;
             bindings = <&mo>, <&sl>;
         };
+
+        ltg_layerOn: ltg_layerOn {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "LTG_LAYERON";
+            #binding-cells = <1>;
+        };
+
+        ltg_layerOff: ltg_layerOff {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "LTG_LAYEROFF";
+            #binding-cells = <1>;
+            toggle-mode = "off";
+        };
+
+        ltg_layerFlip: ltg_layerFlip {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "LTG_LAYERFLIP";
+            #binding-cells = <1>;
+            toggle-mode = "flip";
+        };
+
+        ht_holdTrsp: ht_holdTrsp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_HOLDTRSP";
+            bindings = <&kp>, <&trans>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            flavor = "balanced";
+        };
     };
 
     combos {
@@ -227,10 +273,10 @@
 
         select_toggle {
             bindings = <
-         &kp LG(Q)  &kp LG(W)  &kp LG(E)      &kp LG(R)  &kp T             &none         &none           &none               &none            &none
-         &kp A      &kp S      &kp D          &kp F      &kp G             &none         &kp BSPC        &kp UP_ARROW        &kp DEL          &kp LEFT_SHIFT
-&kp ESC  &kp LG(Z)  &kp LG(X)  &kp LG(C)      &kp LG(V)  &kp LG(B)         &none         &kp LEFT_ARROW  &kp DOWN_ARROW      &kp RIGHT_ARROW  &none           &kp ENTER
-                               &ht_hl_ol 6 6  &none      &kp LEFT_SHIFT    &kp LEFT_GUI  &kp LEFT_ALT    &layers_switch 1 1
+         &kp LG(Q)  &kp LG(W)  &kp LG(E)      &kp LG(R)        &kp T             &none         &none           &none               &none            &none
+         &kp A      &kp S      &kp D          &kp F            &kp G             &none         &kp BSPC        &kp UP_ARROW        &kp DEL          &kp LEFT_SHIFT
+&kp ESC  &kp LG(Z)  &kp LG(X)  &kp LG(C)      &kp LG(V)        &kp LG(B)         &none         &kp LEFT_ARROW  &kp DOWN_ARROW      &kp RIGHT_ARROW  &none           &kp ENTER
+                               &ht_hl_ol 6 6  &mc_ltgAlphaHml  &kp LEFT_SHIFT    &kp LEFT_GUI  &kp LEFT_ALT    &layers_switch 1 1
             >;
         };
 
@@ -281,10 +327,10 @@
 
         util {
             bindings = <
-         &kp LG(LS(TAB))  &kp LA(LC(W))  &kp LC(LA(E))       &kp LC(LA(R))   &trans    &kp K_VOLUME_UP  &kp J      &kp LS(GT)          &kp L      &trans
-         &kp LG(TAB)      &trans         &trans              &trans          &trans    &kp K_VOL_DN     &kp LEFT   &kp K_PLAY_PAUSE    &kp RIGHT  &trans
-&kp ESC  &kp LG(GRAVE)    &trans         &trans              &trans          &trans    &trans           &kp COMMA  &kp LS(LT)          &kp DOT    &trans  &trans
-                                         &kp LG(LEFT_SHIFT)  &kp LEFT_SHIFT  &trans    &none            &trans     &layers_switch 1 1
+         &kp LG(LS(TAB))  &kp LA(LC(W))  &kp LC(LA(E))       &kp LC(LA(R))            &trans    &kp K_VOLUME_UP  &kp J      &kp LS(GT)          &kp L      &trans
+         &kp LG(TAB)      &trans         &trans              &trans                   &trans    &kp K_VOL_DN     &kp LEFT   &kp K_PLAY_PAUSE    &kp RIGHT  &trans
+&kp ESC  &kp LG(GRAVE)    &trans         &trans              &ht_holdTrsp LEFT_GUI 0  &trans    &trans           &kp COMMA  &kp LS(LT)          &kp DOT    &trans  &trans
+                                         &kp LG(LEFT_SHIFT)  &kp LEFT_SHIFT           &trans    &none            &trans     &layers_switch 1 1
             >;
         };
     };
