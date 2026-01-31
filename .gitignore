@@ -1,1 +1,9 @@
+# --- Secrets ---
+secrets.h
+
+# --- Build & Temps ---
+build/
+.west/
+
+# --- macOS junk ---
 .DS_Store
