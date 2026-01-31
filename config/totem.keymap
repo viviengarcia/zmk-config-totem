@@ -78,7 +78,7 @@
             bindings = <&to 1 &ltg_layerOn 6>;
             label = "MC_LTGALPHAHML";
             wait-ms = <0>;
-            tap-ms = <20>;
+            tap-ms = <40>;
         };
     };
 
@@ -122,6 +122,7 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
+            flavor = "balanced";
         };
 
         hrm_WkL: hrm_WkL {
