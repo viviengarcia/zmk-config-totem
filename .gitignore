@@ -4,6 +4,7 @@ secrets.h
 # --- Build & Temps ---
 build/
 .west/
+build.sh
 
 # --- macOS junk ---
 .DS_Store
