@@ -17,3 +17,6 @@ zmk/
 
 # MacOS junk
 .DS_Store
+
+# Various helpers
+_tools/

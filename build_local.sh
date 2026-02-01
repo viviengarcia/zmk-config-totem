@@ -26,7 +26,6 @@
 set -euo pipefail
 
 # Configuration
-SEM_BUILD="${SEM_BUILD:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
 RUNTIME="${RUNTIME:-podman}" # Could be docker or podman
 IMG="${ZMK_IMAGE:-docker.io/zmkfirmware/zmk-build-arm:4.1-branch}"
 ENV="-e CMAKE_PREFIX_PATH=/zmk/zephyr:${CMAKE_PREFIX_PATH:-}"
@@ -185,6 +184,8 @@ check_image() {
   fi
 }
 
+
+
 # Build a specific firmware target from YAML config
 build_target() {
   local target_name="$1"
@@ -193,6 +194,56 @@ build_target() {
 
   local start_time
   start_time=$(date +%s)
+
+  # #semver
+  #renaming part
+  SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
+  local SOURCE_FW="$(pwd)/build/zephyr/zmk.uf2"
+  local OUT_DIR="$(pwd)/_out/Releases"
+  local BASE_NAME="${artifact_name}"
+  local LAST_FILE
+  local VERSION
+  local MAJOR
+  local MINOR
+  local PATCH
+  local NEW_VERSION
+  local DEST_FILE
+  # local SEMB="${SEMB:-minor}"
+
+  # 1. Trouver la dernière version existante
+  # On cherche les fichiers qui correspondent au nom de l'artefact
+  LAST_FILE=$(ls -1 "$OUT_DIR"/${BASE_NAME}-*.uf2 2>/dev/null | sort -V | tail -n 1)
+
+  if [[ -z "$LAST_FILE" ]]; then
+      # Si aucun fichier n'existe, on initialise à 0.0.0
+      MAJOR=0; MINOR=0; PATCH=0
+  else
+      # Extraction de la version (ex: de 'mon-firmware-1.2.3.uf2' on tire '1.2.3')
+      VERSION=$(echo "$LAST_FILE" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+      MAJOR=$(echo "$VERSION" | cut -d. -f1)
+      MINOR=$(echo "$VERSION" | cut -d. -f2)
+      PATCH=$(echo "$VERSION" | cut -d. -f3)
+  fi
+
+  # 2. Logique d'incrémentation selon $SEMB
+  case "$SEMB" in
+      l)
+          MAJOR=$((MAJOR + 1))
+          MINOR=0
+          PATCH=0
+          ;;
+      m|*)
+          MINOR=$((MINOR + 1))
+          PATCH=0
+          ;;
+      s)
+          PATCH=$((PATCH + 1))
+          ;;
+  esac
+
+	NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+	DEST_FILE="${OUT_DIR}/${BASE_NAME}-${NEW_VERSION}.uf2"
+	# #semver
 
   local found=0
   while IFS='|' read -r board shield snippet cmake_args artifact_name; do
@@ -234,7 +285,10 @@ build_target() {
 
       check_build_artifact "./build/${artifact_name}/zephyr/zmk.uf2" "${artifact_name} build"
 
-      cp "$(pwd)/build/zephyr/zmk.uf2" "$(pwd)/_out/Releases/${artifact_name}.uf2"
+      # #semver
+      # cp "$(pwd)/build/zephyr/zmk.uf2" "$(pwd)/_out/Releases/${artifact_name}.uf2"
+      cp "$SOURCE_FW" "$DEST_FILE"
+      # #semver
 
       local end_time
       end_time=$(date +%s)
