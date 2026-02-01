@@ -1,1 +1,19 @@
+# Build artifacts
+_out/
+build/
+artifacts/
+
+# ZMK
+zephyr/
+!zephyr/module.yml
+
+# West managed directories
+.west/
+modules/
+tools/
+
+# West projects from config/west.yml
+zmk/
+
+# MacOS junk
 .DS_Store
