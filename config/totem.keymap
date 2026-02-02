@@ -355,10 +355,10 @@
 
         alpha {
             bindings = <
-         &kp Q  &MC_agrave  &kp C     &kp H      &none           &kp K         &kp W  &kp M     &MC_eacute  &kp P
-         &kp S  &kp A       &kp N     &kp U      &OV_comQuote    &OV_dotMinus  &kp E  &kp T     &kp O       &kp L
-&kp ESC  &kp B  &kp G       &kp V     &kp Y      &kp Z           &kp X         &kp I  &kp D     &kp J       &kp F  &kp RET
-                            &kp LGUI  &kp SPACE  &kp TAB         &kp BSPC      &kp R  &kp LALT
+         &kp Q  &MC_agrave  &kp C                     &kp H                   &none           &kp K         &kp W                   &kp M                     &MC_eacute  &kp P
+         &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &OV_comQuote    &OV_dotMinus  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
+&kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &kp Z           &kp X         &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
+                            &kp LGUI                  &kp SPACE               &kp TAB         &kp BSPC      &kp R                   &kp LALT
             >;
         };
 
