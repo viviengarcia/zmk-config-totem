@@ -14,70 +14,150 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
+// SHORTS
+//
+// (T): template
+//
+// (T)MC: macro
+// (T)OVR: mod-morph (== QMK mod override)
+// (T)TD: tap-dance
+// (T)HT: hold-tap (mod or lay)
+// (T)KP: key press (alter default key output)
+//
+// lf: layer flip on/off (== QMK Tg(layer))
+// lf0: layer off
+// lf1: layer on
+// lto: switch to layer (== QMK To(layer))
+// lh: activate layer while key is held (== QMK Mo(layer))
+// los: activate layer once
+//
+// hrm: homerow mods
+// fs: finger strong
+// fw: finger weak
+// mos: activate mod once
+//
+// MACROS, BEHAVIORS & COMBOS TEMPLATES
+// - name hints at either result > method
+// - a more detailed description should be added in a comment
+// - some behaviors may have their own comments, related to the ones in template
+
 / {
 	macros {
 
-        mc_fr_eacute: mc_fr_eacute {
+		// key sequence ouputs a diaritic on qwerty-international layouts
+        TMC_diac: TMC_diac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp E>;
+            label = "TMC_DIAC";
+        };
+
+        // é
+        MC_eacute: MC_eacute {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE &kp E>;
-            label = "MC_FR_EACUTE";
+            label = "MC_EACUTE";
         };
 
-        fr_diac: fr_diac {
+        // è
+        MC_egrave: MC_egrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp GRAVE &kp E>;
-            label = "FR_DIAC";
+            label = "MC_EGRAVE";
         };
 
-        fr_egrave: fr_egrave {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp E>;
-            label = "FR_EGRAVE";
-        };
-
-        fr_ecirc: fr_ecirc {
+        // ê
+        MC_ecirc: MC_ecirc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(N6) &kp E>;
-            label = "FR_ECIRC";
+            label = "MC_ECIRC";
         };
 
-        fr_agrave: fr_agrave {
+        //
+        MC_agrave: MC_agrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp GRAVE &kp A>;
-            label = "FR_AGRAVE";
+            label = "MC_AGRAVE";
         };
 
-        fr_ocirc: fr_ocirc {
+        // ô
+        MC_ocirc: MC_ocirc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(N6) &kp O>;
-            label = "FR_OCIRC";
+            label = "MC_OCIRC";
         };
 
-        fr_ccedil: fr_ccedil {
+        // ç
+        MC_ccedil: MC_ccedil {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LA(C)>;
-            label = "FR_CCEDIL";
-        };
-
-        mc_ltgAlphaHml: mc_ltgAlphaHml {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&to 1 &ltg_layerOn 6>;
-            label = "MC_LTGALPHAHML";
-            wait-ms = <0>;
-            tap-ms = <40>;
+            label = "MC_CCEDIL";
         };
     };
 
     behaviors {
-        td_semicomma: td_semicomma {
+
+        // hold-tap tpl for thumbs
+        // - thumbs strong+ agility-
+        // - hold combinate with both halves
+        THT_Thumbs: THT_Thumbs {
+            compatible = "zmk,behavior-hold-tap";
+            label = "THT_THUMBS";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+            bindings = <&kp>, <&kp>;
+        };
+
+        // hold-tap tpl for homerow mods
+        //
+        THT_HRM: THT_HRM {
+            compatible = "zmk,behavior-hold-tap";
+            label = "THT_HRM";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+        };
+
+        // mod-morph tpl for alternate shift output
+        TOV_LSFT: TOV_LSFT {
+            compatible = "zmk,behavior-mod-morph";
+            label = "TOV_LSFT";
+            bindings = <&kp COMMA>, <&kp SQT>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        // hold-tap only for layers
+        // to activate a layer while held OR to switch to it
+        // depending on the
+        HT_lh_lto: HT_lh_lto {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_LH_LTO";
+            bindings = <&mo>, <&to>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+        };
+
+        // double-tap outputs semicolon
+        TD_semicomma: TD_semicomma {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_SEMICOMMA";
             #binding-cells = <0>;
@@ -86,7 +166,8 @@
             tapping-term-ms = <150>;
         };
 
-        td_dotcolon: td_dotcolon {
+        // double-tap outputs colon
+        TD_dotcolon: TD_dotcolon {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_DOTCOLON";
             #binding-cells = <0>;
@@ -95,9 +176,10 @@
             tapping-term-ms = <130>;
         };
 
-        hrm_StL: hrm_StL {
+        // left keeb homerow mods for index & major (stronk)
+        HT_hrm_StL: HT_hrm_StL {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRM_STL";
+            label = "HT_HRM_STL";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -109,19 +191,25 @@
             hold-trigger-on-release;
         };
 
-        layers_switch: layers_switch {
+        // right keeb homerow mods for index & major (stronk)
+        HT_hrm_StR: HT_hrm_StR {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYERS_SWITCH";
-            bindings = <&mo>, <&to>;
+            label = "HT_HRM_STR";
+            bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
             flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34>;
         };
 
-        hrm_WkL: hrm_WkL {
+        // left keeb homerow mods for ring & pinky (weak)
+        HT_hrm_WkL: HT_hrm_WkL {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRM_WKL";
+            label = "HT_HRM_WKL";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -133,34 +221,10 @@
             hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 35 36 37>;
         };
 
-        TPL_HT_Thumbs: TPL_HT_Thumbs {
+        // right keeb homerow mods for ring & pinky (weak)
+        HT_hrm_WkR: HT_hrm_WkR {
             compatible = "zmk,behavior-hold-tap";
-            label = "TPL_HT_THUMBS";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-            bindings = <&kp>, <&kp>;
-        };
-
-        TPL_HT_HRM: TPL_HT_HRM {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TPL_HT_HRM";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-        };
-
-        hrm_StR: hrm_StR {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HRM_STR";
+            label = "HT_HRM_WKR";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -172,39 +236,18 @@
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34>;
         };
 
-        hrm_WkR: hrm_WkR {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HRM_WKR";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34>;
-        };
-
-        TPL_ShiftMorph: TPL_ShiftMorph {
+        // outputs ['] instead of [<] when [,] is shifted
+        OV_comQuote: OV_comQuote {
             compatible = "zmk,behavior-mod-morph";
-            label = "TPL_SHIFTMORPH";
-            bindings = <&kp COMMA>, <&kp SQT>;
+            label = "OV_COMQUOTE";
+            bindings = <&TD_semicomma>, <&kp SQT>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
 
-        mm_comQuote: mm_comQuote {
-            compatible = "zmk,behavior-mod-morph";
-            label = "MM_COMQUOTE";
-            bindings = <&td_semicomma>, <&kp SQT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        ht_hl_ol: ht_hl_ol {
+        // hold: Mo(), tap: OSL()
+        HT_hl_ol: HT_hl_ol {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HL_OL";
             #binding-cells = <2>;
@@ -216,24 +259,28 @@
             bindings = <&mo>, <&sl>;
         };
 
-        ltg_layerOn: ltg_layerOn {
+        // layer flip on/off
+        KP_lf: KP_lf {
             compatible = "zmk,behavior-toggle-layer";
-            label = "LTG_LAYERON";
+            label = "KP_lf";
             #binding-cells = <1>;
+            toggle-mode = "flip";
         };
 
-        ltg_layerOff: ltg_layerOff {
+        // force layer off
+        KP_lf0: KP_lf0 {
             compatible = "zmk,behavior-toggle-layer";
-            label = "LTG_LAYEROFF";
+            label = "KP_lf0";
             #binding-cells = <1>;
             toggle-mode = "off";
         };
 
-        ltg_layerFlip: ltg_layerFlip {
+        // force layer on
+        KP_lf1: KP_lf1 {
             compatible = "zmk,behavior-toggle-layer";
-            label = "LTG_LAYERFLIP";
+            label = "KP_lf1";
             #binding-cells = <1>;
-            toggle-mode = "flip";
+            toggle-mode = "on";
         };
     };
 
