@@ -43,9 +43,9 @@
 // - some behaviors may have their own comments, related to the ones in template
 
 / {
-	macros {
+    macros {
+        // key sequence ouputs a diaritic on qwerty-international layouts
 
-		// key sequence ouputs a diaritic on qwerty-international layouts
         TMC_diac: TMC_diac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -54,6 +54,7 @@
         };
 
         // é
+
         MC_eacute: MC_eacute {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -62,6 +63,7 @@
         };
 
         // è
+
         MC_egrave: MC_egrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -70,6 +72,7 @@
         };
 
         // ê
+
         MC_ecirc: MC_ecirc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -78,6 +81,7 @@
         };
 
         //
+
         MC_agrave: MC_agrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -86,6 +90,7 @@
         };
 
         // ô
+
         MC_ocirc: MC_ocirc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -94,6 +99,7 @@
         };
 
         // ç
+
         MC_ccedil: MC_ccedil {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -102,6 +108,7 @@
         };
 
         // æ
+
         MC_ligae: MC_ligae {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -110,6 +117,7 @@
         };
 
         // œ
+
         MC_ligoe: MC_ligoe {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -119,10 +127,10 @@
     };
 
     behaviors {
-
         // hold-tap tpl for thumbs
         // - thumbs strong+ agility-
         // - hold combinate with both halves
+
         THT_Thumbs: THT_Thumbs {
             compatible = "zmk,behavior-hold-tap";
             label = "THT_THUMBS";
@@ -137,6 +145,7 @@
 
         // hold-tap tpl for homerow mods
         //
+
         THT_HRM: THT_HRM {
             compatible = "zmk,behavior-hold-tap";
             label = "THT_HRM";
@@ -151,6 +160,7 @@
         };
 
         // mod-morph tpl for alternate shift output
+
         TOV_LSFT: TOV_LSFT {
             compatible = "zmk,behavior-mod-morph";
             label = "TOV_LSFT";
@@ -163,6 +173,7 @@
         // hold-tap only for layers
         // to activate a layer while held OR to switch to it
         // depending on the
+
         HT_lh_lto: HT_lh_lto {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_LH_LTO";
@@ -174,6 +185,7 @@
         };
 
         // double-tap outputs semicolon
+
         TD_semicomma: TD_semicomma {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_SEMICOMMA";
@@ -184,6 +196,7 @@
         };
 
         // double-tap outputs colon
+
         TD_dotcolon: TD_dotcolon {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_DOTCOLON";
@@ -194,6 +207,7 @@
         };
 
         // left keeb homerow mods for index & major (stronk)
+
         HT_hrm_StL: HT_hrm_StL {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_STL";
@@ -209,6 +223,7 @@
         };
 
         // right keeb homerow mods for index & major (stronk)
+
         HT_hrm_StR: HT_hrm_StR {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_STR";
@@ -224,6 +239,7 @@
         };
 
         // left keeb homerow mods for ring & pinky (weak)
+
         HT_hrm_WkL: HT_hrm_WkL {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_WKL";
@@ -239,6 +255,7 @@
         };
 
         // right keeb homerow mods for ring & pinky (weak)
+
         HT_hrm_WkR: HT_hrm_WkR {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_WKR";
@@ -254,6 +271,7 @@
         };
 
         // outputs ['] instead of [<] when [,] is shifted
+
         OV_comQuote: OV_comQuote {
             compatible = "zmk,behavior-mod-morph";
             label = "OV_COMQUOTE";
@@ -264,6 +282,7 @@
         };
 
         // hold: Mo(), tap: OSL()
+
         HT_hl_ol: HT_hl_ol {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HL_OL";
@@ -277,6 +296,7 @@
         };
 
         // layer flip on/off
+
         KP_lf: KP_lf {
             compatible = "zmk,behavior-toggle-layer";
             label = "KP_lf";
@@ -285,6 +305,7 @@
         };
 
         // force layer off
+
         KP_lf0: KP_lf0 {
             compatible = "zmk,behavior-toggle-layer";
             label = "KP_lf0";
@@ -293,11 +314,21 @@
         };
 
         // force layer on
+
         KP_lf1: KP_lf1 {
             compatible = "zmk,behavior-toggle-layer";
             label = "KP_lf1";
             #binding-cells = <1>;
             toggle-mode = "on";
+        };
+
+        OV_dotElipsis: OV_dotElipsis {
+            compatible = "zmk,behavior-mod-morph";
+            label = "OV_DOTELIPSIS";
+            bindings = <&TD_dotcolon>, <&kp LA(SEMI)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
         };
     };
 
@@ -305,6 +336,7 @@
         compatible = "zmk,combos";
 
         // flip between alpha and app layers
+
         CB_lto_app2alpha {
             bindings = <&to 0>;
             key-positions = <20 31>;
@@ -321,12 +353,12 @@
     keymap {
         compatible = "zmk,keymap";
 
-        base {
+        alpha {
             bindings = <
-           &kp Q  &MC_eacute &kp E     &kp R  &kp T    &kp Y      &kp U            &kp I          &kp O    &kp P
-           &kp A  &kp S      &kp D     &kp F  &kp G    &kp H      &kp J            &kp K          &kp L    &kp SEMI
-&kp LCTRL  &kp Z  &kp X      &kp C     &kp V  &kp B    &kp N      &kp M            &kp COMMA      &kp DOT  &kp FSLH  &kp APOS
-                             &kp LGUI  &mo 2  &mo 1    &kp SPACE  &kp RIGHT_SHIFT  &kp RIGHT_ALT
+         &kp Q  &MC_agrave  &kp C     &kp H      &none           &kp K           &kp W  &kp M     &MC_eacute  &kp P
+         &kp S  &kp A       &kp N     &kp U      &OV_comQuote    &OV_dotElipsis  &kp E  &kp T     &kp O       &kp L
+&kp ESC  &kp B  &kp G       &kp V     &kp Y      &kp Z           &kp X           &kp I  &kp D     &kp J       &kp F  &kp RET
+                            &kp LGUI  &kp SPACE  &kp TAB         &kp BSPC        &kp R  &kp LALT
             >;
         };
 
