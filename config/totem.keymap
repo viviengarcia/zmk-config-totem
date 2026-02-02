@@ -281,6 +281,15 @@
             mods = <(MOD_LSFT)>;
         };
 
+        OV_dotMinus: OV_dotMinus {
+            compatible = "zmk,behavior-mod-morph";
+            label = "OV_DOTMINUS";
+            bindings = <&TD_dotcolon>, <&kp MINUS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
         // hold: Mo(), tap: OSL()
 
         HT_hl_ol: HT_hl_ol {
@@ -320,15 +329,6 @@
             label = "KP_lf1";
             #binding-cells = <1>;
             toggle-mode = "on";
-        };
-
-        OV_dotElipsis: OV_dotElipsis {
-            compatible = "zmk,behavior-mod-morph";
-            label = "OV_DOTELIPSIS";
-            bindings = <&TD_dotcolon>, <&kp LA(SEMI)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
         };
     };
 
