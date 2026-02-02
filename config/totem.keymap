@@ -58,7 +58,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE &kp E>;
-            label = "\u00C9";
+            label = "É";
         };
 
         // è
