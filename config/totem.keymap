@@ -296,7 +296,7 @@
         };
 
         CB_lto_alpha2app {
-            bindings = <&to 4>;
+            bindings = <&to 3>;
             key-positions = <20 31>;
             layers = <0 1>;
         };
