@@ -23,6 +23,7 @@
 // (T)TD: tap-dance
 // (T)HT: hold-tap (mod or lay)
 // (T)KP: key press (alter default key output)
+// (T)CB: combo
 //
 // lf: layer flip on/off (== QMK Tg(layer))
 // lf0: layer off
@@ -287,13 +288,14 @@
     combos {
         compatible = "zmk,combos";
 
-        xapp2xtxt {
+        // flip between alpha and app layers
+        CB_lto_app2alpha {
             bindings = <&to 0>;
             key-positions = <20 31>;
             layers = <4>;
         };
 
-        x2xapp {
+        CB_lto_alpha2app {
             bindings = <&to 4>;
             key-positions = <20 31>;
             layers = <0 1>;
