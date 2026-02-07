@@ -131,6 +131,7 @@
             bindings =
                 <&macro_press>,
                 <&KP_lf0 2>,
+                <&macro_pause_for_release>,
                 <&macro_release>,
                 <&KP_lf1 2>;
 
@@ -140,7 +141,7 @@
         MC_lf1_app_alpha: MC_lf1_app_alpha {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&KP_lf1 1 &KP_lf1 2>;
+            bindings = <&KP_lf1 1 &KP_lf1 2 &KP_lf1 3>;
             label = "MC_LF1_APP_ALPHA";
         };
     };
@@ -382,7 +383,7 @@
 
         app {
             bindings = <
-           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &to 0      &kp SPACE  &kp SPACE
            &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
 &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
                                  &none      &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &none
@@ -394,7 +395,16 @@
          &kp Q  &MC_agrave  &kp C                     &kp H                   &none           &kp K         &kp W                   &kp M                     &MC_eacute  &kp P
          &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &OV_comQuote    &OV_dotMinus  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
 &kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &kp Z           &kp X         &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
-                            &none                     &kp SPACE               &kp TAB         &kp BSPC      &kp R                   &HT_hl_ol 2 2
+                            &none                     &kp SPACE               &kp TAB         &kp BSPC      &kp R                   &none
+            >;
+        };
+
+        layer_5 {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &MC_lh0_alpha
             >;
         };
 
