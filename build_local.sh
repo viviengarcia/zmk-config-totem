@@ -135,7 +135,9 @@ ensure_host_gitconfig_safe() {
 }
 
 # Populate host gitconfig early so container runs use it
-ensure_host_gitconfig_safe
+# disable if in INCREMENTAL mode to prevent an issue where .gitconfig starts to
+# be bloated with the same 2 lines repeated ad infinitum
+# ensure_host_gitconfig_safe
 
 # Parse west.yml and extract project names (these become directories)
 parse_west_projects() {
