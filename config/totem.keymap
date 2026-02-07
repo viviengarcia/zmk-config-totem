@@ -128,13 +128,7 @@
         MC_lh0_alpha: MC_lh0_alpha {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&KP_lf0 2>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&KP_lf1 2>;
-
+            bindings = <&tog_off 2 &macro_pause_for_release &tog_on 2>;
             label = "MC_LH0_ALPHA";
         };
 
@@ -348,6 +342,22 @@
             label = "KP_lf1";
             #binding-cells = <1>;
             toggle-mode = "on";
+        };
+
+        tog_on: toggle_layer_on_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer On";
+            toggle-mode = "on";
+            locking;
+        };
+
+        tog_off: toggle_layer_off_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer Off";
+            toggle-mode = "off";
+            locking;
         };
     };
 
