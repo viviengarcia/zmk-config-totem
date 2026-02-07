@@ -124,6 +124,25 @@
             bindings = <&kp LA(C)>;
             label = "Œ";
         };
+
+        MC_lh0_alpha: MC_lh0_alpha {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&KP_lf0 2>,
+                <&macro_release>,
+                <&KP_lf1 2>;
+
+            label = "MC_LH0_ALPHA";
+        };
+
+        MC_lf1_app_alpha: MC_lf1_app_alpha {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&KP_lf1 1 &KP_lf1 2>;
+            label = "MC_LF1_APP_ALPHA";
+        };
     };
 
     behaviors {
@@ -300,8 +319,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-            bindings = <&mo>, <&sl>;
+            bindings = <&MC_lh0_alpha>, <&KP_lf0>;
         };
 
         // layer flip on/off
@@ -338,40 +356,49 @@
         // flip between alpha and app layers
 
         CB_lto_app2alpha {
-            bindings = <&to 0>;
+            bindings = <&to 2>;
             key-positions = <20 31>;
-            layers = <3>;
+            layers = <0>;
         };
 
         CB_lto_alpha2app {
-            bindings = <&to 3>;
+            bindings = <&to 0>;
             key-positions = <20 31>;
-            layers = <0 1>;
+            layers = <2>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+        device {
+            bindings = <
+       &none       &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none             &kp B    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+       &kp K_MUTE  &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_PLAY_PAUSE  &none    &none         &none         &none         &none         &none
+&none  &none       &none                 &none                 &none             &none    &none         &none         &none         &none         &none         &bt BT_CLR
+                                         &MC_lf1_app_alpha     &none             &none    &none         &none         &none
+            >;
+        };
+
+        app {
+            bindings = <
+           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+                                 &none      &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &none
+            >;
+        };
+
         alpha {
             bindings = <
          &kp Q  &MC_agrave  &kp C                     &kp H                   &none           &kp K         &kp W                   &kp M                     &MC_eacute  &kp P
          &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &OV_comQuote    &OV_dotMinus  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
 &kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &kp Z           &kp X         &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
-                            &kp LGUI                  &kp SPACE               &kp TAB         &kp BSPC      &kp R                   &kp LALT
+                            &none                     &kp SPACE               &kp TAB         &kp BSPC      &kp R                   &HT_hl_ol 2 2
             >;
         };
 
-        nav_num {
-            bindings = <
-                   &kp LA(BACKSPACE)   &kp BACKSPACE  &kp UP     &kp DELETE     &kp LA(DELETE)        &kp N5      &kp N6           &kp N7       &kp N8    &kp N9
-                   &kp LA(LEFT_ARROW)  &kp LEFT       &kp DOWN   &kp RIGHT      &kp LA(RIGHT)         &kp N0      &kp N1           &kp N2       &kp N3    &kp N4
-&kp LG(BACKSPACE)  &kp LG(UP_ARROW)    &kp LG(LEFT)   &kp ENTER  &kp LG(RIGHT)  &kp LG(DOWN_ARROW)    &kp PERIOD  &kp PLUS         &kp MINUS    &kp STAR  &kp FSLH  &kp CARET
-                                                      &trans     &trans         &trans                &kp EQUAL   &kp RIGHT_SHIFT  &kp PERCENT
-            >;
-        };
-
-        sym_func {
+        symb {
             bindings = <
            &kp ESC        &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none             &kp F1   &kp F2           &kp F3   &kp F4   &kp F5
            &kp TAB        &kp LBKT              &kp RBKT               &kp ENTER         &kp BSLH          &kp F6   &kp F7           &kp F8   &kp F9   &kp F10
@@ -380,28 +407,15 @@
             >;
         };
 
-        device {
+        blank {
             bindings = <
-       &none       &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none             &none    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-       &kp K_MUTE  &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_PLAY_PAUSE  &none    &none         &none         &none         &none         &none
-&none  &none       &none                 &none                 &none             &none    &none         &none         &none         &none         &none         &bt BT_CLR
-                                         &none                 &none             &none    &none         &none         &none
+           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+                                 &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp ESC
             >;
         };
-
-        extra1 { status = "reserved"; };
-
-        extra2 { status = "reserved"; };
-
-        extra3 { status = "reserved"; };
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        device {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 };
