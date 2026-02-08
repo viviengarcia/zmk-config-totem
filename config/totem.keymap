@@ -456,7 +456,7 @@
          &kp Q  &MC_agrave  &kp C                     &kp H                   &TD_x_z        &kp K        &kp W                   &kp M                     &MC_eacute  &kp P
          &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_min_qsm    &TD_com_sqt  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
 &kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &none          &none        &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
-                            &kp TAB                   &TD_spc_dot             &mo 5          &mo 4        &kp R                   &kp BACKSPACE
+                            &kp TAB                   &TD_spc_dot             &mo 4          &mo 5        &kp R                   &kp BACKSPACE
             >;
         };
 
@@ -471,10 +471,10 @@
 
         lap {
             bindings = <
-                &trans     &kp GRAVE  &trans        &trans  &trans    &trans  &trans  &trans  &kp SQT  &trans
-                &trans     &trans     &kp N         &kp U   &trans    &trans  &kp E   &kp T   &trans   &trans
-&kp LEFT_SHIFT  &kp LCTRL  &trans     &kp V         &kp Y   &kp X     &kp Z   &kp I   &kp D   &trans   &trans  &trans
-                                      &kp LEFT_ALT  &trans  &trans    &trans  &trans  &trans
+                &trans     &kp GRAVE  &trans  &trans     &kp X           &trans     &trans  &trans  &kp SQT  &trans
+                &trans     &trans     &kp N   &kp U      &kp MINUS       &kp COMMA  &kp E   &kp T   &trans   &trans
+&kp LEFT_SHIFT  &kp LCTRL  &trans     &kp V   &kp Y      &kp Z           &kp F9     &kp I   &kp D   &trans   &trans  &trans
+                                      &trans  &kp SPACE  &kp LEFT_ALT    &kp F5     &trans  &trans
             >;
         };
 
@@ -483,6 +483,15 @@
         &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N8  &trans  &trans  &trans  &trans
         &trans  &trans  &trans  &trans  &trans    &kp N7  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &kp N6  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        laf {
+            bindings = <
+        &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans   &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
@@ -498,14 +507,14 @@
 
         utl {
             bindings = <
-        &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans   &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+        &trans  &kp LC(KP_N7)  &kp LC(KP_N8)  &kp LC(KP_N9)  &trans    &trans  &kp J      &kp LS(GT)  &kp L      &trans
+        &trans  &kp LC(KP_N4)  &kp LC(KP_N5)  &kp LC(KP_N6)  &trans    &trans  &kp LEFT   &kp C_PLAY  &kp RIGHT  &trans
+&trans  &trans  &kp LC(KP_N1)  &kp LC(KP_N2)  &kp LC(KP_N3)  &trans    &trans  &kp COMMA  &kp LS(LT)  &kp DOT    &trans  &trans
+                               &trans         &trans         &trans    &trans  &trans     &trans
             >;
         };
 
-        lo {
+        lop {
             bindings = <
         &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
         &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
