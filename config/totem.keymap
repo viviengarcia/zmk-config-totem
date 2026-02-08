@@ -388,6 +388,42 @@
 
             tapping-term-ms = <150>;
         };
+
+        TD_com_sqt: TD_com_sqt {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_COM_SQT";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SQT>;
+
+            tapping-term-ms = <150>;
+        };
+
+        TD_min_qsm: TD_min_qsm {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_MIN_QSM";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp QUESTION>;
+
+            tapping-term-ms = <150>;
+        };
+
+        TD_scln_dsqt: TD_scln_dsqt {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_SCLN_DSQT";
+            #binding-cells = <0>;
+            bindings = <&kp SEMI>, <&kp DOUBLE_QUOTES>;
+
+            tapping-term-ms = <150>;
+        };
+
+        TD_undr_excl: TD_undr_excl {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_UNDR_EXCL";
+            #binding-cells = <0>;
+            bindings = <&kp UNDER>, <&kp EXCL>;
+
+            tapping-term-ms = <150>;
+        };
     };
 
     combos {
@@ -415,20 +451,29 @@
     keymap {
         compatible = "zmk,keymap";
 
-        alpha {
+        al {
             bindings = <
-         &kp Q  &MC_agrave  &kp C                     &kp H                   &TD_x_z         &kp K         &kp W                   &kp M                     &MC_eacute  &kp P
-         &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &OV_comQuote    &OV_dotMinus  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &kp Z           &kp X         &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
-                            &none                     &TD_spc_dot             &kp TAB         &kp BSPC      &kp R                   &none
+         &kp Q  &MC_agrave  &kp C                     &kp H                   &TD_x_z        &kp K        &kp W                   &kp M                     &MC_eacute  &kp P
+         &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_min_qsm    &TD_com_sqt  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
+&kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &none          &none        &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
+                            &kp TAB                   &TD_spc_dot             &mo 5          &mo 4        &kp R                   &kp BACKSPACE
+            >;
+        };
+
+        sym {
+            bindings = <
+        &kp CARET  &kp HASH  &kp AMPS  &kp DOLLAR  &kp EXCLAMATION    &kp BACKSLASH  &kp N7  &kp N8  &kp N9  &kp N0
+        &kp GRAVE  &kp STAR  &kp PLUS  &kp FSLH    &trans             &kp SEMI       &kp N4  &kp N5  &kp N6  &kp PERCENT
+&trans  &kp TILDE  &kp PIPE  &kp AT    &kp EQUAL   &trans             &trans         &kp N1  &kp N2  &kp N3  &kp COLON    &trans
+                             &trans    &trans      &trans             &trans         &trans  &trans
             >;
         };
 
         lap {
             bindings = <
-                &trans     &kp GRAVE  &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans
-                &trans     &trans     &kp N         &kp U   &trans    &trans  &trans  &trans  &trans  &trans
-&kp LEFT_SHIFT  &kp LCTRL  &trans     &kp V         &kp Y   &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans     &kp GRAVE  &trans        &trans  &trans    &trans  &trans  &trans  &kp SQT  &trans
+                &trans     &trans     &kp N         &kp U   &trans    &trans  &kp E   &kp T   &trans   &trans
+&kp LEFT_SHIFT  &kp LCTRL  &trans     &kp V         &kp Y   &kp X     &kp Z   &kp I   &kp D   &trans   &trans  &trans
                                       &kp LEFT_ALT  &trans  &trans    &trans  &trans  &trans
             >;
         };
@@ -442,12 +487,30 @@
             >;
         };
 
-        device {
+        sel {
             bindings = <
-       &bt BT_SEL 0  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none             &kp N0    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-       &kp K_MUTE    &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_PLAY_PAUSE  &none     &none         &none         &none         &none         &none
-&none  &none         &none                 &none                 &none             &none     &none         &none         &none         &none         &none         &bt BT_CLR
-                                           &MC_lf1_app_alpha     &none             &none     &none         &none         &none
+        &trans  &trans  &trans          &trans        &trans    &trans  &trans    &trans    &trans     &trans
+        &trans  &trans  &kp LEFT_SHIFT  &kp LEFT_GUI  &trans    &trans  &kp BSPC  &kp UP    &kp DEL    &trans
+&trans  &trans  &trans  &kp LCTRL       &kp LEFT_ALT  &trans    &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
+                        &trans          &trans        &trans    &trans  &trans    &trans
+            >;
+        };
+
+        utl {
+            bindings = <
+        &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans   &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        lo {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
