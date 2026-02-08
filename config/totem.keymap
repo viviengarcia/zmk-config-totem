@@ -128,7 +128,7 @@
         MC_lh0_alpha: MC_lh0_alpha {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&tog_off 2>, <&macro_pause_for_release>, <&tog_on 2>;
+            bindings = <&tog_off 0>, <&macro_pause_for_release>, <&tog_on 0>;
 
             label = "MC_LH0_ALPHA";
         };
@@ -136,7 +136,7 @@
         MC_lf1_app_alpha: MC_lf1_app_alpha {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&KP_lf1 1 &KP_lf1 2 &KP_lf1 3>;
+            bindings = <&KP_lf1 0 &KP_lf1 0 &KP_lf1 0>;
             label = "MC_LF1_APP_ALPHA";
         };
     };
@@ -370,6 +370,24 @@
             flavor = "balanced";
             tapping-term-ms = <280>;
         };
+
+        TD_x_z: TD_x_z {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_X_Z";
+            #binding-cells = <0>;
+            bindings = <&kp X>, <&kp Z>;
+
+            tapping-term-ms = <150>;
+        };
+
+        TD_spc_dot: TD_spc_dot {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_SPC_DOT";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE>, <&kp DOT>;
+
+            tapping-term-ms = <150>;
+        };
     };
 
     combos {
@@ -378,64 +396,67 @@
         // flip between alpha and app layers
 
         CB_lto_app2alpha {
-            bindings = <&to 2>;
+            bindings = <&to 0>;
             key-positions = <20 31>;
-            layers = <0>;
         };
 
         CB_lto_alpha2app {
             bindings = <&to 0>;
             key-positions = <20 31>;
-            layers = <2>;
+            layers = <0>;
         };
 
-        CB_hmr {
-            bindings = <&none>;
-            key-positions = <12>;
-        };
-
-        CB_hrm_lsft {
-            bindings = <&THT_kp_trsp LSHIFT 0>;
-            key-positions = <12>;
+        CB_btclear {
+            bindings = <&bt BT_CLR>;
+            key-positions = <1 8>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        device {
-            bindings = <
-       &none       &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none             &kp N0    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-       &kp K_MUTE  &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_PLAY_PAUSE  &none     &none         &none         &none         &none         &none
-&none  &none       &none                 &none                 &none             &none     &none         &none         &none         &none         &none         &bt BT_CLR
-                                         &MC_lf1_app_alpha     &none             &none     &none         &none         &none
-            >;
-        };
-
-        app {
-            bindings = <
-           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp N1       &kp SPACE  &kp SPACE  &to 0      &kp SPACE  &kp SPACE
-           &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp N1       &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
-&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
-                                 &none      &kp SPACE  &kp SPACE    &kp SPACE  &kp SPACE  &none
-            >;
-        };
-
         alpha {
             bindings = <
-         &kp Q  &MC_agrave  &kp C                     &kp H                   &kp N2     &kp K         &kp W                   &kp M                     &MC_eacute  &kp P
-         &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &kp N2     &OV_dotMinus  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &kp Z      &kp X         &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
-                            &none                     &kp SPACE               &kp TAB    &kp BSPC      &kp R                   &none
+         &kp Q  &MC_agrave  &kp C                     &kp H                   &TD_x_z         &kp K         &kp W                   &kp M                     &MC_eacute  &kp P
+         &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &OV_comQuote    &OV_dotMinus  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
+&kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &kp Z           &kp X         &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
+                            &none                     &TD_spc_dot             &kp TAB         &kp BSPC      &kp R                   &none
             >;
         };
 
-        layer_ops {
+        lap {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans  &trans
-        &trans  &trans  &trans  &trans  &kp N3    &trans  &trans  &trans         &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans         &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &MC_lh0_alpha
+                &trans     &kp GRAVE  &trans        &trans  &trans    &trans  &trans  &trans  &trans  &trans
+                &trans     &trans     &kp N         &kp U   &trans    &trans  &trans  &trans  &trans  &trans
+&kp LEFT_SHIFT  &kp LCTRL  &trans     &kp V         &kp Y   &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                                      &kp LEFT_ALT  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        lan {
+            bindings = <
+        &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N8  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &kp N7  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp N6  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        device {
+            bindings = <
+       &bt BT_SEL 0  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none             &kp N0    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+       &kp K_MUTE    &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_PLAY_PAUSE  &none     &none         &none         &none         &none         &none
+&none  &none         &none                 &none                 &none             &none     &none         &none         &none         &none         &none         &bt BT_CLR
+                                           &MC_lf1_app_alpha     &none             &none     &none         &none         &none
+            >;
+        };
+
+        tpl {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
