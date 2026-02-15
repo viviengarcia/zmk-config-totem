@@ -5,4 +5,4 @@ on:
 
 jobs:
   build:
-    uses: nmunnich/zmk/.github/workflows/build-user-config.yml@behavior-event
+    uses: nmunnich/zmk/.github/workflows/build-user-config.yml
