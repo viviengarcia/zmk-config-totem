@@ -455,7 +455,7 @@
             bindings = <
          &kp Q  &MC_agrave  &kp C                     &kp H                   &TD_x_z        &kp K        &kp W                   &kp M                     &MC_eacute  &kp P
          &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_min_qsm    &TD_com_sqt  &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &none          &none        &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
+&kp ESC  &kp B  &kp G       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &none          &tog_on 7    &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
                             &kp TAB                   &TD_spc_dot             &mo 4          &mo 5        &kp R                   &kp BACKSPACE
             >;
         };
@@ -516,10 +516,10 @@
 
         lop {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &THT_kp_trsp LEFT_GUI 0  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans    &trans                   &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &tog_off 7               &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans                   &trans  &trans
             >;
         };
 
