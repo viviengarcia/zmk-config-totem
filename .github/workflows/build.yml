@@ -1,8 +1,8 @@
-name: Build ZMK firmware
+name: Build ZMK firmware for specific branch
 on:
   push:
     branches: ["nmunnich--zmk_B_behavior-event"]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: nmunnich/zmk/.github/workflows/build-user-config.yml@behavior-event
