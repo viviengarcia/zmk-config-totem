@@ -9,7 +9,7 @@ manifest:
   projects:
     - name: zmk
       remote: nmunnich
-      revision: main
+      revision: behavior-event
       import: app/west.yml
   self:
     path: config
