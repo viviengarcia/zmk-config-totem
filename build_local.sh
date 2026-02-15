@@ -200,7 +200,7 @@ build_target() {
   # #semver
   #renaming part
   SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
-  local SOURCE_FW="$(pwd)/build/zephyr/zmk.uf2"
+  local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
   local OUT_DIR="$(pwd)/_out/Releases"
   local BASE_NAME="${artifact_name}"
   local LAST_FILE
