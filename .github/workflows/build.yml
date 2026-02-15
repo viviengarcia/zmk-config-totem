@@ -1,4 +1,4 @@
-name: Build ZMK firmware
+name: Build ZMK firmware for specific branch
 on:
   push:
     branches: ["nmunnich--zmk_B_behavior-event"]
