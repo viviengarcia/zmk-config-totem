@@ -516,10 +516,10 @@
 
         lop {
             bindings = <
-        &trans  &trans  &THT_kp_trsp LEFT_GUI 0  &trans  &trans        &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans                   &trans  &trans        &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans                   &trans  &tog_off 7    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans                   &trans  &trans        &trans  &trans  &trans
+        &bt BT_SEL 0  &bt BT_SEL 1  &THT_kp_trsp LEFT_GUI 0  &trans  &trans        &trans  &trans  &trans  &trans  &trans
+        &bt BT_PRV    &bt BT_NXT    &trans                   &trans  &trans        &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans                   &trans  &tog_off 7    &trans  &trans  &trans  &trans  &trans  &trans
+                                    &trans                   &trans  &trans        &trans  &trans  &trans
             >;
         };
 
