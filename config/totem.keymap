@@ -531,61 +531,61 @@
 
         CB_ov_f1 {
             bindings = <&OV_func_1>;
-            key-positions = <0>;
+            key-positions = <0 0>;
             layers = <2>;
         };
 
         CB_ov_f2 {
             bindings = <&OV_func_2>;
-            key-positions = <1>;
+            key-positions = <1 1>;
             layers = <2>;
         };
 
         CB_ov_f3 {
             bindings = <&OV_func_3>;
-            key-positions = <2>;
+            key-positions = <2 2>;
             layers = <2>;
         };
 
         CB_ov_f4 {
             bindings = <&OV_func_4>;
-            key-positions = <3>;
+            key-positions = <3 3>;
             layers = <2>;
         };
 
         CB_ov_f5 {
             bindings = <&OV_func_5>;
-            key-positions = <4>;
+            key-positions = <4 4>;
             layers = <2>;
         };
 
         CB_ov_f6 {
             bindings = <&OV_func_6>;
-            key-positions = <5>;
+            key-positions = <5 5>;
             layers = <2>;
         };
 
         CB_ov_f7 {
             bindings = <&OV_func_7>;
-            key-positions = <6>;
+            key-positions = <6 6>;
             layers = <2>;
         };
 
         CB_ov_f8 {
             bindings = <&OV_func_8>;
-            key-positions = <7>;
+            key-positions = <7 7>;
             layers = <2>;
         };
 
         CB_ov_f9 {
             bindings = <&OV_func_9>;
-            key-positions = <8>;
+            key-positions = <8 8>;
             layers = <2>;
         };
 
         CB_ov_f0 {
             bindings = <&OV_func_0>;
-            key-positions = <9>;
+            key-positions = <9 9>;
             layers = <2>;
         };
     };
