@@ -145,13 +145,6 @@
             bindings = <&kp ESC &tog_off 1 &tog_off 3 &tog_off 4>;
             label = "MC_TOGOFF_1";
         };
-
-        MC_ldrk_lto0: MC_ldrk_lto0 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&to 0 &kp F13>;
-            label = "Switch to Alpha before launching Leader Key;
-        };
     };
 
     behaviors {
@@ -329,7 +322,7 @@
             locking;
         };
 
-        // t: [,] td: [;]
+        // double-tap outputs semicolon
         TD_semicomma: TD_semicomma {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_SEMICOMMA";
@@ -339,7 +332,7 @@
             tapping-term-ms = <150>;
         };
 
-        // t: [.] td: [:]
+        // double-tap outputs colon
         TD_dotcolon: TD_dotcolon {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_DOTCOLON";
@@ -349,7 +342,6 @@
             tapping-term-ms = <130>;
         };
 
-        // t: [x] td: [z]
         TD_x_z: TD_x_z {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_X_Z";
@@ -359,7 +351,6 @@
             tapping-term-ms = <150>;
         };
 
-        // t: [␣] td: [␣.]
         TD_spc_dot: TD_spc_dot {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_SPC_DOT";
@@ -369,50 +360,46 @@
             tapping-term-ms = <150>;
         };
 
-        // t: [,] td: [']
         TD_com_sqt: TD_com_sqt {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap Comma Equals Single Quote";
+            label = "TD_COM_SQT";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp SQT>;
 
             tapping-term-ms = <150>;
         };
 
-        // t: [-] dt: [?]
         TD_min_qsm: TD_min_qsm {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap Minus Equals Single Quote";
+            label = "TD_MIN_QSM";
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp QUESTION>;
 
             tapping-term-ms = <150>;
         };
 
-        // t: [;] dt: ["]
         TD_scln_dsqt: TD_scln_dsqt {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [;] -> ["]";
+            label = "TD_SCLN_DSQT";
             #binding-cells = <0>;
             bindings = <&kp SEMI>, <&kp DOUBLE_QUOTES>;
 
             tapping-term-ms = <150>;
         };
 
-        // t: [_] td: [!]
         TD_undr_excl: TD_undr_excl {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [_] -> [!]";
+            label = "TD_UNDR_EXCL";
             #binding-cells = <0>;
             bindings = <&kp UNDER>, <&kp EXCL>;
 
             tapping-term-ms = <150>;
         };
 
-        // LS[,] -> [']
+        // outputs ['] instead of [<] when [,] is shifted
         OV_comQuote: OV_comQuote {
             compatible = "zmk,behavior-mod-morph";
-            label = "Shifted [,] -> [;]";
+            label = "OV_COMQUOTE";
             bindings = <&TD_semicomma>, <&kp SQT>;
 
             #binding-cells = <0>;
@@ -421,14 +408,13 @@
 
         OV_dotMinus: OV_dotMinus {
             compatible = "zmk,behavior-mod-morph";
-            label = "Shifted [.] -> [-]";
+            label = "OV_DOTMINUS";
             bindings = <&TD_dotcolon>, <&kp MINUS>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
 
-        // shifted numbers give f-keys
         OV_func_0: OV_func_0 {
             compatible = "zmk,behavior-mod-morph";
             label = "OV_FUNC_10";
@@ -523,24 +509,6 @@
     combos {
         compatible = "zmk,combos";
 
-        CB_rcast {
-            bindings = <&kp F15>;
-            key-positions = <5 15>;
-            layers = <0 1 3 4>;
-        };
-
-        CB_ldrk {
-            bindings = <&kp F13>;
-            key-positions = <4 14>;
-            layers = <0 1 3 4>;
-        };
-
-        CB_lto_app2alpha {
-            bindings = <&to 0>;
-            key-positions = <25 34>;
-            layers = <2>;
-        };
-
         // flip between alpha and app layers
         CB_lto_app2alpha {
             bindings = <&to 0>;
@@ -557,10 +525,10 @@
         CB_btclear {
             bindings = <&bt BT_CLR>;
             key-positions = <37 32>;
-            layers = <0>;
         };
 
         // apply OV_func(s) only on specified layers
+
         CB_ov_f1 {
             bindings = <&OV_func_1>;
             key-positions = <0 0>;
