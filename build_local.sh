@@ -197,8 +197,8 @@ build_target() {
   local start_time
   start_time=$(date +%s)
 
-  # #semver
-  #renaming part
+  # semver
+  # renaming part
   SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
   local OUT_DIR="$(pwd)/_out/Releases"
@@ -245,7 +245,7 @@ build_target() {
 
 	NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
 	DEST_FILE="${OUT_DIR}/${BASE_NAME}-${NEW_VERSION}.uf2"
-	# #semver
+	# semver
 
   local found=0
   while IFS='|' read -r board shield snippet cmake_args artifact_name; do
@@ -287,10 +287,13 @@ build_target() {
 
       check_build_artifact "./build/${artifact_name}/zephyr/zmk.uf2" "${artifact_name} build"
 
-      # #semver
-      # cp "$(pwd)/build/zephyr/zmk.uf2" "$(pwd)/_out/Releases/${artifact_name}.uf2"
+      # semver
       cp "$SOURCE_FW" "$DEST_FILE"
-      # #semver
+      # semver
+
+			# keymap-drawer generates a svg schema of the keymap
+      keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$NEW_VERSION.svg
 
       local end_time
       end_time=$(date +%s)
