@@ -44,8 +44,8 @@
 
 / {
     macros {
-
         // key sequence ouputs a diacritic on qwerty-international layouts
+
         TMC_diac: TMC_diac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -54,6 +54,7 @@
         };
 
         // é
+
         MC_eacute: MC_eacute {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -62,6 +63,7 @@
         };
 
         // è
+
         MC_egrave: MC_egrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -70,6 +72,7 @@
         };
 
         // ê
+
         MC_ecirc: MC_ecirc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -78,6 +81,7 @@
         };
 
         // à
+
         MC_agrave: MC_agrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -86,6 +90,7 @@
         };
 
         // ô
+
         MC_ocirc: MC_ocirc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -94,6 +99,7 @@
         };
 
         // ç
+
         MC_ccedil: MC_ccedil {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -102,6 +108,7 @@
         };
 
         // æ
+
         MC_ligae: MC_ligae {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -110,6 +117,7 @@
         };
 
         // œ
+
         MC_ligoe: MC_ligoe {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -158,19 +166,21 @@
         // hold-tap tpl for thumbs
         // - thumbs strong+ agility-
         // - hold gesture combines with keys from both keeb halves
-        THT_Thumbs: THT_Thumbs {
+
+        THT_Tbs: THT_Tbs {
             compatible = "zmk,behavior-hold-tap";
-            label = "THT_THUMBS";
+            label = "Hold-Tap Template for Thumbs";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
             hold-trigger-on-release;
-            bindings = <&kp>, <&kp>;
+            bindings = <&kp>, <&sl>;
         };
 
         // hold-tap tpl for homerow mods
+
         THT_HRM: THT_HRM {
             compatible = "zmk,behavior-hold-tap";
             label = "THT_HRM";
@@ -185,6 +195,7 @@
         };
 
         // mod-morph tpl for alternate shift output
+
         TOV_LSFT: TOV_LSFT {
             compatible = "zmk,behavior-mod-morph";
             label = "TOV_LSFT";
@@ -197,6 +208,7 @@
         // hold-tap only for layers
         // to activate a layer while held OR to switch to it
         // depending on the gesture
+
         HT_lh_lto: HT_lh_lto {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_LH_LTO";
@@ -208,6 +220,7 @@
         };
 
         // left keeb homerow mods for index & major (stronk)
+
         HT_hrm_StL: HT_hrm_StL {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_STL";
@@ -223,6 +236,7 @@
         };
 
         // right keeb homerow mods for index & major (stronk)
+
         HT_hrm_StR: HT_hrm_StR {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_STR";
@@ -238,6 +252,7 @@
         };
 
         // left keeb homerow mods for ring & pinky (weak)
+
         HT_hrm_WkL: HT_hrm_WkL {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_WKL";
@@ -253,6 +268,7 @@
         };
 
         // right keeb homerow mods for ring & pinky (weak)
+
         HT_hrm_WkR: HT_hrm_WkR {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HRM_WKR";
@@ -268,6 +284,7 @@
         };
 
         // hold: Mo(), tap: OSL()
+
         HT_hl_ol: HT_hl_ol {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_HL_OL";
@@ -280,6 +297,7 @@
         };
 
         // layer flip on/off
+
         KP_lf: KP_lf {
             compatible = "zmk,behavior-toggle-layer";
             label = "KP_lf";
@@ -298,6 +316,7 @@
         };
 
         // force layer off
+
         KP_lf0: KP_lf0 {
             compatible = "zmk,behavior-toggle-layer";
             label = "KP_lf0";
@@ -306,6 +325,7 @@
         };
 
         // force layer on
+
         KP_lf1: KP_lf1 {
             compatible = "zmk,behavior-toggle-layer";
             label = "KP_lf1";
@@ -330,6 +350,7 @@
         };
 
         // t: [,] td: [;]
+
         TD_semicomma: TD_semicomma {
             compatible = "zmk,behavior-tap-dance";
             label = "Double-tap [,] -> [;]";
@@ -340,6 +361,7 @@
         };
 
         // t: [.] td: [:]
+
         TD_dotcolon: TD_dotcolon {
             compatible = "zmk,behavior-tap-dance";
             label = "Double-tap [.] -> [:]";
@@ -350,6 +372,7 @@
         };
 
         // t: [x] td: [z]
+
         TD_x_z: TD_x_z {
             compatible = "zmk,behavior-tap-dance";
             label = "Double-tap [X] -> [Z]";
@@ -360,16 +383,18 @@
         };
 
         // t: [␣] td: [␣.]
-        TD_spc_dot: TD_spc_dot {
+
+        TD_dot_min: TD_dot_min {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [␣] -> [␣.]";
+            label = "Double-tap [.] -> [-]";
             #binding-cells = <0>;
-            bindings = <&kp SPACE>, <&kp DOT>;
+            bindings = <&kp PERIOD>, <&kp MINUS>;
 
             tapping-term-ms = <150>;
         };
 
         // t: [,] td: [']
+
         TD_com_sqt: TD_com_sqt {
             compatible = "zmk,behavior-tap-dance";
             label = "Double-tap [,] -> [']";
@@ -380,6 +405,7 @@
         };
 
         // t: [-] dt: [?]
+
         TD_min_qsm: TD_min_qsm {
             compatible = "zmk,behavior-tap-dance";
             label = "Double-tap [-] -> [']";
@@ -390,6 +416,7 @@
         };
 
         // t: [;] dt: ["]
+
         TD_scln_dsqt: TD_scln_dsqt {
             compatible = "zmk,behavior-tap-dance";
             label = "Double-tap [;] -> [\"]";
@@ -400,6 +427,7 @@
         };
 
         // t: [_] td: [!]
+
         TD_undr_excl: TD_undr_excl {
             compatible = "zmk,behavior-tap-dance";
             label = "Double-tap [_] -> [!]";
@@ -410,6 +438,7 @@
         };
 
         // LS[,] -> [']
+
         OV_comQuote: OV_comQuote {
             compatible = "zmk,behavior-mod-morph";
             label = "Shifted [,] -> [;]";
@@ -429,6 +458,7 @@
         };
 
         // shifted numbers give f-keys
+
         OV_func_0: OV_func_0 {
             compatible = "zmk,behavior-mod-morph";
             label = "OV_FUNC_10";
@@ -518,6 +548,18 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
         };
+
+        ht_TBS_KP_SL: ht_TBS_KP_SL {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Tap = key press, hold = sticky layer";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+            bindings = <&kp>, <&sl>;
+        };
     };
 
     combos {
@@ -536,6 +578,7 @@
         };
 
         // flip between alpha and app layers
+
         CB_lto_app2alpha {
             bindings = <&to 0>;
             key-positions = <25 34>;
@@ -554,6 +597,7 @@
         };
 
         // apply OV_func(s) only on specified layers
+
         CB_ov_f1 {
             bindings = <&OV_func_1>;
             key-positions = <0 0>;
@@ -620,10 +664,10 @@
 
         alpha {
             bindings = <
-         &kp G  &MC_agrave  &kp C                     &kp H                   &TD_x_z           &kp K           &kp W                   &kp M                     &MC_eacute  &kp P
-         &kp S  &kp A       &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_min_qsm       &TD_com_sqt     &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp B  &kp Q       &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT Y  &HT_lh_lto 4 4    &HT_lh_lto 4 4  &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL D       &kp J       &kp F  &kp RET
-                            &kp TAB                   &TD_spc_dot             &HT_lh_lto 1 1    &HT_lh_lto 3 3  &kp R                   &kp BACKSPACE
+         &kp G  &kp Q  &kp Y                     &kp H                   &kp J             &kp K                     &kp W                   &kp D                     &MC_eacute  &kp P
+         &kp S  &kp A  &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_com_sqt       &TD_dot_min               &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
+&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT C  &HT_lh_lto 4 4    &HT_lh_lto 4 4            &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M       &kp B       &kp F  &MC_egrave
+                       &kp TAB                   &TD_dot_min             &sl 1             &ht_TBS_KP_SL C_REPEAT 3  &kp R                   &kp BACKSPACE
             >;
         };
 
@@ -680,7 +724,6 @@
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
-
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
