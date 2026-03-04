@@ -448,10 +448,10 @@
             mods = <(MOD_LSFT)>;
         };
 
-        OV_dotMinus: OV_dotMinus {
+        OV_dotColon: OV_dotColon {
             compatible = "zmk,behavior-mod-morph";
-            label = "Shifted [.] -> [-]";
-            bindings = <&TD_dotcolon>, <&kp MINUS>;
+            label = "Shifted [.] -> [:]";
+            bindings = <&TD_dot_min>, <&kp COLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
@@ -662,25 +662,25 @@
     keymap {
         compatible = "zmk,keymap";
 
-        alpha {
+        charm {
             bindings = <
-         &kp G  &kp Q  &kp Y                     &kp H                   &kp J             &kp K                     &kp W                   &kp D                     &MC_eacute  &kp P
+         &kp G  &kp Q  &kp Y                     &kp W                   &kp J             &kp K                     &kp H                   &kp D                     &MC_eacute  &kp P
          &kp S  &kp A  &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_com_sqt       &TD_dot_min               &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL V       &HT_hrm_StL LEFT_ALT C  &HT_lh_lto 4 4    &HT_lh_lto 4 4            &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M       &kp B       &kp F  &MC_egrave
-                       &kp TAB                   &TD_dot_min             &sl 1             &ht_TBS_KP_SL C_REPEAT 3  &kp R                   &kp BACKSPACE
+&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C       &HT_hrm_StL LEFT_ALT V  &HT_lh_lto 4 4    &HT_lh_lto 4 4            &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M       &kp B       &kp F  &MC_agrave
+                       &kp TAB                   &kp SPACE               &sl 1             &ht_TBS_KP_SL C_REPEAT 3  &kp R                   &kp BACKSPACE
             >;
         };
 
-        symb {
+        charx {
             bindings = <
-                  &kp CARET  &kp HASH  &kp AMPS  &kp DOLLAR  &kp EXCLAMATION    &kp BACKSLASH  &kp N7  &kp N8  &kp N9  &kp N0
-                  &kp GRAVE  &kp STAR  &kp PLUS  &kp FSLH    &trans             &kp SEMI       &kp N4  &kp N5  &kp N6  &kp PERCENT
-&MC_esc_tog0_all  &kp TILDE  &kp PIPE  &kp AT    &kp EQUAL   &trans             &trans         &kp N1  &kp N2  &kp N3  &kp COLON    &trans
-                                       &trans    &trans      &tog 1             &trans         &trans  &trans
+                  &kp AT_SIGN  &kp HASH  &kp AMPS   &kp DOLLAR  &kp EXCLAMATION    &kp QUESTION       &MC_ecirc   &MC_ocirc  &MC_ligoe  &kp N0
+                  &kp MINUS    &kp PLUS  &kp STAR   &kp SLASH   &kp PERCENT        &kp DOUBLE_QUOTES  &MC_egrave  &kp N5     &MC_ligae  &kp PERCENT
+&MC_esc_tog0_all  &kp TILDE    &kp APOS  &kp CARET  &kp GRAVE   &trans             &trans             &kp N1      &kp N2     &kp N3     &kp COLON    &MC_ccedil
+                                         &trans     &trans      &tog 1             &trans             &kp EQUAL   &trans
             >;
         };
 
-        appn {
+        gapp {
             bindings = <
                 &kp N1     &kp N2  &kp N3  &kp N4     &kp N5          &kp F9     &kp O      &kp J      &kp H  &kp EQUAL
                 &trans     &trans  &kp N   &kp U      &kp MINUS       &kp F5     &kp T      &kp D      &kp C  &kp MINUS
@@ -689,7 +689,7 @@
             >;
         };
 
-        slct {
+        wmsl {
             bindings = <
                   &none  &none  &none           &none         &none    &none   &kp MINUS  &kp EQUAL  &none      &none
                   &none  &none  &kp LEFT_SHIFT  &kp LEFT_GUI  &none    &none   &kp BSPC   &kp UP     &kp DEL    &none
@@ -698,7 +698,7 @@
             >;
         };
 
-        util {
+        btplay {
             bindings = <
                   &trans  &kp LC(KP_N7)  &kp LC(KP_N8)  &kp LC(KP_N9)  &trans    &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
                   &trans  &kp LC(KP_N4)  &kp LC(KP_N5)  &kp LC(KP_N6)  &trans    &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
