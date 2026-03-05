@@ -160,6 +160,13 @@
             bindings = <&to 0 &kp F13>;
             label = "Switch to Alpha before launching Leader Key";
         };
+
+        mc_acirc: mc_acirc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N0>;
+            label = "MC_ACIRC";
+        };
     };
 
     behaviors {
@@ -691,19 +698,19 @@
 
         wmsl {
             bindings = <
-                  &none  &none  &none           &none         &none    &none   &kp MINUS  &kp EQUAL  &none      &none
-                  &none  &none  &kp LEFT_SHIFT  &kp LEFT_GUI  &none    &none   &kp BSPC   &kp UP     &kp DEL    &none
-&MC_esc_tog0_all  &none  &none  &kp LCTRL       &kp LEFT_ALT  &none    &none   &kp LEFT   &kp DOWN   &kp RIGHT  &none  &none
-                                &none           &none         &none    &tog 3  &none      &none
+                  &none  &none  &none                                 &none                               &none    &none   &kp MINUS                  &kp EQUAL                  &none      &none
+                  &none  &none  &HT_hrm_StL LEFT_SHIFT LC(LA(KP_N5))  &HT_hrm_StL LEFT_GUI LC(LA(KP_N6))  &none    &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
+&MC_esc_tog0_all  &none  &none  &HT_hrm_StL LCTRL KP_N2               &kp LEFT_ALT                        &none    &none   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
+                                &none                                 &none                               &none    &tog 3  &none                      &none
             >;
         };
 
         btplay {
             bindings = <
-                  &trans  &kp LC(KP_N7)  &kp LC(KP_N8)  &kp LC(KP_N9)  &trans    &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
-                  &trans  &kp LC(KP_N4)  &kp LC(KP_N5)  &kp LC(KP_N6)  &trans    &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
-&MC_esc_tog0_all  &trans  &kp LC(KP_N1)  &kp LC(KP_N2)  &kp LC(KP_N3)  &trans    &trans        &kp J      &kp LA(LEFT)   &kp L      &trans      &trans
-                                         &trans         &trans         &trans    &trans        &trans     &trans
+                  &none  &none  &none   &none   &none     &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
+                  &none  &none  &none   &none   &none     &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
+&MC_esc_tog0_all  &none  &none  &none   &none   &trans    &trans        &kp J      &kp LA(LEFT)   &kp L      &none       &none
+                                &trans  &trans  &trans    &trans        &trans     &trans
             >;
         };
 
