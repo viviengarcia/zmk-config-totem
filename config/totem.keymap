@@ -161,11 +161,60 @@
             label = "Switch to Alpha before launching Leader Key";
         };
 
-        mc_acirc: mc_acirc {
+        tmc_unicd: tmc_unicd {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N0>;
-            label = "MC_ACIRC";
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_release>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS>;
+
+            label = "[tpl] Unicode Macros";
+        };
+
+        mc_egrave: mc_egrave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N8>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "è";
+        };
+
+        mc_agrave: mc_agrave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N0>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "MC_AGRAVE";
+        };
+
+        mc_ugrave: mc_ugrave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N0>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "MC_UGRAVE";
         };
     };
 
