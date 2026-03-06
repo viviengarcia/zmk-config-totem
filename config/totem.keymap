@@ -481,16 +481,16 @@
         //     tapping-term-ms = <150>;
         // };
 
-        // t: [␣] td: [␣.]
+        // t: [.] td: [-]
 
-        // TD_dot_min: TD_dot_min {
-        //     compatible = "zmk,behavior-tap-dance";
-        //     label = "Double-tap [PERIOD] -> [MINUS]";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp PERIOD>, <&kp MINUS>;
+        TD_dot_min: TD_dot_min {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Double-tap [PERIOD] -> [MINUS]";
+            #binding-cells = <0>;
+            bindings = <&kp PERIOD>, <&kp MINUS>;
 
-        //     tapping-term-ms = <150>;
-        // };
+            tapping-term-ms = <150>;
+        };
 
         // t: [,] td: [']
 
