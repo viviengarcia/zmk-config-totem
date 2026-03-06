@@ -286,19 +286,6 @@
             mods = <(MOD_LSFT)>;
         };
 
-        // hold-tap only for layers
-        // to activate a layer while held OR to switch to it
-        // depending on the gesture
-        HT_lh_lto: HT_lh_lto {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HT_LH_LTO";
-            bindings = <&mo>, <&sl>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-        };
-
         // left keeb homerow mods for index & major (stronk)
         HT_hrm_StL: HT_hrm_StL {
             compatible = "zmk,behavior-hold-tap";
