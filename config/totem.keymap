@@ -361,38 +361,20 @@
 
 
         // layer flip on/off
-        KP_lf: KP_lf {
-            compatible = "zmk,behavior-toggle-layer";
-            label = "KP_lf";
-            #binding-cells = <1>;
-            toggle-mode = "flip";
-        };
-
-        THT_kp_trsp: THT_kp_trsp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "THT_KP_TRSP";
-            bindings = <&kp>, <&trans>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-        };
-
-        // layer flip on/off
-        KP_lf: KP_lf {
-            compatible = "zmk,behavior-toggle-layer";
-            label = "KP_lf";
-            #binding-cells = <1>;
-            toggle-mode = "flip";
-        };
+        // KP_lf: KP_lf {
+        //     compatible = "zmk,behavior-toggle-layer";
+        //     label = "KP_lf";
+        //     #binding-cells = <1>;
+        //     toggle-mode = "flip";
+        // };
 
         // force layer off
-        KP_lf0: KP_lf0 {
-            compatible = "zmk,behavior-toggle-layer";
-            label = "KP_lf0";
-            #binding-cells = <1>;
-            toggle-mode = "off";
-        };
+        // KP_lf0: KP_lf0 {
+        //     compatible = "zmk,behavior-toggle-layer";
+        //     label = "KP_lf0";
+        //     #binding-cells = <1>;
+        //     toggle-mode = "off";
+        // };
 
         // force layer on
         // KP_lf1: KP_lf1 {
@@ -400,6 +382,16 @@
         //     label = "KP_lf1";
         //     #binding-cells = <1>;
         //     toggle-mode = "on";
+        // };
+
+        // THT_kp_trsp: THT_kp_trsp {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     label = "THT_KP_TRSP";
+        //     bindings = <&kp>, <&trans>;
+
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
         // };
 
         tog_on: toggle_layer_on_only {
@@ -421,7 +413,7 @@
         // t: [,] td: [;]
         TD_semicomma: TD_semicomma {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [comma] -> [semicolon]";
+            label = "Double-tap [COMMA] -> [SEMICOLON]";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp SEMI>;
 
@@ -431,7 +423,7 @@
         // t: [.] td: [:]
         TD_dotcolon: TD_dotcolon {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [dot] -> [colon]";
+            label = "Double-tap [PERIOD] -> [COLON]";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp LS(SEMI)>;
 
@@ -451,7 +443,7 @@
         // t: [␣] td: [␣.]
         TD_dot_min: TD_dot_min {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [.] -> [-]";
+            label = "Double-tap [PERIOD] -> [MINUS]";
             #binding-cells = <0>;
             bindings = <&kp PERIOD>, <&kp MINUS>;
 
@@ -461,7 +453,7 @@
         // t: [,] td: [']
         TD_com_sqt: TD_com_sqt {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [] -> [SQT]";
+            label = "Double-tap [COMMA] -> [SINGLE_QUOTE]";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp SQT>;
 
@@ -471,7 +463,7 @@
         // t: [-] dt: [?]
         TD_min_qsm: TD_min_qsm {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [-] -> [SQT]";
+            label = "Double-tap [MINUS] -> [SINGLE_QUOTE]";
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp QUESTION>;
 
@@ -481,7 +473,7 @@
         // t: [;] dt: ["]
         TD_scln_dsqt: TD_scln_dsqt {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [;] -> [DQT]";
+            label = "Double-tap [SEMICOLON] -> [DOUBLE_QUOTES]";
             #binding-cells = <0>;
             bindings = <&kp SEMI>, <&kp DOUBLE_QUOTES>;
 
@@ -491,7 +483,7 @@
         // t: [_] td: [!]
         TD_undr_excl: TD_undr_excl {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [_] -> [!]";
+            label = "Double-tap [UNDERSCORE] -> [EXCLAMATION_MARK]";
             #binding-cells = <0>;
             bindings = <&kp UNDER>, <&kp EXCL>;
 
@@ -634,12 +626,14 @@
     combos {
         compatible = "zmk,combos";
 
+        // launch raycast prompt
         CB_rcast {
             bindings = <&kp F15>;
             key-positions = <5 15>;
             layers = <0 1 3 4>;
         };
 
+        // launch leaderkey prompt
         CB_ldrk {
             bindings = <&kp F13>;
             key-positions = <4 14>;
@@ -647,7 +641,6 @@
         };
 
         // flip between alpha and app layers
-
         CB_lto_app2alpha {
             bindings = <&to 0>;
             key-positions = <25 34>;
@@ -666,7 +659,6 @@
         };
 
         // apply OV_func(s) only on specified layers
-
         CB_ov_f1 {
             bindings = <&OV_func_1>;
             key-positions = <0 0>;
