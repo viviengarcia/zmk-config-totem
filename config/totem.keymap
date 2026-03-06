@@ -175,7 +175,7 @@
         //     label = "[tpl] Unicode Macro";
         // };
 
-        mc_egrave: mc_egrave {
+        MC_egrave: MC_egrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -189,7 +189,7 @@
             label = "è (Unicode Macro)";
         };
 
-        mc_agrave: mc_agrave {
+        MC_agrave: MC_agrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -203,7 +203,7 @@
             label = "à (Unicode Macro)";
         };
 
-        mc_ugrave: mc_ugrave {
+        MC_ugrave: MC_ugrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -713,9 +713,9 @@
         // L1
         charx {
             bindings = <
-                  &kp AT_SIGN  &kp HASH  &kp AMPS   &kp DOLLAR  &kp EXCLAMATION                 &kp QUESTION        &MC_ecirc   &MC_ocirc  &MC_ligoe  &kp N0
+                  &kp AT_SIGN  &kp HASH  &kp AMPS   &kp DOLLAR  &kp EXCLAMATION                 &kp QUESTION        &MC_ecirc   &MC_ocirc  &MC_ligoe  &MC_ugrave
                   &kp MINUS    &kp PLUS  &kp STAR   &kp SLASH   &kp PERCENT                     &kp DOUBLE_QUOTES   &MC_egrave  &kp N5     &MC_ligae  &kp PERCENT
-&MC_esc_tog0_all  &kp TILDE    &kp APOS  &kp CARET  &kp GRAVE   &trans                          &trans              &kp N1      &kp N2     &kp N3     &kp COLON    &MC_ccedil
+&MC_esc_tog0_all  &kp TILDE    &kp APOS  &kp CARET  &kp GRAVE   &trans                          &trans              &MC_agrave  &kp N2     &kp N3     &kp COLON    &MC_ccedil
                                                     &trans      &trans          &tog 1  &trans  &kp EQUAL           &trans
             >;
         };
@@ -758,7 +758,7 @@
 //                         &trans  &trans  &trans    &trans  &trans  &trans
 //             >;
 //         };
-//     };
+    };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
 };
