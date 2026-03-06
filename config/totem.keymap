@@ -256,6 +256,13 @@
             label = "One-shot L5 & L3, L5 has tog_on at the position above to really activate L3";
         };
 
+        MC_L3_lh1:MC_L3_lh1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+            <&tog_off 3>, <&macro_pause_for_release>, <&tog_on 3>;
+            label = "While held, disable L3 and and activate L1";
+        };
     };
 
     behaviors {
@@ -700,19 +707,19 @@
 
         // launch raycast prompt
 
-        CB_rcast {
-            bindings = <&kp F15>;
-            key-positions = <5 15>;
-            layers = <0 1 3 4>;
-        };
+        // CB_rcast {
+        //     bindings = <&kp F15>;
+        //     key-positions = <5 15>;
+        //     layers = <0 1 3 4>;
+        // };
 
         // launch leaderkey prompt
 
-        CB_ldrk {
-            bindings = <&kp F13>;
-            key-positions = <4 14>;
-            layers = <0 1 3 4>;
-        };
+        // CB_ldrk {
+        //     bindings = <&kp F13>;
+        //     key-positions = <4 14>;
+        //     layers = <0 1 3 4>;
+        // };
 
         // flip between alpha and app layers
 
@@ -726,6 +733,24 @@
             bindings = <&to 2>;
             key-positions = <25 34>;
             layers = <0>;
+        };
+
+        CB_lh_dvce {
+            bindings = <&mo 6>;
+            key-positions = <5 35>;
+            layers = <0 1 3>;
+        };
+
+        CB_los_play {
+            bindings = <&sl 4>;
+            key-positions = <5 35>;
+            layers = <0 1 2 3>;
+        };
+
+        CB_tog_play {
+            bindings = <&tog_on 4>;
+            key-positions = <5 35>;
+            layers = <4>;
         };
 
         CB_btclear {
@@ -836,34 +861,25 @@
 
         wmsl {
             bindings = <
-                  &none  &kp KP_N7  &kp KP_N8                       &kp KP_N9                   &kp KP_N0                       &none   &kp MINUS                  &kp EQUAL                  &none      &none
-                  &none  &kp KP_N4  &HT_hrm_StL LEFT_SHIFT KP_N5    &HT_hrm_StL LEFT_GUI KP_N6  &kp PERIOD                      &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
-&MC_esc_tog0_all  &none  &kp KP_N1  &HT_hrm_StL LCTRL KP_N2         &HT_hrm_StL LEFT_ALT KP_N3  &kp LS(LGUI)                    &nobe   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
-                                                                    &trans                      &kp LSHIFT  &trans  &tog_off 3  &none   &none
+                  &none  &kp KP_N7  &kp KP_N8                       &kp KP_N9                   &kp KP_N0                           &none   &kp MINUS                  &kp EQUAL                  &none      &none
+                  &none  &kp KP_N4  &HT_hrm_StL LEFT_SHIFT KP_N5    &HT_hrm_StL LEFT_GUI KP_N6  &kp PERIOD                          &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
+&MC_esc_tog0_all  &none  &kp KP_N1  &HT_hrm_StL LCTRL KP_N2         &HT_hrm_StL LEFT_ALT KP_N3  &kp LS(LGUI)                        &nobe   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
+                                                                    &trans                      &kp LSHIFT  &MC_L3_lh1  &tog_off 3  &none   &trans
             >;
         };
 
         // L4
 
-        plnb {
+        play {
             bindings = <
-                  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5    &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
-                  &bt BT_PRV    &bt BT_NXT    &none         &none         &none           &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
-&MC_esc_tog0_all  &none         &none         &none         &none         &trans          &trans        &kp J      &kp LA(LEFT)   &kp L      &none       &none
-                                              &trans        &trans        &trans          &trans        &trans     &trans
+                  &none         &none         &none         &none       &none                               &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
+                  &none         &none         &none         &none       &none                               &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
+&MC_esc_tog0_all  &none         &none         &none         &none       &none                               &trans        &kp J      &kp LA(LEFT)   &kp L      &none       &none
+                                                            &kp SPACE   &kp SPACE   &kp SPACE  &kp SPACE    &kp SPACE     &trans
             >;
         };
 
         // L5
-
-        dvce {
-            bindings = <
-                    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5  &trans    &trans  &trans  &trans  &trans
-                    &bt BT_PRV      &bt BT_NXT      &none         &none         &none         &trans    &trans  &trans  &trans  &trans
-&MC_esc_tog0_all    &none           &none           &none         &none         &trans        &trans    &trans  &trans  &trans  &trans  &trans
-                                                    &trans        &trans        &trans        &trans    &trans  &trans
-            >;
-        };
 
         topmods {
             bindings = <
@@ -874,6 +890,15 @@
             >;
         };
 
+        // L6
+        dvce {
+            bindings = <
+                    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5                    &trans  &trans  &trans  &trans  &trans
+                    &bt BT_PRV      &bt BT_NXT      &none         &none         &none                           &trans  &trans  &trans  &trans  &trans
+&MC_esc_tog0_all    &none           &none           &none         &none         &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+                                                                  &trans        &trans        &trans    &trans  &trans  &trans
+            >;
+        };
 
         //         tpl {
         //             bindings = <
