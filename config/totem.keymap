@@ -477,16 +477,6 @@
             tapping-term-ms = <150>;
         };
 
-        // mod-morph tpl for alternate shift output
-        TOV_LSFT: TOV_LSFT {
-            compatible = "zmk,behavior-mod-morph";
-            label = "TOV_LSFT";
-            bindings = <&kp COMMA>, <&kp SQT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
         // LS[,] -> [']
         OV_comQuote: OV_comQuote {
             compatible = "zmk,behavior-mod-morph";
