@@ -219,6 +219,20 @@
             label = "ù (Unicode Macro)";
         };
 
+        MC_ucirc: MC_ucirc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(F) &kp LS(B)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "û (Unicode Macro)";
+        };
+
         Fake_LayerMod: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -757,10 +771,10 @@
 
         charm {
             bindings = <
-         &kp G  &kp Q  &kp Y                     &kp W                   &kp J             &kp K                     &kp H                   &kp D                     &MC_eacute  &kp P
-         &kp S  &kp A  &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_com_sqt       &TD_dot_min               &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C       &HT_hrm_StL LEFT_ALT V  &HT_lh_lto 3 3    &none                     &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M       &kp B       &kp F  &kp ENTER
-                       &kp TAB                   &mt LEFT_GUI SPACE      &sk LEFT_SHIFT    &ht_TBS_KP_SL C_REPEAT 3  &kp R                   &kp BACKSPACE
+         &kp J  &kp Q  &kp Y                    &kp W                   &kp G                                       &kp P           &kp H                   &kp D                       &MC_agrave  &kp K
+         &kp S  &kp A  &HT_hrm_StL LEFT_SHIFT N &HT_hrm_StL LEFT_GUI U  &TD_com_sqt                                 &TD_dot_min     &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T    &kp O       &kp L
+&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C      &HT_hrm_StL LEFT_ALT V  &kp TAB                                     &kp ENTER       &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M         &kp B       &kp F   &caps_word
+                                                &kp LEFT_GUI            &kp SPACE   &HT_lh_lto 1 1  &HT_lh_lto 3 3  &kp R           &kp BACKSPACE
             >;
         };
 
@@ -768,10 +782,10 @@
 
         charx {
             bindings = <
-                  &kp AT_SIGN  &kp HASH  &kp AMPS   &kp DOLLAR  &kp EXCLAMATION    &kp QUESTION       &MC_ecirc   &MC_ocirc  &MC_ligoe  &MC_ugrave
-                  &kp MINUS    &kp PLUS  &kp STAR   &kp SLASH   &kp PERCENT        &kp DOUBLE_QUOTES  &MC_egrave  &kp N5     &MC_ligae  &kp PERCENT
-&MC_esc_tog0_all  &kp TILDE    &kp APOS  &kp CARET  &kp GRAVE   &trans             &trans             &MC_agrave  &kp N2     &kp N3     &kp COLON    &MC_ccedil
-                                         &trans     &trans      &tog 1             &trans             &kp EQUAL   &trans
+                  &kp PIPE  &kp AT      &kp HASH    &kp DOLLAR  &kp AMPS                            &kp EXCLAMATION   &kp QUESTION    &MC_ocirc &none   &none
+                  &kp MINUS &kp PLUS    &kp STAR    &kp SLASH   &kp DOUBLE_QUOTES                   &kp UNDERSCORE    &MC_ugrave      &MC_ucirc &none   &MC_ccedil
+&MC_esc_tog0_all  &kp TILDE &kp GRAVE   &kp BSLH    &kp EQUAL   &trans                              &trans            &MC_egrave      &MC_ecirc &none   &kp PERCENT &kp CARET
+                                                    &trans      &trans              &tog 1  &none   &MC_eacute  &trans
             >;
         };
 
@@ -790,10 +804,10 @@
 
         wmsl {
             bindings = <
-                  &none  &kp LC(KP_N7)  &kp LC(KP_N8)                     &kp LC(KP_N9)                   &none     &none   &kp MINUS                  &kp EQUAL                  &none      &none
-                  &none  &kp LC(KP_N4)  &HT_hrm_StL LEFT_SHIFT LC(KP_N5)  &HT_hrm_StL LEFT_GUI LC(KP_N6)  &none     &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
-&MC_esc_tog0_all  &none  &kp LC(KP_N1)  &HT_hrm_StL LCTRL LC(KP_N2)       &HT_hrm_StL LEFT_ALT KP_N3      &none     &none   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
-                                        &trans                            &trans                          &trans    &tog 3  &trans                     &trans
+                  &none  &kp KP_N7  &kp KP_N8                       &kp KP_N9                   &kp KP_N0                   &none   &kp MINUS                  &kp EQUAL                  &none      &none
+                  &none  &kp KP_N4  &HT_hrm_StL LEFT_SHIFT KP_N5    &HT_hrm_StL LEFT_GUI KP_N6  &kp PERIOD                  &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
+&MC_esc_tog0_all  &none  &kp KP_N1  &HT_hrm_StL LCTRL KP_N2         &HT_hrm_StL LEFT_ALT KP_N3  &kp LS(LGUI)                &none   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
+                                                                    &trans                      &kp LSHIFT  &trans  &tog 3  &none  &none
             >;
         };
 
@@ -808,12 +822,14 @@
             >;
         };
 
+        // L5
+
         dvce {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+                    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5  &trans    &trans  &trans  &trans  &trans
+                    &bt BT_PRV      &bt BT_NXT      &none         &none         &none         &trans    &trans  &trans  &trans  &trans
+&MC_esc_tog0_all    &none           &none           &none         &none         &trans        &trans    &trans  &trans  &trans  &trans  &trans
+                                                    &trans        &trans        &trans        &trans    &trans  &trans
             >;
         };
 
