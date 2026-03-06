@@ -130,18 +130,6 @@
             label = "Dot then Space";
         };
 
-        // MC_lh0_alpha: MC_lh0_alpha {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&tog_off 0>, <&macro_pause_for_release>, <&tog_on 0>;
-        //     label = "MC_LH0_ALPHA";
-        // };
-        // MC_lf1_app_alpha: MC_lf1_app_alpha {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&KP_lf1 0 &KP_lf1 0 &KP_lf1 0>;
-        //     label = "MC_LF1_APP_ALPHA";
-        // };
         // TMC_esc_togoff: TMC_esc_togoff {
         //     compatible = "zmk,behavior-macro";
         //     #binding-cells = <0>;
@@ -245,19 +233,52 @@
 
             label = "NEW_MACRO";
         };
+
+        // MC_lh0_alpha: MC_lh0_alpha {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&tog_off 0>, <&macro_pause_for_release>, <&tog_on 0>;
+        //     label = "MC_LH0_ALPHA";
+        // };
+        // MC_lf1_app_alpha: MC_lf1_app_alpha {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&KP_lf1 0 &KP_lf1 0 &KP_lf1 0>;
+        //     label = "MC_LF1_APP_ALPHA";
+        // };
+
+        MC_los_wmsl:MC_los_wmsl {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+            <&macro_tap>,
+            <&sl 5 &sl 3>;
+            label = "One-shot L5 & L3, L5 has tog_on at the position above to really activate L3";
+        };
+
     };
 
     behaviors {
+
         // hold-tap only for layers
         // to activate a layer while held OR to switch to it
         // depending on the gesture
-
         HT_lh_lto: HT_lh_lto {
             compatible = "zmk,behavior-hold-tap";
             label = "HT_LH_LTO";
             bindings = <&mo>, <&sl>;
 
             #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+        };
+
+        HT_lh_Flos: HT_lh_Flos {
+            compatible = "zmk,behavior-hold-tap";
+            label = "h->Mo(x), t->fake one-shot L3";
+            bindings = <&mo>, <&MC_los_wmsl>;
+
+            #binding-cells = <1>;
             flavor = "balanced";
             tapping-term-ms = <200>;
         };
@@ -273,6 +294,8 @@
         //     quick-tap-ms = <175>;
         //     require-prior-idle-ms = <150>;
         // };
+
+
         // hold-tap tpl for thumbs
         // - thumbs strong+ agility-
         // - hold gesture combines with keys from both keeb halves
@@ -449,25 +472,25 @@
 
         // t: [x] td: [z]
 
-        TD_x_z: TD_x_z {
-            compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [X] -> [Z]";
-            #binding-cells = <0>;
-            bindings = <&kp X>, <&kp Z>;
+        // TD_x_z: TD_x_z {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     label = "Double-tap [X] -> [Z]";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp X>, <&kp Z>;
 
-            tapping-term-ms = <150>;
-        };
+        //     tapping-term-ms = <150>;
+        // };
 
         // t: [␣] td: [␣.]
 
-        TD_dot_min: TD_dot_min {
-            compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [PERIOD] -> [MINUS]";
-            #binding-cells = <0>;
-            bindings = <&kp PERIOD>, <&kp MINUS>;
+        // TD_dot_min: TD_dot_min {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     label = "Double-tap [PERIOD] -> [MINUS]";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp PERIOD>, <&kp MINUS>;
 
-            tapping-term-ms = <150>;
-        };
+        //     tapping-term-ms = <150>;
+        // };
 
         // t: [,] td: [']
 
@@ -477,7 +500,7 @@
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp SQT>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
         };
 
         // t: [-] dt: [?]
@@ -488,7 +511,7 @@
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp QUESTION>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
         };
 
         // t: [;] dt: ["]
@@ -499,7 +522,7 @@
             #binding-cells = <0>;
             bindings = <&kp SEMI>, <&kp DOUBLE_QUOTES>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
         };
 
         // t: [_] td: [!]
@@ -510,7 +533,16 @@
             #binding-cells = <0>;
             bindings = <&kp UNDER>, <&kp EXCL>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <180>;
+        };
+
+        TD_lnchr: TD_lnchr {
+            compatible = "zmk,behavior-tap-dance";
+            label = "t->Raycast, td->LeaderKey";
+            #binding-cells = <0>;
+            bindings = <&kp F13>, <&kp F15>;
+
+            tapping-term-ms = <180>;
         };
 
         // LS[,] -> [']
@@ -774,7 +806,7 @@
          &kp J  &kp Q  &kp Y                    &kp W                   &kp G                                       &kp P           &kp H                   &kp D                       &MC_agrave  &kp K
          &kp S  &kp A  &HT_hrm_StL LEFT_SHIFT N &HT_hrm_StL LEFT_GUI U  &TD_com_sqt                                 &TD_dot_min     &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T    &kp O       &kp L
 &kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C      &HT_hrm_StL LEFT_ALT V  &kp TAB                                     &kp ENTER       &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M         &kp B       &kp F   &caps_word
-                                                &kp LEFT_GUI            &kp SPACE   &HT_lh_lto 1 1  &HT_lh_lto 3 3  &kp R           &kp BACKSPACE
+                                                &kp LEFT_GUI            &kp SPACE   &HT_lh_lto 1 1  &HT_lh_Flos 3   &kp R           &TD_lnchr
             >;
         };
 
@@ -785,7 +817,7 @@
                   &kp PIPE  &kp AT      &kp HASH    &kp DOLLAR  &kp AMPS                            &kp EXCLAMATION   &kp QUESTION    &MC_ocirc &none   &none
                   &kp MINUS &kp PLUS    &kp STAR    &kp SLASH   &kp DOUBLE_QUOTES                   &kp UNDERSCORE    &MC_ugrave      &MC_ucirc &none   &MC_ccedil
 &MC_esc_tog0_all  &kp TILDE &kp GRAVE   &kp BSLH    &kp EQUAL   &trans                              &trans            &MC_egrave      &MC_ecirc &none   &kp PERCENT &kp CARET
-                                                    &trans      &trans              &tog 1  &none   &MC_eacute  &trans
+                                                    &trans      &trans              &tog 1  &none   &MC_eacute        &trans
             >;
         };
 
@@ -804,10 +836,10 @@
 
         wmsl {
             bindings = <
-                  &none  &kp KP_N7  &kp KP_N8                       &kp KP_N9                   &kp KP_N0                   &none   &kp MINUS                  &kp EQUAL                  &none      &none
-                  &none  &kp KP_N4  &HT_hrm_StL LEFT_SHIFT KP_N5    &HT_hrm_StL LEFT_GUI KP_N6  &kp PERIOD                  &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
-&MC_esc_tog0_all  &none  &kp KP_N1  &HT_hrm_StL LCTRL KP_N2         &HT_hrm_StL LEFT_ALT KP_N3  &kp LS(LGUI)                &none   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
-                                                                    &trans                      &kp LSHIFT  &trans  &tog 3  &none  &none
+                  &none  &kp KP_N7  &kp KP_N8                       &kp KP_N9                   &kp KP_N0                       &none   &kp MINUS                  &kp EQUAL                  &none      &none
+                  &none  &kp KP_N4  &HT_hrm_StL LEFT_SHIFT KP_N5    &HT_hrm_StL LEFT_GUI KP_N6  &kp PERIOD                      &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
+&MC_esc_tog0_all  &none  &kp KP_N1  &HT_hrm_StL LCTRL KP_N2         &HT_hrm_StL LEFT_ALT KP_N3  &kp LS(LGUI)                    &nobe   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
+                                                                    &trans                      &kp LSHIFT  &trans  &tog_off 3  &none   &none
             >;
         };
 
@@ -833,12 +865,22 @@
             >;
         };
 
+        topmods {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+                                &trans  &trans  &trans  &tog_on 3   &trans  &trans
+            >;
+        };
+
+
         //         tpl {
         //             bindings = <
-        //         &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        //         &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        // &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-        //                         &trans  &trans  &trans    &trans  &trans  &trans
+        //         &trans  &trans  &trans  &trans  &trans                   &trans  &trans  &trans  &trans  &trans
+        //         &trans  &trans  &trans  &trans  &trans                   &trans  &trans  &trans  &trans  &trans
+        // &trans  &trans  &trans  &trans  &trans  &trans                   &trans  &trans  &trans  &trans  &trans  &trans
+        //                                 &trans  &trans  &trans  &trans   &trans  &trans
         //             >;
         //         };
     };
