@@ -44,23 +44,36 @@
 
 / {
     macros {
-        // key sequence ouputs a diacritic on qwerty-international layouts
 
-        TMC_diac: TMC_diac {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp STAR &kp STAR>;
-            label = "TMC_DIAC";
-        };
+        // MC_lh0_alpha: MC_lh0_alpha {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&tog_off 0>, <&macro_pause_for_release>, <&tog_on 0>;
+        //     label = "MC_LH0_ALPHA";
+        // };
+
+        // MC_lf1_app_alpha: MC_lf1_app_alpha {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&KP_lf1 0 &KP_lf1 0 &KP_lf1 0>;
+        //     label = "MC_LF1_APP_ALPHA";
+        // };
+
+        // TEMPLATE key sequence ouputs a diacritic on qwerty-international layouts
+        // TMC_diac: TMC_diac {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp STAR &kp STAR>;
+        //     label = "TMC_DIAC";
+        // };
 
         // é
-
-        MC_eacute: MC_eacute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SINGLE_QUOTE &kp E>;
-            label = "É";
-        };
+        // MC_eacute: MC_eacute {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp SINGLE_QUOTE &kp E>;
+        //     label = "É";
+        // };
 
         // è
         // MC_egrave: MC_egrave {
@@ -69,14 +82,15 @@
         //     bindings = <&kp GRAVE &kp E>;
         //     label = "È";
         // };
+
         // ê
 
-        MC_ecirc: MC_ecirc {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(N6) &kp E>;
-            label = "Ê";
-        };
+        // MC_ecirc: MC_ecirc {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp LS(N6) &kp E>;
+        //     label = "Ê";
+        // };
 
         // à
         // MC_agrave: MC_agrave {
@@ -85,43 +99,487 @@
         //     bindings = <&kp GRAVE &kp A>;
         //     label = "À";
         // };
+
         // ô
+        // MC_ocirc: MC_ocirc {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp LS(N6) &kp O>;
+        //     label = "Ô";
+        // };
+
+        // ç
+
+        // MC_ccedil: MC_ccedil {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp LA(C)>;
+        //     label = "Ç";
+        // };
+
+        // æ
+        // MC_ligae: MC_ligae {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp LA(SQT)>;
+        //     label = "Æ";
+        // };
+
+        // œ
+        // MC_ligoe: MC_ligoe {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp LA(Q)>;
+        //     label = "Œ";
+        // };
+
+        // TEMPLATE Unicode Output Macro (macOS only)
+        // tmc_unicd: tmc_unicd {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_release>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS>;
+        //     label = "[tpl] Unicode Macro";
+        // };
+
+        MC_agrave: MC_agrave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N0>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "à (Unicode Macro)";
+        };
+
+        MC_agrave_caps: MC_agrave_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N0>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "À (Unicode Macro)";
+        };
+
+        MC_acirc: MC_acirc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N2>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "â (Unicode Macro)";
+        };
+
+        MC_acirc_caps: MC_acirc_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N2>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Â (Unicode Macro)";
+        };
+
+        MC_eacute: MC_eacute {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N9>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "é (Unicode Macro)";
+        };
+
+        MC_eacute_caps: MC_eacute_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N9>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "É (Unicode Macro)";
+        };
+
+        MC_egrave: MC_egrave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N8>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "è (Unicode Macro)";
+        };
+
+        MC_egrave_caps: MC_egrave_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N8>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "È (Unicode Macro)";
+        };
+
+        MC_ecirc: MC_ecirc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp LS(A)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "ê (Unicode Macro)";
+        };
+
+        MC_ecirc_caps: MC_ecirc_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(A)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Ê (Unicode Macro)";
+        };
+
+        MC_etrema: MC_etrema {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp LS(B)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "ë (Unicode Macro)";
+        };
+
+        MC_etrema_caps: MC_etrema_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(B)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Ë (Unicode Macro)";
+        };
+
+        MC_icirc: MC_icirc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp LS(E)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "î (Unicode Macro)";
+        };
+
+        MC_icirc_caps: MC_icirc_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(E)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Î (Unicode Macro)";
+        };
 
         MC_ocirc: MC_ocirc {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(N6) &kp O>;
-            label = "Ô";
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(F) &kp N4>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "ô (Unicode Macro)";
         };
 
-        // ç
+        MC_ocirc_caps: MC_ocirc_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp N4>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Ô (Unicode Macro)";
+        };
+
+        MC_ugrave: MC_ugrave {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(F) &kp N9>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "ù (Unicode Macro)";
+        };
+
+        MC_ugrave_caps: MC_ugrave_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp N9>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Ù (Unicode Macro)";
+        };
+
+        MC_ucirc: MC_ucirc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(F) &kp LS(B)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "û (Unicode Macro)";
+        };
+
+        MC_ucirc_caps: MC_ucirc_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp LS(B)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Û (Unicode Macro)";
+        };
+
+        MC_utrema: MC_utrema {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(F) &kp LS(C)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "ü (Unicode Macro)";
+        };
+
+        MC_utrema_caps: MC_utrema_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp LS(C)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Ü (Unicode Macro)";
+        };
+
+        MC_guillmt_opn: MC_guillmt_opn {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(A) &kp LS(B)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "« (Unicode Macro)";
+        };
+
+        MC_guillmt_cls: MC_guillmt_cls {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(B) &kp LS(B)>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "» (Unicode Macro)";
+        };
+
+        MC_ae: MC_ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N6>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "æ (Unicode Macro)";
+        };
+
+        MC_ae_caps: MC_ae_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N6>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Æ (Unicode Macro)";
+        };
+
+        MC_oe: MC_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N1 &kp N5 &kp N3>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "œ (Unicode Macro)";
+        };
+
+        MC_oe_caps: MC_oe_caps {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N1 &kp N5 &kp N2>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Œ (Unicode Macro)";
+        };
 
         MC_ccedil: MC_ccedil {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(C)>;
-            label = "Ç";
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N7>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "ç (Unicode Macro)";
         };
 
-        // æ
-
-        MC_ligae: MC_ligae {
+        MC_ccedil_caps: MC_ccedil_caps {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(SQT)>;
-            label = "Æ";
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N7>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "Ç (Unicode Macro)";
         };
 
-        // œ
-
-        MC_ligoe: MC_ligoe {
+        MC_euro: MC_euro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(Q)>;
-            label = "Œ";
-        };
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp U &kp PLUS &kp N2 &kp N0 &kp LS(A) &kp LS(C)>,
+                <&macro_release>,
+                <&kp LALT>;
 
-        // ␣.
+            label = "€ (Unicode Macro)";
+        };
 
         MC_dotspace: MC_dotspace {
             compatible = "zmk,behavior-macro";
@@ -130,6 +588,7 @@
             label = "Dot then Space";
         };
 
+        // TEMPLATE
         // TMC_esc_togoff: TMC_esc_togoff {
         //     compatible = "zmk,behavior-macro";
         //     #binding-cells = <0>;
@@ -151,76 +610,6 @@
             label = "Switch to Alpha before launching Leader Key";
         };
 
-        // TEMPLATE Unicode Output Macro (macOS only)
-        // tmc_unicd: tmc_unicd {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings =
-        //         <&macro_press>,
-        //         <&kp LALT>,
-        //         <&macro_release>,
-        //         <&kp LALT>,
-        //         <&macro_tap>,
-        //         <&kp U &kp PLUS>;
-        //     label = "[tpl] Unicode Macro";
-        // };
-
-        MC_egrave: MC_egrave {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N8>,
-                <&macro_release>,
-                <&kp LALT>;
-
-            label = "è (Unicode Macro)";
-        };
-
-        MC_agrave: MC_agrave {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(E) &kp N0>,
-                <&macro_release>,
-                <&kp LALT>;
-
-            label = "à (Unicode Macro)";
-        };
-
-        MC_ugrave: MC_ugrave {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(F) &kp N9>,
-                <&macro_release>,
-                <&kp LALT>;
-
-            label = "ù (Unicode Macro)";
-        };
-
-        MC_ucirc: MC_ucirc {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(F) &kp LS(B)>,
-                <&macro_release>,
-                <&kp LALT>;
-
-            label = "û (Unicode Macro)";
-        };
-
         Fake_LayerMod: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -233,19 +622,6 @@
 
             label = "NEW_MACRO";
         };
-
-        // MC_lh0_alpha: MC_lh0_alpha {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&tog_off 0>, <&macro_pause_for_release>, <&tog_on 0>;
-        //     label = "MC_LH0_ALPHA";
-        // };
-        // MC_lf1_app_alpha: MC_lf1_app_alpha {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&KP_lf1 0 &KP_lf1 0 &KP_lf1 0>;
-        //     label = "MC_LF1_APP_ALPHA";
-        // };
 
         MC_los_wmsl:MC_los_wmsl {
             compatible = "zmk,behavior-macro";
@@ -285,7 +661,7 @@
             label = "h->Mo(x), t->fake one-shot L3";
             bindings = <&mo>, <&MC_los_wmsl>;
 
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
         };
@@ -563,6 +939,19 @@
             mods = <(MOD_LSFT)>;
         };
 
+        // LS[␣] -> […]
+
+        OV_spcElipsis: OV_spcElipsis {
+            compatible = "zmk,behavior-mod-morph";
+            label = "Shifted [␣] -> […]";
+            bindings = <&kp SPACE>, <&kp LA(SEMICOLON)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        // LS[.] -> [:]
+
         OV_dotColon: OV_dotColon {
             compatible = "zmk,behavior-mod-morph";
             label = "Shifted [.] -> [:]";
@@ -758,8 +1147,70 @@
             key-positions = <37 32>;
         };
 
-        // apply OV_func(s) only on specified layers
+        // brackets, etc.
 
+        CB_LParenthesis {
+            bindings = <&kp LPAR>;
+            key-positions = <1 2>;
+            layers = <0 1 3>;
+        };
+
+        CB_RParenthesis {
+            bindings = <&kp RPAR>;
+            key-positions = <2 3>;
+            layers = <0 1 3>;
+        };
+
+        CB_LBracket {
+            bindings = <&kp LBKT>;
+            key-positions = <16 17>;
+            layers = <0 1 3>;
+        };
+
+        CB_RBracket {
+            bindings = <&kp RBKT>;
+            key-positions = <17 18>;
+            layers = <0 1 3>;
+        };
+
+        CB_LBrace {
+            bindings = <&kp LBRC>;
+            key-positions = <11 12>;
+            layers = <0 1 3>;
+        };
+
+        CB_RBrace {
+            bindings = <&kp RBRC>;
+            key-positions = <12 13>;
+            layers = <0 1 3>;
+        };
+
+        CB_LAngleBracket {
+            bindings = <&kp LT>;
+            key-positions = <6 7>;
+            layers = <1 3>;
+        };
+
+        CB_RAngleBracket {
+            bindings = <&kp GT>;
+            key-positions = <7 8>;
+            layers = <1 3>;
+        };
+
+        CB_GuillmtOpen {
+            bindings = <&kp LT>;
+            key-positions = <6 7>;
+            layers = <0>;
+        };
+
+        CB_GuillmtClose {
+            bindings = <&kp GT>;
+            key-positions = <7 8>;
+            layers = <0>;
+        };
+
+
+        // apply OV_func(s) only on specified layers
         CB_ov_f1 {
             bindings = <&OV_func_1>;
             key-positions = <0 0>;
@@ -839,9 +1290,9 @@
 
         charx {
             bindings = <
-                  &kp PIPE  &kp AT      &kp HASH    &kp DOLLAR  &kp AMPS                            &kp EXCLAMATION   &kp QUESTION    &MC_ocirc &none   &none
-                  &kp MINUS &kp PLUS    &kp STAR    &kp SLASH   &kp DOUBLE_QUOTES                   &kp UNDERSCORE    &MC_ugrave      &MC_ucirc &none   &MC_ccedil
-&MC_esc_tog0_all  &kp TILDE &kp GRAVE   &kp BSLH    &kp EQUAL   &trans                              &trans            &MC_egrave      &MC_ecirc &none   &kp PERCENT &kp CARET
+                  &kp PIPE  &kp AT      &kp HASH    &kp DOLLAR  &kp AMPS                            &kp EXCLAMATION   &kp QUESTION  &MC_ocirc   &MC_euro    &none
+                  &kp MINUS &kp PLUS    &kp STAR    &kp SLASH   &kp DOUBLE_QUOTES                   &kp UNDERSCORE    &MC_ugrave    &MC_ucirc   &MC_utrema  &MC_ccedil
+&MC_esc_tog0_all  &kp TILDE &kp GRAVE   &kp BSLH    &kp EQUAL   &trans                              &trans            &MC_egrave    &MC_ecirc   &MC_etrema  &kp PERCENT &kp CARET
                                                     &trans      &trans              &tog 1  &none   &MC_eacute        &trans
             >;
         };
@@ -861,9 +1312,9 @@
 
         wmsl {
             bindings = <
-                  &none  &kp KP_N7  &kp KP_N8                       &kp KP_N9                   &kp KP_N0                           &none   &kp MINUS                  &kp EQUAL                  &none      &none
-                  &none  &kp KP_N4  &HT_hrm_StL LEFT_SHIFT KP_N5    &HT_hrm_StL LEFT_GUI KP_N6  &kp PERIOD                          &none   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
-&MC_esc_tog0_all  &none  &kp KP_N1  &HT_hrm_StL LCTRL KP_N2         &HT_hrm_StL LEFT_ALT KP_N3  &kp LS(LGUI)                        &nobe   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
+                  &none  &kp KP_N7  &kp KP_N8                       &kp KP_N9                   &kp KP_N0                           &trans   &kp MINUS                  &kp EQUAL                  &none      &none
+                  &none  &kp KP_N4  &HT_hrm_StL LEFT_SHIFT KP_N5    &HT_hrm_StL LEFT_GUI KP_N6  &kp PERIOD                          &trans   &HT_hrm_StR LEFT_GUI BSPC  &HT_hrm_StR LEFT_SHIFT UP  &kp DEL    &none
+&MC_esc_tog0_all  &none  &kp KP_N1  &HT_hrm_StL LCTRL KP_N2         &HT_hrm_StL LEFT_ALT KP_N3  &kp LS(LGUI)                        &trans   &HT_hrm_StR LEFT_ALT LEFT  &HT_hrm_StR LCTRL DOWN     &kp RIGHT  &none  &none
                                                                     &trans                      &kp LSHIFT  &MC_L3_lh1  &tog_off 3  &none   &trans
             >;
         };
