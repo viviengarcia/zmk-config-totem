@@ -1145,6 +1145,7 @@
         CB_btclear {
             bindings = <&bt BT_CLR>;
             key-positions = <37 32>;
+            layers = <0>;
         };
 
         // brackets, etc.
@@ -1198,17 +1199,28 @@
         };
 
         CB_GuillmtOpen {
-            bindings = <&kp LT>;
+            bindings = <&MC_guillmt_opn>;
             key-positions = <6 7>;
             layers = <0>;
         };
 
         CB_GuillmtClose {
-            bindings = <&kp GT>;
+            bindings = <&MC_guillmt_cls>;
             key-positions = <7 8>;
             layers = <0>;
         };
 
+        CB_ae {
+            bindings = <&MC_ae>;
+            key-positions = <11 16>;
+            layers = <0>;
+        }
+
+        CB_oe {
+            bindings = <&MC_oe>;
+            key-positions = <11 18>;
+            layers = <0>;
+        }
 
         // apply OV_func(s) only on specified layers
         CB_ov_f1 {
@@ -1323,8 +1335,8 @@
 
         play {
             bindings = <
-                  &none         &none         &none         &none       &none                               &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
-                  &none         &none         &none         &none       &none                               &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
+                  &none         &none         &none         &none       &none                               &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp GT
+                  &none         &none         &none         &none       &none                               &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LT
 &MC_esc_tog0_all  &none         &none         &none         &none       &none                               &trans        &kp J      &kp LA(LEFT)   &kp L      &none       &none
                                                             &kp SPACE   &kp SPACE   &kp SPACE  &kp SPACE    &kp SPACE     &trans
             >;
