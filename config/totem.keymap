@@ -629,7 +629,7 @@
             bindings =
             <&macro_tap>,
             <&sl 5 &sl 3>;
-            label = "One-shot L5 & L3, L5 has tog_on at the position above to really activate L3";
+            label = "One-shot L3 / L5 (tog_on L3)";
         };
 
         MC_L3_lh1:MC_L3_lh1 {
@@ -1217,10 +1217,11 @@
         };
 
         CB_oe {
-            bindings = <&MC_oe>;
-            key-positions = <11 18>;
+            bindings = <&MC_ae>;
+            key-positions = <11 16>;
             layers = <0>;
         };
+
 
         // apply OV_func(s) only on specified layers
         CB_ov_f1 {
@@ -1335,8 +1336,8 @@
 
         play {
             bindings = <
-                  &none         &none         &none         &none       &none                               &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp GT
-                  &none         &none         &none         &none       &none                               &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LT
+                  &none         &none         &none         &none       &none                               &kp C_VOL_UP  &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
+                  &none         &none         &none         &none       &none                               &kp C_VOL_DN  &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
 &MC_esc_tog0_all  &none         &none         &none         &none       &none                               &trans        &kp J      &kp LA(LEFT)   &kp L      &none       &none
                                                             &kp SPACE   &kp SPACE   &kp SPACE  &kp SPACE    &kp SPACE     &trans
             >;
