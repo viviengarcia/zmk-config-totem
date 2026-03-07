@@ -1214,13 +1214,13 @@
             bindings = <&MC_ae>;
             key-positions = <11 16>;
             layers = <0>;
-        }
+        };
 
         CB_oe {
             bindings = <&MC_oe>;
             key-positions = <11 18>;
             layers = <0>;
-        }
+        };
 
         // apply OV_func(s) only on specified layers
         CB_ov_f1 {
