@@ -1075,9 +1075,9 @@
             toggle-mode = "off";
         };
 
-        hmr_StR_egrave: HT_hmr_StR_egrave {
+        hrm_StR_egrave: HT_hrm_StR_egrave {
             compatible = "zmk,behavior-hold-tap";
-            label = "HMR_STR_EGRAVE";
+            label = "HRM_STR_EGRAVE";
             bindings = <&kp>, <&MC_egrave>;
 
             #binding-cells = <2>;
@@ -1340,10 +1340,10 @@
 
         charx {
             bindings = <
-            &kp PIPE    &kp AT            &kp HASH                     &kp DOLLAR                  &kp AMPS                  &kp EXCLAMATION             &kp QUESTION                        &MC_ocirc                    &MC_euro                    &none
-            &kp MINUS   &kp PLUS          &HT_hrm_StL LEFT_SHIFT STAR  &HT_hrm_StL LEFT_GUI SLASH  &kp DOUBLE_QUOTES         &kp UNDERSCORE              &hrm_StR_ugrave LEFT_GUI undefined  &hrm_StR_ucirc LEFT_SHIFT 0  &hmr_StR_egrave LEFT_SHIFT  &MC_ucirc
-&MC_utrema  &MC_ccedil  &MC_esc_tog0_all  &HT_hrm_StL LCTRL TILDE      &HT_hrm_StL LEFT_ALT GRAVE  &HT_hrm_StL LCTRL BSLH    &HT_hrm_StL LEFT_ALT EQUAL  &hmr_StR_egrave LALT 0              &hrm_StR_ecirc LCTRL 0       &hmr_StR_egrave LEFT_ALT    &MC_egrave  &hmr_StR_egrave LCTRL
-                                          &MC_ecirc                    &MC_etrema                  &kp PERCENT               &kp CARET                   &trans                              &trans
+                    &kp PIPE    &kp AT      &kp HASH                        &kp DOLLAR                  &kp AMPS                                &kp EXCLAMATION     &kp QUESTION                    &MC_ocirc                    &MC_euro       &none
+                    &kp MINUS   &kp PLUS    &HT_hrm_StL LEFT_SHIFT STAR     &HT_hrm_StL LEFT_GUI SLASH  &kp DOUBLE_QUOTES                       &kp UNDERSCORE      &hrm_StR_ugrave LEFT_GUI 0      &hrm_StR_ucirc LEFT_SHIFT 0  &MC_utrema     &kp PERCENT
+&MC_esc_tog0_all    &kp TILDE   &kp GRAVE   &HT_hrm_StL LCTRL BSLH          &HT_hrm_StL LEFT_ALT EQUAL  &trans                                  &trans              &hrm_StR_egrave LEFT_ALT 0      &hrm_StR_ecirc LEFT_CTRL 0   &MC_etrema     &kp CARET       &trans
+                                                                            &trans                      &trans              &trans  &trans      &MC_eacute          &trans
             >;
         };
 
