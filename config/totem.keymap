@@ -596,6 +596,7 @@
             label = "Switch to Alpha before launching Leader Key";
         };
 
+        // activate a modifier and a layer at the same time
         Fake_LayerMod: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -620,7 +621,7 @@
         MC_L3_lh1: MC_L3_lh1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&tog_off 3>, <&macro_pause_for_release>, <&tog_on 3>;
+            bindings = <&tog_off 3 &tog_on 1>, <&macro_pause_for_release>, <&tog_off 1 &tog_on 3>;
 
             label = "While held, disable L3 and and activate L1";
         };
@@ -713,7 +714,7 @@
 
             #binding-cells = <2>;
             flavor = "balanced";
-            hold-trigger-key-positions = <16 17 5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 35 36 37>;
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 35 36 37>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
@@ -822,7 +823,7 @@
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp SEMI>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
         };
 
         // t: [.] td: [:]
@@ -833,7 +834,7 @@
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp LS(SEMI)>;
 
-            tapping-term-ms = <130>;
+            tapping-term-ms = <200>;
         };
 
         // t: [x] td: [z]
@@ -852,7 +853,7 @@
             #binding-cells = <0>;
             bindings = <&kp PERIOD>, <&kp MINUS>;
 
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
         };
 
         // t: [,] td: [']
@@ -863,7 +864,7 @@
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp SQT>;
 
-            tapping-term-ms = <180>;
+            tapping-term-ms = <200>;
         };
 
         // t: [-] dt: [?]
@@ -874,7 +875,7 @@
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp QUESTION>;
 
-            tapping-term-ms = <180>;
+            tapping-term-ms = <200>;
         };
 
         // t: [;] dt: ["]
@@ -885,7 +886,7 @@
             #binding-cells = <0>;
             bindings = <&kp SEMI>, <&kp DOUBLE_QUOTES>;
 
-            tapping-term-ms = <180>;
+            tapping-term-ms = <200>;
         };
 
         // t: [_] td: [!]
@@ -896,7 +897,7 @@
             #binding-cells = <0>;
             bindings = <&kp UNDER>, <&kp EXCL>;
 
-            tapping-term-ms = <180>;
+            tapping-term-ms = <200>;
         };
 
         TD_lnchr: TD_lnchr {
@@ -905,18 +906,7 @@
             #binding-cells = <0>;
             bindings = <&kp F13>, <&kp F15>;
 
-            tapping-term-ms = <180>;
-        };
-
-        // LS[,] -> [']
-
-        OV_comQuote: OV_comQuote {
-            compatible = "zmk,behavior-mod-morph";
-            label = "Shifted [,] -> [;]";
-            bindings = <&TD_semicomma>, <&kp SQT>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            tapping-term-ms = <200>;
         };
 
         // LS[␣] -> […]
@@ -925,6 +915,17 @@
             compatible = "zmk,behavior-mod-morph";
             label = "Shifted [␣] -> […]";
             bindings = <&kp SPACE>, <&kp LA(SEMICOLON)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        // LS[,] -> [']
+
+        OV_comSemic: OV_comSemic {
+            compatible = "zmk,behavior-mod-morph";
+            label = "Shifted [,] -> [;]";
+            bindings = <&TD_com_sqt>, <&kp SEMICOLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
@@ -1108,7 +1109,7 @@
 
         CB_los_play {
             bindings = <&sl 4>;
-            key-positions = <5 35>;
+            key-positions = <26 35>;
             layers = <0 1 2 3>;
         };
 
@@ -1268,10 +1269,10 @@
 
         charm {
             bindings = <
-         &kp J  &kp Q  &kp Y                     &kp W                   &kp G             &kp P                    &kp H                   &kp D                     &MC_agrave  &kp K
+         &kp J  &kp Q  &kp Y                     &kp W                   &kp G             &kp P                    &kp I                   &kp D                     &MC_agrave  &kp K
          &kp S  &kp A  &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_com_sqt       &TD_dot_min              &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C       &HT_hrm_StL LEFT_ALT V  &kp TAB           &kp ENTER                &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M       &kp B       &kp F  &caps_word
-                       &kp LEFT_GUI              &kp SPACE               &HT_lh_lto 1 1    &HT_lh_Flos 3 undefined  &kp R                   &TD_lnchr
+&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C       &HT_hrm_StL LEFT_ALT V  &kp TAB           &kp ENTER                &HT_hrm_StR LEFT_ALT H  &HT_hrm_StR LCTRL M       &kp B       &kp F  &caps_word
+                       &kp LEFT_GUI              &kp SPACE               &HT_lh_lto 1 1    &HT_lh_Flos 3 0          &kp R                   &TD_lnchr
             >;
         };
 
@@ -1280,8 +1281,8 @@
         charx {
             bindings = <
                   &kp PIPE   &kp AT     &kp HASH  &kp DOLLAR  &kp AMPS             &kp EXCLAMATION  &kp QUESTION  &MC_ocirc  &MC_euro    &none
-                  &kp MINUS  &kp PLUS   &kp STAR  &kp SLASH   &kp DOUBLE_QUOTES    &kp UNDERSCORE   &MC_ugrave    &MC_ucirc  &MC_utrema  &MC_ccedil
-&MC_esc_tog0_all  &kp TILDE  &kp GRAVE  &kp BSLH  &kp EQUAL   &trans               &trans           &MC_egrave    &MC_ecirc  &MC_etrema  &kp PERCENT  &kp CARET
+                  &kp MINUS  &kp PLUS   &HT_hrm_StL LEFT_SHIFT STAR  &HT_hrm_StL LEFT_GUI SLASH   &kp DOUBLE_QUOTES    &kp UNDERSCORE    &HT_hrm_StR LEFT_GUI &MC_ugrave    &HT_hrm_StR LEFT_SHIFT &MC_ucirc  &MC_utrema  &MC_ccedil
+&MC_esc_tog0_all  &kp TILDE  &kp GRAVE  &HT_hrm_StL LCTRL BSLH  &HT_hrm_StL LEFT_ALT EQUAL   &trans               &trans                 &HT_hrm_StR LEFT_ALT &MC_egrave    &HT_hrm_StR LCTRL &MC_ecirc  &MC_etrema  &kp PERCENT  &kp CARET
                                         &trans    &trans      &tog 1               &none            &MC_eacute    &trans
             >;
         };
