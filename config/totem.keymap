@@ -1340,10 +1340,10 @@
 
         charx {
             bindings = <
-                    &kp PIPE    &kp AT      &kp HASH                        &kp DOLLAR                  &kp AMPS                                &kp EXCLAMATION     &kp QUESTION                    &MC_ocirc                    &MC_euro       &none
-                    &kp MINUS   &kp PLUS    &HT_hrm_StL LEFT_SHIFT STAR     &HT_hrm_StL LEFT_GUI SLASH  &kp DOUBLE_QUOTES                       &kp UNDERSCORE      &hrm_StR_ugrave LEFT_GUI 0      &hrm_StR_ucirc LEFT_SHIFT 0  &MC_utrema     &kp PERCENT
-&MC_esc_tog0_all    &kp TILDE   &kp GRAVE   &HT_hrm_StL LCTRL BSLH          &HT_hrm_StL LEFT_ALT EQUAL  &trans                                  &trans              &hrm_StR_egrave LEFT_ALT 0      &hrm_StR_ecirc LCTRL 0   &MC_etrema     &kp CARET       &trans
-                                                                            &trans                      &trans              &trans  &trans      &MC_eacute          &trans
+                  &kp PIPE   &kp AT     &kp HASH                     &kp DOLLAR                  &kp AMPS             &kp EXCLAMATION  &kp QUESTION                &MC_ocirc                    &MC_euro    &none
+                  &kp MINUS  &kp PLUS   &HT_hrm_StL LEFT_SHIFT STAR  &HT_hrm_StL LEFT_GUI SLASH  &kp DOUBLE_QUOTES    &kp UNDERSCORE   &hrm_StR_ugrave LEFT_GUI 0  &hrm_StR_ucirc LEFT_SHIFT 0  &MC_utrema  &kp PERCENT
+&MC_esc_tog0_all  &kp TILDE  &kp GRAVE  &HT_hrm_StL LCTRL BSLH       &HT_hrm_StL LEFT_ALT EQUAL  &trans               &trans           &hrm_StR_egrave LEFT_ALT 0  &hrm_StR_ecirc LCTRL 0       &MC_etrema  &kp CARET    &trans
+                                        &trans                       &trans                      &trans               &trans           &MC_eacute                  &trans
             >;
         };
 
@@ -1351,10 +1351,10 @@
 
         gapp {
             bindings = <
-                &kp N1     &kp N2  &kp N3   &kp N4  &kp N5                      &kp G       &kp O      &kp B      &kp K  &kp RBKT
-                &trans     &trans  &kp N    &kp U   &kp COMMA                   &kp PERIOD  &kp T      &kp M      &kp L  &kp LBKT
-&kp LEFT_SHIFT  &kp LCTRL  &trans  &kp C    &kp V   &kp Z                       &kp ENTER   &kp E      &kp I      &kp F  &kp F5     &kp F9
-                                            &trans  &kp SPACE  &kp LEFT_ALT     &kp PLUS    &kp R  &kp MINUS
+                &kp N1     &kp N2  &kp N3  &kp N4    &kp N5       &kp G       &kp O  &kp B      &kp K  &kp RBKT
+                &kp TAB    &trans  &kp N   &kp U     &kp COMMA    &kp PERIOD  &kp T  &kp M      &kp L  &kp LBKT
+&kp LEFT_SHIFT  &kp LCTRL  &trans  &kp C   &kp V     &kp Y        &kp ENTER   &kp E  &kp I      &kp F  &kp F5    &kp F9
+                                   &trans  &kp LALT  &kp SPACE    &kp PLUS    &kp R  &kp MINUS
             >;
         };
 
