@@ -1014,18 +1014,18 @@
             bindings = <&kp SPACE>, <&kp LA(SEMICOLON)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        // LS[,] -> [']
+        // LS[,] -> [;]
 
         OV_comSemic: OV_comSemic {
             compatible = "zmk,behavior-mod-morph";
             label = "Shifted [,] -> [;]";
-            bindings = <&TD_com_sqt>, <&kp SEMICOLON>;
+            bindings = <&kp COMMA>, <&kp SEMICOLON>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // LS[.] -> [:]
@@ -1033,10 +1033,10 @@
         OV_dotColon: OV_dotColon {
             compatible = "zmk,behavior-mod-morph";
             label = "Shifted [.] -> [:]";
-            bindings = <&TD_dot_min>, <&kp COLON>;
+            bindings = <&kp PERIOD>, <&kp COLON>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // LS[0-9] -> f-keys
@@ -1174,7 +1174,7 @@
         };
 
         CB_tog_play {
-            bindings = <&tog_on 4>;
+            bindings = <&tog 4>;
             key-positions = <35 26>;
             layers = <4>;
         };
@@ -1254,8 +1254,8 @@
         };
 
         CB_oe {
-            bindings = <&MC_ae>;
-            key-positions = <11 18>;
+            bindings = <&MC_oe>;
+            key-positions = <16 18>;
             layers = <0>;
         };
 
@@ -1331,7 +1331,7 @@
             bindings = <
          &kp J  &kp Q  &kp Y                     &kp W                   &kp G             &kp P            &kp I                   &kp D                     &MC_agrave  &kp K
          &kp S  &kp A  &HT_hrm_StL LEFT_SHIFT N  &HT_hrm_StL LEFT_GUI U  &TD_com_sqt       &TD_dot_min      &HT_hrm_StR LEFT_GUI E  &HT_hrm_StR LEFT_SHIFT T  &kp O       &kp L
-&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C       &HT_hrm_StL LEFT_ALT V  &kp TAB           &kp ENTER        &HT_hrm_StR LEFT_ALT I  &HT_hrm_StR LCTRL M       &kp B       &kp F  &caps_word
+&kp ESC  &kp Z  &kp X  &HT_hrm_StL LCTRL C       &HT_hrm_StL LEFT_ALT V  &kp TAB           &kp ENTER        &HT_hrm_StR LEFT_ALT H  &HT_hrm_StR LCTRL M       &kp B       &kp F  &caps_word
                        &kp LEFT_GUI              &kp SPACE               &HT_lh_lto 1 1    &HT_lh_Flos 3 0  &kp R                   &TD_lnchr
             >;
         };
@@ -1343,7 +1343,7 @@
                   &kp PIPE   &kp AT     &kp HASH                     &kp DOLLAR                  &kp AMPS             &kp EXCLAMATION  &kp QUESTION                &MC_ocirc                    &MC_euro    &none
                   &kp MINUS  &kp PLUS   &HT_hrm_StL LEFT_SHIFT STAR  &HT_hrm_StL LEFT_GUI SLASH  &kp DOUBLE_QUOTES    &kp UNDERSCORE   &hrm_StR_ugrave LEFT_GUI 0  &hrm_StR_ucirc LEFT_SHIFT 0  &MC_utrema  &kp PERCENT
 &MC_esc_tog0_all  &kp TILDE  &kp GRAVE  &HT_hrm_StL LCTRL BSLH       &HT_hrm_StL LEFT_ALT EQUAL  &trans               &trans           &hrm_StR_egrave LEFT_ALT 0  &hrm_StR_ecirc LCTRL 0       &MC_etrema  &kp CARET    &trans
-                                        &trans                       &trans                      &trans               &trans           &MC_eacute                  &trans
+                                        &trans                       &trans                      &tog 1               &trans           &MC_eacute                  &trans
             >;
         };
 
@@ -1395,7 +1395,7 @@
 
         dvce {
             bindings = <
-                  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5    &trans  &trans  &trans  &trans  &trans
+                  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans
                   &bt BT_PRV    &bt BT_NXT    &none         &none         &none           &trans  &trans  &trans  &trans  &trans
 &MC_esc_tog0_all  &none         &none         &none         &none         &trans          &trans  &trans  &trans  &trans  &trans  &trans
                                               &trans        &trans        &trans          &trans  &trans  &trans
