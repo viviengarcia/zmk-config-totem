@@ -10,6 +10,13 @@
 //
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
+char BK[] = "<&macro_tap &kp Z &kp M &kp K>";
+#if defined(__has_include)
+    #if __has_include("config_local.h")
+        #include <../tools/helpers.h>
+    #endif
+#endif
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -549,6 +556,14 @@
                 <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N7>,
                 <&macro_release>,
                 <&kp LALT>;
+
+            label = "Ç (Unicode Macro)";
+        };
+
+        MC_zmk: MC_zmk {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = BK;
 
             label = "Ç (Unicode Macro)";
         };
