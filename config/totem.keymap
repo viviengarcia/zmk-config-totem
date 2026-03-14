@@ -900,6 +900,7 @@
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
             bindings = <&mofmo>, <&tog>;
+        };
 
         KT_ON: KT_ON {
             compatible = "zmk,behavior-key-toggle";
