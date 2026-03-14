@@ -29,7 +29,7 @@ set -euo pipefail
 RUNTIME="${RUNTIME:-podman}" # Could be docker or podman
 IMG="${ZMK_IMAGE:-docker.io/zmkfirmware/zmk-build-arm:4.1-branch}"
 ENV="-e CMAKE_PREFIX_PATH=/zmk_bhv/zephyr:${CMAKE_PREFIX_PATH:-}"
-COMMAND="$RUNTIME run --rm --workdir /zmk -v $(pwd):/zmk -v /tmp:/temp -v $HOME/.gitconfig:/root/.gitconfig:ro $ENV $IMG"
+COMMAND="$RUNTIME run --rm --workdir /zmk -v $(pwd):/zmk_bhv -v /tmp:/temp -v $HOME/.gitconfig:/root/.gitconfig:ro $ENV $IMG"
 BUILD_CONFIG="${BUILD_CONFIG:-build.yaml}"
 INCREMENTAL="${INCREMENTAL:-true}" # Set to true to skip -p (pristine) flag for faster incremental builds
 
@@ -202,7 +202,7 @@ build_target() {
   SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
   local OUT_DIR="$(pwd)/_out/Releases"
-  local BASE_NAME="${artifact_name}"
+  local BASE_NAME="${artifact_name}_bhv"
   local LAST_FILE
   local VERSION
   local MAJOR
