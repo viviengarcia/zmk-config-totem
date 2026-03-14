@@ -1466,14 +1466,14 @@
         };
 
         // L5
-        topmods {
-            bindings = <
-        &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &htr SL &htr ML &trans                  &trans  &htr ML &htr SL &trans  &trans
-&trans  &trans  &trans  &htr CL &htr AL &trans                  &trans  &htr AL &htr CL &trans  &trans  &trans
-                                &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
+//         topmods {
+//             bindings = <
+//         &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+//         &trans  &trans  &htr SL &htr ML &trans                  &trans  &htr ML &htr SL &trans  &trans
+// &trans  &trans  &trans  &htr CL &htr AL &trans                  &trans  &htr AL &htr CL &trans  &trans  &trans
+//                                 &trans  &trans  &trans  &trans  &trans  &trans
+//             >;
+//         };
 
         // L6
         dvce {
