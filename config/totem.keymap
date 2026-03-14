@@ -1007,6 +1007,8 @@
             tapping-term-ms = <200>;
         };
 
+        // t: [leaderkey] td: [raycast]
+
         TD_lnchr: TD_lnchr {
             compatible = "zmk,behavior-tap-dance";
             label = "t->Raycast, td->LeaderKey";
