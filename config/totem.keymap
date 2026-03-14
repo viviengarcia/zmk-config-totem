@@ -1350,7 +1350,7 @@
 
         charx {
             bindings = <
-                  &kp PIPE   &kp AT     &kp HASH                     &kp DOLLAR                  &kp AMPS             &kp EXCLAMATION  &kp QUESTION                &MC_ocirc                    &MC_euro    &none
+                  &kp PIPE   &kp AT     &kp HASH                     &kp DOLLAR                  &kp AMPS             &kp EXCLAMATION  &kp QUESTION                &MC_ocirc                    &MC_ccedil  &MC_euro
                   &kp MINUS  &kp PLUS   &HT_hrm_StL LEFT_SHIFT STAR  &HT_hrm_StL LEFT_GUI SLASH  &kp DOUBLE_QUOTES    &kp UNDERSCORE   &hrm_StR_ugrave LEFT_GUI 0  &hrm_StR_ucirc LEFT_SHIFT 0  &MC_utrema  &kp PERCENT
 &MC_esc_tog0_all  &kp TILDE  &kp GRAVE  &HT_hrm_StL LCTRL BSLH       &HT_hrm_StL LEFT_ALT EQUAL  &trans               &trans           &hrm_StR_egrave LEFT_ALT 0  &hrm_StR_ecirc LCTRL 0       &MC_etrema  &kp CARET    &trans
                                         &trans                       &trans                      &tog 1               &trans           &MC_eacute                  &trans
