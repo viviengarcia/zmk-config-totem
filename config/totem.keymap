@@ -1262,7 +1262,7 @@
 
         CB_tog_play {
             bindings = <&tog 4>;
-            key-positions = <26 37r>;
+            key-positions = <26 37>;
             layers = <4>;
         };
 
