@@ -639,35 +639,35 @@
             label = "While held, disable L3 and and activate L1";
         };
 
-        mof: MC_Disable_CurrentLayer_While_Held {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_param_1to1>,
-                <&tog_off MACRO_PLACEHOLDER>,
-                <&macro_pause_for_release>,
-                <&macro_param_1to1>,
-                <&tog_on MACRO_PLACEHOLDER>;
+        // mof: MC_Disable_CurrentLayer_While_Held {
+        //     compatible = "zmk,behavior-macro-one-param";
+        //     #binding-cells = <1>;
+        //     bindings =
+        //         <&macro_param_1to1>,
+        //         <&tog_off MACRO_PLACEHOLDER>,
+        //         <&macro_pause_for_release>,
+        //         <&macro_param_1to1>,
+        //         <&tog_on MACRO_PLACEHOLDER>;
 
-            label = "While held, disable current layer";
-        };
+        //     label = "While held, disable current layer";
+        // };
 
-        mofmo: MC_ThisLayrOFF_AND_UnderLayrON__While_Held {
-            compatible = "zmk,behavior-macro-two-param";
-            #binding-cells = <2>;
-            bindings =
-                <&macro_param_1to1>,
-                <&tog_off MACRO_PLACEHOLDER>,
-                <&macro_param_2to1>,
-                <&tog_on MACRO_PLACEHOLDER>,
-                <&macro_pause_for_release>,
-                <&macro_param_2to1>,
-                <&tog_off MACRO_PLACEHOLDER>,
-                <&macro_param_1to1>,
-                <&tog_on MACRO_PLACEHOLDER>;
+        // mofmo: MC_ThisLayrOFF_AND_UnderLayrON__While_Held {
+        //     compatible = "zmk,behavior-macro-two-param";
+        //     #binding-cells = <2>;
+        //     bindings =
+        //         <&macro_param_1to1>,
+        //         <&tog_off MACRO_PLACEHOLDER>,
+        //         <&macro_param_2to1>,
+        //         <&tog_on MACRO_PLACEHOLDER>,
+        //         <&macro_pause_for_release>,
+        //         <&macro_param_2to1>,
+        //         <&tog_off MACRO_PLACEHOLDER>,
+        //         <&macro_param_1to1>,
+        //         <&tog_on MACRO_PLACEHOLDER>;
 
-            label = "While held, disable current layer";
-        };
+        //     label = "While held, disable current layer";
+        // };
     };
 
     behaviors {
@@ -878,29 +878,29 @@
             bindings = <&mo>, <&kp>;
         };
 
-        // hold disable layer x, tap flip layer x on/off
-        mof_tog: HT_H_Off_Layer_T_tog_Layer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Hold->Moff Lx, Tap->Togg Lx";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            bindings = <&mof>, <&tog>;
-        };
+        // // hold disable layer x, tap flip layer x on/off
+        // mof_tog: HT_H_Off_Layer_T_tog_Layer {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     label = "Hold->Moff Lx, Tap->Togg Lx";
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <175>;
+        //     require-prior-idle-ms = <150>;
+        //     bindings = <&mof>, <&tog>;
+        // };
 
-        // hold disable layer x while enabling layer y, tap flip layer x on/off
-        mofmo_tog: HT_H_LxOFF_LyON__T_tog_Lx {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Hold->Moff Lx, Tap->Togg Lx";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            bindings = <&mofmo>, <&tog>;
-        };
+        // // hold disable layer x while enabling layer y, tap flip layer x on/off
+        // mofmo_tog: HT_H_LxOFF_LyON__T_tog_Lx {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     label = "Hold->Moff Lx, Tap->Togg Lx";
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <175>;
+        //     require-prior-idle-ms = <150>;
+        //     bindings = <&mofmo>, <&tog>;
+        // };
 
         KT_ON: KT_ON {
             compatible = "zmk,behavior-key-toggle";
@@ -1426,10 +1426,11 @@
         // L1
         charx {
             bindings = <
-                  &kp PIPE   &kp AT     &kp HASH            &kp DOLLAR  &kp AMPS                    &kp EXCLAMATION     &kp QUESTION    &MC_ocirc               &MC_ccedil          &MC_euro
-                  &kp MINUS  &kp PLUS   &HT_hrm_StL SL STAR &HT_hrm_StL ML SLASH                    &kp DOUBLE_QUOTES   &kp UNDERSCORE  &hrm_StR_ugrave ML 0    &hrm_StR_ucirc SL 0 &MC_utrema  &kp PERCENT
-&MC_esc_tog0_all  &kp TILDE  &kp GRAVE  &HT_hrm_StL CL BSLH &HT_hrm_StL AL EQUAL                    &trans              &trans          &hrm_StR_egrave AL 0    &hrm_StR_ecirc CL 0 &MC_etrema  &kp CARET   &trans
-                                        &trans              MOF_TOG(1)            &trans    &trans  &MC_eacute          &trans
+                  &kp PIPE   &kp AT     &kp HASH            &kp DOLLAR              &kp AMPS                                &kp EXCLAMATION &kp QUESTION            &MC_ocirc           &MC_ccedil  &MC_euro
+                  &kp MINUS  &kp PLUS   &HT_hrm_StL SL STAR &HT_hrm_StL ML SLASH    &kp DOUBLE_QUOTES                       &kp UNDERSCORE  &hrm_StR_ugrave ML 0    &hrm_StR_ucirc SL 0 &MC_utrema  &kp PERCENT
+&MC_esc_tog0_all  &kp TILDE  &kp GRAVE  &HT_hrm_StL CL BSLH &HT_hrm_StL AL EQUAL    &trans                                  &trans          &hrm_StR_egrave AL 0    &hrm_StR_ecirc CL 0 &MC_etrema  &kp CARET   &trans
+                                                            // &trans                 MOF_TOG(1)          &trans  &MC_eacute  &trans          &trans
+                                                            &trans                  &tog 1              &trans  &MC_eacute  &trans          &trans
             >;
         };
 
@@ -1446,10 +1447,11 @@
         // L3
         wmsl {
             bindings = <
-                    &none   &kp KP_N7   &kp KP_N8               &kp KP_N9                                       &kp KP_N0       &trans  &kp MINUS                   &kp EQUAL           &none       &none
-                    &none   &kp KP_N4   &HT_hrm_StL SL KP_N5    &HT_hrm_StL ML KP_N6                            &kp PERIOD      &trans  &HT_hrm_StR ML BACKSPACE    &HT_hrm_StR SL UP   &kp DEL     &none
-&MC_esc_tog0_all    &none   &kp KP_N1   &HT_hrm_StL CL KP_N2    &HT_hrm_StL AL KP_N3                            &kp LS(LGUI)    &trans  &HT_hrm_StR AL LEFT         &HT_hrm_StR CL DOWN &kp RIGHT   &none   &none
-                                        &trans                  &mofmo_tog 3 1          &kp LSHIFT  MOF_TOG(3)  &trans          &trans
+                    &none   &kp KP_N7   &kp KP_N8               &kp KP_N9                                   &kp KP_N0       &trans  &kp MINUS                   &kp EQUAL           &none       &none
+                    &none   &kp KP_N4   &HT_hrm_StL SL KP_N5    &HT_hrm_StL ML KP_N6                        &kp PERIOD      &trans  &HT_hrm_StR ML BACKSPACE    &HT_hrm_StR SL UP   &kp DEL     &none
+&MC_esc_tog0_all    &none   &kp KP_N1   &HT_hrm_StL CL KP_N2    &HT_hrm_StL AL KP_N3                        &kp LS(LGUI)    &trans  &HT_hrm_StR AL LEFT         &HT_hrm_StR CL DOWN &kp RIGHT   &none   &none
+                                        // &trans                  &mofmo_tog 3 1          &kp LSHIFT  &trans  MOF_TOG(3)      &trans
+                                        &trans                  &MC_L3_lh1              &kp LSHIFT  &trans  &tog 3  &trans
             >;
         };
 
