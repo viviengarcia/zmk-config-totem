@@ -831,7 +831,7 @@
 
         hm_ugv: hmrs_ugrave {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&mc_ugrave>;
+            bindings = <&kp>, <&ugrv>;
 
             #binding-cells = <2>;
             flavor = "balanced";
@@ -845,7 +845,7 @@
         hm_ucrc: hmrs_ucirc {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_STR_UCIRC";
-            bindings = <&kp>, <&mc_ucirc>;
+            bindings = <&kp>, <&ucrc>;
 
             #binding-cells = <2>;
             flavor = "balanced";
@@ -1221,25 +1221,25 @@
         };
 
         CB_GuillmtOpen {
-            bindings = <&mc_guillmt_opn>;
+            bindings = <&gmto>;
             key-positions = <6 7>;
             layers = <0>;
         };
 
         CB_GuillmtClose {
-            bindings = <&mc_guillmt_cls>;
+            bindings = <&gmtc>;
             key-positions = <7 8>;
             layers = <0>;
         };
 
         CB_ae {
-            bindings = <&mc_ae>;
+            bindings = <&ae>;
             key-positions = <11 16>;
             layers = <0>;
         };
 
         CB_oe {
-            bindings = <&mc_oe>;
+            bindings = <&oe>;
             key-positions = <16 18>;
             layers = <0>;
         };
@@ -1325,10 +1325,10 @@
         chx {
        	   	display-name = "Chars - eXtended";
             bindings = <
-                  &kp PIPE   &kp AT     &kp HASH            &kp DOLLAR              &kp AMPS                                &kp EXCLAMATION &kp QUESTION            &mc_ocirc           &mc_ccedil  &mc_euro
-                  &kp MINUS  &kp PLUS   &hmls SL STAR &hmls ML SLASH    &kp DOUBLE_QUOTES                       &kp UNDERSCORE  &hrm_StR_ugrave ML 0    &hrm_StR_ucirc SL 0 &mc_utrema  &kp PERCENT
-&mc_esc_tog0_all  &kp TILDE  &kp GRAVE  &hmls CL BSLH &hmls AL EQUAL    &trans                                  &trans          &hrm_StR_egrave AL 0    &hrm_StR_ecirc CL 0 &mc_etrema  &kp CARET   &trans
-                                                            &trans                  &tog 1              &trans  &mc_eacute  &trans          &trans
+                  &kp PIPE   &kp AT     &kp HASH        &kp DOLLAR      &kp AMPS                                &kp EXCLAMATION &kp QUESTION    &ocrc         &ccdl  &euro
+                  &kp MINUS  &kp PLUS   &hmls SL STAR   &hmls ML SLASH  &kp DOUBLE_QUOTES                       &kp UNDERSCORE  &hm_ugv ML 0    &hm_ucrc SL 0 &utma  &kp PERCENT
+            &esc0 &kp TILDE  &kp GRAVE  &hmls CL BSLH   &hmls AL EQUAL  &trans                                  &trans          &hm_egv AL 0    &hm_ecrc CL 0 &etma  &kp CARET   &trans
+                                                        &trans          &tog 1              &trans  &mc_eacute  &trans          &trans
             >;
         };
 
@@ -1349,7 +1349,7 @@
             bindings = <
                     &none   &kp KP_N7   &kp KP_N8   &kp KP_N9    &kp KP_N0                      &trans  &kp MINUS                   &kp EQUAL           &none       &none
                     &none   &kp KP_N4   &hmls SL KP_N5   &hmls ML KP_N6    &kp PERIOD                     &trans  &hmrs ML BACKSPACE    &hmrs SL UP   &kp DEL     &none
-&mc_esc_tog0_all    &none   &kp KP_N1   &hmls CL KP_N2   &hmls AL KP_N3    &kp LS(LGUI)                   &trans  &hmrs AL LEFT         &hmrs CL DOWN &kp RIGHT   &none   &none
+&esc0    &none   &kp KP_N1   &hmls CL KP_N2   &hmls AL KP_N3    &kp LS(LGUI)                   &trans  &hmrs AL LEFT         &hmrs CL DOWN &kp RIGHT   &none   &none
                                                     &trans       &ladh     &trans  &trans  &tog 3  &trans
             >;
         };
@@ -1360,7 +1360,7 @@
             bindings = <
                     &none   &trans  &trans  &trans      &trans                              &kp C_VOL_UP    &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
                     &none   &trans  &trans  &trans      &none                               &kp C_VOL_DN    &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
-&mc_esc_tog0_all    &none   &trans  &trans  &trans      &none                               &trans          &kp J      &kp LA(LEFT)   &kp L      &none       &none
+&esc0    &none   &trans  &trans  &trans      &none                               &trans          &kp J      &kp LA(LEFT)   &kp L      &none       &none
                                             &kp SPACE   &kp SPACE   &kp SPACE   &kp SPACE   &kp SPACE       &trans
             >;
         };
@@ -1382,7 +1382,7 @@
             bindings = <
                     &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                    &trans  &trans  &trans  &trans  &trans
                     &bt BT_PRV      &bt BT_NXT      &none           &none           &none                           &trans  &trans  &trans  &trans  &trans
-&mc_esc_tog0_all    &none           &none           &none           &none           &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+&esc0    &none           &none           &none           &none           &trans                          &trans  &trans  &trans  &trans  &trans  &trans
                                                                     &trans          &trans          &trans  &trans  &trans  &trans
             >;
         };
