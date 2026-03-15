@@ -1314,7 +1314,7 @@
         chm {
             display-name = "Chars - Main";
             bindings = <
-        &kp G   &kp Q   &kp Y               &kp W               &kp J                           &kp B       &kp H               &kp M               &mc_agrave  &kp F
+        &kp G   &kp Q   &kp Y               &kp W               &kp J                           &kp B       &kp H               &kp M               &agrv  &kp F
         &kp S   &kp A   &hmls SL N    &hmls ML U    &cmsq                     &dtmn &hmrs ML E    &hmrs SL T    &kp O       &kp L
 &kp ESC &kp Z   &kp X   &hmls CL C    &hmls AL V    &kp TAB                         &sscw      &hmrs AL I    &hmrs CL D    &kp P       &kp K  &kp ENTER
                                             &kp ML              &sl 1       &kp SPACE   &kp R   &sl 3       &lnch
