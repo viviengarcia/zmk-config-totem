@@ -646,17 +646,17 @@
             hold-trigger-on-release;
         };
 
-        htr: HT__hold_zmk_behavior__tap_transparent {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&trans>;
+        // htr: HT__hold_zmk_behavior__tap_transparent {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     bindings = <&kp>, <&trans>;
 
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <200>;
-            require-prior-idle-ms = <175>;
-            hold-trigger-on-release;
-        };
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <200>;
+        //     require-prior-idle-ms = <175>;
+        //     hold-trigger-on-release;
+        // };
 
         // mod-morph tpl for alternate shift output
 
@@ -1381,10 +1381,10 @@
         hrm {
        	   	display-name = "Homerow Mods";
             bindings = <
-        &trans  &trans  &trans          &trans          &trans                  &trans  &trans      &trans       &trans  &trans
-        &trans  &trans  &htr LSHFT 0    &htr LGUI 0     &trans                  &trans  &htr LGUI 0 &htr LSHFT 0 &trans  &trans
-&trans  &trans  &trans  &htr LCTRL 0    &htr LALT 0     &trans                  &trans  &htr LALT 0 &htr LCTRL 0 &trans  &trans  &trans
-                                        &trans          &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans    &trans     &trans                  &trans  &trans      &trans       &trans  &trans
+        &trans  &trans  &trans    &trans     &trans                  &trans  &trans &trans &trans  &trans
+&trans  &trans  &trans  &trans    &trans     &trans                  &trans  &trans &trans &trans  &trans  &trans
+                                  &trans     &trans  &trans  &trans  &trans  &trans
             >;
         };
 
