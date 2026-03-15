@@ -243,7 +243,7 @@
             label = "î (Unicode Macro)";
         };
 
-        Icrc: mc_i_circ {
+        Icrc: mc_I_circ {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
