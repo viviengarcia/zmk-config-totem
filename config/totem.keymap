@@ -23,28 +23,37 @@
 #define   AL  LALT
 #define   ML  LGUI
 
-// SHORTS
+// SHORTS FORMS
 //
-// (T): template
+// Signals
+// kp: key press (alter default key output)
+// kh: key held
 //
-// (T)MC: macro
-// (T)OVR: mod-morph (== QMK mod override)
-// (T)TD: tap-dance
-// (T)HT: hold-tap (mod or lay)
-// (T)KP: key press (alter default key output)
-// (T)CB: combo
+// Motions
+// td: tap-dance
+// cb: combo
 //
-// lf: layer flip on/off (== QMK Tg(layer))
-// lf0: layer off
-// lf1: layer on
-// lto: switch to layer (== QMK To(layer))
-// lh: activate layer while key is held (== QMK Mo(layer))
-// los: activate layer once
+// Behaviors
+// mc: macro
+//   lm: layer-mod
+// ov: mod-morph
+// ht: hold-tap
+//   mt: mod-tap
+//   lt: layer-tap
 //
+// Actions
+// pX: tap send X
+// hX: hold send X
+// toX: switch to layer X while disabling other non-defaults layers
+// sX: sticky key/layer/mod X
+// X1: force X on
+// X0: force X off
+//
+// Concepts
 // hrm: homerow mods
 // fs: finger strong
 // fw: finger weak
-// mos: activate mod once
+//
 //
 // MACROS, BEHAVIORS & COMBOS TEMPLATES
 // - name hints at either result > method
@@ -53,95 +62,6 @@
 
 / {
     macros {
-        // MC_lh0_alpha: MC_lh0_alpha {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&tog_off 0>, <&macro_pause_for_release>, <&tog_on 0>;
-        //     label = "MC_LH0_ALPHA";
-        // };
-        // MC_lf1_app_alpha: MC_lf1_app_alpha {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&KP_lf1 0 &KP_lf1 0 &KP_lf1 0>;
-        //     label = "MC_LF1_APP_ALPHA";
-        // };
-        // TEMPLATE key sequence ouputs a diacritic on qwerty-international layouts
-        // TMC_diac: TMC_diac {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp STAR &kp STAR>;
-        //     label = "TMC_DIAC";
-        // };
-        // é
-        // MC_eacute: MC_eacute {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp SINGLE_QUOTE &kp E>;
-        //     label = "É";
-        // };
-        // è
-        // MC_egrave: MC_egrave {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp GRAVE &kp E>;
-        //     label = "È";
-        // };
-        // ê
-        // MC_ecirc: MC_ecirc {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp LS(N6) &kp E>;
-        //     label = "Ê";
-        // };
-        // à
-        // MC_agrave: MC_agrave {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp GRAVE &kp A>;
-        //     label = "À";
-        // };
-        // ô
-        // MC_ocirc: MC_ocirc {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp LS(N6) &kp O>;
-        //     label = "Ô";
-        // };
-        // ç
-        // MC_ccedil: MC_ccedil {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp LA(C)>;
-        //     label = "Ç";
-        // };
-        // æ
-        // MC_ligae: MC_ligae {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp LA(SQT)>;
-        //     label = "Æ";
-        // };
-        // œ
-        // MC_ligoe: MC_ligoe {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp LA(Q)>;
-        //     label = "Œ";
-        // };
-        // TEMPLATE Unicode Output Macro (macOS only)
-        // tmc_unicd: tmc_unicd {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings =
-        //         <&macro_press>,
-        //         <&kp LALT>,
-        //         <&macro_release>,
-        //         <&kp LALT>,
-        //         <&macro_tap>,
-        //         <&kp U &kp PLUS>;
-        //     label = "[tpl] Unicode Macro";
-        // };
-
         MC_agrave: MC_agrave {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -583,14 +503,6 @@
             label = "Dot then Space";
         };
 
-        // TEMPLATE
-        // TMC_esc_togoff: TMC_esc_togoff {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp ESC &tog_off 0>;
-        //     label = "TMC_ESC_TOGOFF";
-        // };
-
         MC_esc_tog0_all: MC_esc_tog0_all {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -603,21 +515,6 @@
             #binding-cells = <0>;
             bindings = <&to 0 &kp F13>;
             label = "Switch to Alpha before launching Leader Key";
-        };
-
-        // activate a modifier and a layer at the same time
-
-        Fake_LayerMod: new_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&KT_ON LGUI &mo 4>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&KT_OFF LGUI>;
-
-            label = "NEW_MACRO";
         };
 
         MC_los_wmsl: MC_los_wmsl {
