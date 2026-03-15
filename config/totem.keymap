@@ -1519,6 +1519,6 @@
         boot_layers {
            	if-layers = <0>;
             then-layer = <5>;
-        }
+        };
     };
 };
