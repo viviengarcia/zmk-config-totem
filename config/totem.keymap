@@ -1431,7 +1431,7 @@
             bindings = <
         &kp G   &kp Q   &kp Y               &kp W               &kp J                           &kp B       &kp H               &kp M               &MC_agrave  &kp F
         &kp S   &kp A   &HT_hrm_StL SL N    &HT_hrm_StL ML U    &TD_com_sqt                     &TD_dot_min &HT_hrm_StR ML E    &HT_hrm_StR SL T    &kp O       &kp L
-&kp ESC &kp Z   &kp X   &HT_hrm_StL CL C    &HT_hrm_StL AL V    &kp TAB                         &sLS_CW     &HT_hrm_StR AL I    &HT_hrm_StR CL D    &kp P       &kp K  &kp ENTER
+&kp ESC &kp Z   &kp X   &HT_hrm_StL CL C    &HT_hrm_StL AL V    &kp TAB                         &sl 5     &HT_hrm_StR AL I    &HT_hrm_StR CL D    &kp P       &kp K  &kp ENTER
                                             &kp ML              &sl 1       &kp SPACE   &kp R   &sl 3       &TD_lnchr
             >;
         };
@@ -1488,7 +1488,7 @@
             bindings = <
         &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
         &trans  &trans  &htr LSHFT 0 &htr LGUI 0 &trans                  &trans  &htr LGUI 0 &htr LSHFT 0 &trans  &trans
-&trans  &trans  &trans  &htr LCTRL 0 &htr LALT 0 &trans                  &trans  &htr LALT 0 &htr LCTRL 0 &trans  &trans  &trans
+&trans  &trans  &trans  &htr LCTRL 0 &htr LALT 0 &trans                  &tog 5  &htr LALT 0 &htr LCTRL 0 &trans  &trans  &trans
                                 &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
@@ -1516,9 +1516,9 @@
 
     conditional_layers {
     	compatible = "zmk,conditional-layers";
-        boot_layers {
-           	if-layers = <0>;
-            then-layer = <5>;
-        };
+        // boot_layers {
+        //    	if-layers = <0>;
+        //     then-layer = <5>;
+        // };
     };
 };
