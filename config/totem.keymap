@@ -1469,8 +1469,8 @@
         topmods {
             bindings = <
         &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &htr SL &htr ML &trans                  &trans  &htr ML &htr SL &trans  &trans
-&trans  &trans  &trans  &htr CL &htr AL &trans                  &trans  &htr AL &htr CL &trans  &trans  &trans
+        &trans  &trans  &htr LSHFT &htr LGUI &trans                  &trans  &htr LGUI &htr LSHFT &trans  &trans
+&trans  &trans  &trans  &htr LCTRL &htr LALT &trans                  &trans  &htr LALT &htr LCTRL &trans  &trans  &trans
                                 &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
