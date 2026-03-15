@@ -858,7 +858,7 @@
 
         hm_ecrc: hmrs_ecirc {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&mc_ecirc>;
+            bindings = <&kp>, <&ecrc>;
 
             #binding-cells = <2>;
             flavor = "balanced";
