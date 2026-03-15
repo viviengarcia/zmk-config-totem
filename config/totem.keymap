@@ -1269,13 +1269,13 @@
 
         CB_los_play {
             bindings = <&sl 4>;
-            key-positions = <26 37>;
+            key-positions = <26 36>;
             layers = <0 1 2 3>;
         };
 
         CB_tog_play {
             bindings = <&tog 4>;
-            key-positions = <26 37>;
+            key-positions = <26 36>;
             layers = <4>;
         };
 
@@ -1516,7 +1516,9 @@
 
     conditional_layers {
     	compatible = "zmk,conditional-layers";
-    	if-layers = <0>;
-        then-layer = <5>;
+        boot_layers {
+           	if-layers = <0>;
+            then-layer = <5>;
+        }
     };
 };
