@@ -1,13 +1,22 @@
 # C is a good fallback for DTS files
+*.keymap linguist-detectable
 *.keymap linguist-language=c
+*.dtsi   linguist-detectable
 *.dtsi   linguist-language=c
+*.dts    linguist-detectable
 *.dts    linguist-language=c
 
 # Documentation
+docs/* linguist-detectable
 docs/* linguist-documentation
+
+# Conf
+*.conf linguist-detectable
+*.conf linguist-language=shell
 
 # Vendored code
 # config/zmk-helpers*
 
 # Generated code
+*.svg linguist-detectable
 *.svg linguist-generated
