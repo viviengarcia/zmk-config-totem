@@ -639,6 +639,18 @@
             label = "While held, disable L3 and and activate L1";
         };
 
+        gap2chm: MC_gapOFF_hrmON {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&tog_off 2 &tog_on 5>;
+        };
+
+        chm2gap: MC_gapON_hrmOFF {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&to 2 &tog_off 5>;
+        };
+
         // mof: MC_Disable_CurrentLayer_While_Held {
         //     compatible = "zmk,behavior-macro-one-param";
         //     #binding-cells = <1>;
@@ -1237,15 +1249,15 @@
         // };
         // flip between alpha and app layers
 
-        CB_lto_app2alpha {
-            bindings = <&to 0>;
-            key-positions = <25 34>;
+        CB_gap2chm {
+            bindings = <&gap2chm>;
+            key-positions = <2 34>;
             layers = <2>;
         };
 
-        CB_lto_alpha2app {
-            bindings = <&to 2>;
-            key-positions = <25 34>;
+        CB_chm2gap {
+            bindings = <&chm2gap>;
+            key-positions = <2 34>;
             layers = <0>;
         };
 
@@ -1414,7 +1426,8 @@
         compatible = "zmk,keymap";
 
         // L0
-        charm {
+        chm {
+            display-name = "Chars - Main";
             bindings = <
         &kp G   &kp Q   &kp Y               &kp W               &kp J                           &kp B       &kp H               &kp M               &MC_agrave  &kp F
         &kp S   &kp A   &HT_hrm_StL SL N    &HT_hrm_StL ML U    &TD_com_sqt                     &TD_dot_min &HT_hrm_StR ML E    &HT_hrm_StR SL T    &kp O       &kp L
@@ -1424,7 +1437,8 @@
         };
 
         // L1
-        charx {
+        chx {
+       	   	display-name = "Chars - eXtended";
             bindings = <
                   &kp PIPE   &kp AT     &kp HASH            &kp DOLLAR              &kp AMPS                                &kp EXCLAMATION &kp QUESTION            &MC_ocirc           &MC_ccedil  &MC_euro
                   &kp MINUS  &kp PLUS   &HT_hrm_StL SL STAR &HT_hrm_StL ML SLASH    &kp DOUBLE_QUOTES                       &kp UNDERSCORE  &hrm_StR_ugrave ML 0    &hrm_StR_ucirc SL 0 &MC_utrema  &kp PERCENT
@@ -1435,7 +1449,8 @@
         };
 
         // L2
-        gapp {
+        gap {
+       	   	display-name = "Games & Apps";
             bindings = <
                 &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                          &kp G       &kp O   &kp B   &kp K   &kp RBKT
                 &kp TAB &trans  &kp N   &kp U   &kp COMMA                       &kp PERIOD  &kp T   &kp M   &kp L   &kp LBKT
@@ -1445,7 +1460,8 @@
         };
 
         // L3
-        wmsl {
+        wms {
+       	   	display-name = "WM / Select";
             bindings = <
                     &none   &kp KP_N7   &kp KP_N8               &kp KP_N9                                   &kp KP_N0       &trans  &kp MINUS                   &kp EQUAL           &none       &none
                     &none   &kp KP_N4   &HT_hrm_StL SL KP_N5    &HT_hrm_StL ML KP_N6                        &kp PERIOD      &trans  &HT_hrm_StR ML BACKSPACE    &HT_hrm_StR SL UP   &kp DEL     &none
@@ -1456,7 +1472,8 @@
         };
 
         // L4
-        play {
+        mpl {
+       	   	display-name = "Media Player";
             bindings = <
                     &none   &trans  &trans  &trans      &trans                              &kp C_VOL_UP    &kp COMMA  &kp LA(RIGHT)  &kp DOT    &kp LS(GT)
                     &none   &trans  &trans  &trans      &none                               &kp C_VOL_DN    &kp LEFT   &kp C_PLAY     &kp RIGHT  &kp LS(LT)
@@ -1466,7 +1483,8 @@
         };
 
         // L5
-        topmods {
+        hrm {
+       	   	display-name = "Homerow Mods";
             bindings = <
         &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
         &trans  &trans  &htr LSHFT 0 &htr LGUI 0 &trans                  &trans  &htr LGUI 0 &htr LSHFT 0 &trans  &trans
@@ -1476,7 +1494,8 @@
         };
 
         // L6
-        dvce {
+        dvc {
+       	   	display-name = "Device";
             bindings = <
                     &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                    &trans  &trans  &trans  &trans  &trans
                     &bt BT_PRV      &bt BT_NXT      &none           &none           &none                           &trans  &trans  &trans  &trans  &trans
@@ -1495,5 +1514,9 @@
         //         };
     };
 
-    conditional_layers { compatible = "zmk,conditional-layers"; };
+    conditional_layers {
+    	compatible = "zmk,conditional-layers";
+    	if-layers = <0>;
+        then-layer = <5>;
+    };
 };
