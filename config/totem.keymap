@@ -1462,10 +1462,10 @@
         wms {
        	   	display-name = "WM / Select";
             bindings = <
-                    &none   &kp KP_N7   &kp KP_N8   &kp KP_N9    &kp KP_N0                          &trans  &kp MINUS                   &kp EQUAL           &none       &none
-                    &none   &kp KP_N4   &kp KP_N5   &kp KP_N6    &kp PERIOD                         &trans  &HT_hrm_StR ML BACKSPACE    &HT_hrm_StR SL UP   &kp DEL     &none
-&MC_esc_tog0_all    &none   &kp KP_N1   &kp KP_N2   &kp KP_N3    &kp LS(LGUI)                       &trans  &HT_hrm_StR AL LEFT         &HT_hrm_StR CL DOWN &kp RIGHT   &none   &none
-                                                    &trans       &MC_L3_lh1   &kp trans     &trans  &tog 3  &trans
+                    &none   &kp KP_N7   &kp KP_N8   &kp KP_N9    &kp KP_N0                      &trans  &kp MINUS                   &kp EQUAL           &none       &none
+                    &none   &kp KP_N4   &kp KP_N5   &kp KP_N6    &kp PERIOD                     &trans  &HT_hrm_StR ML BACKSPACE    &HT_hrm_StR SL UP   &kp DEL     &none
+&MC_esc_tog0_all    &none   &kp KP_N1   &kp KP_N2   &kp KP_N3    &kp LS(LGUI)                   &trans  &HT_hrm_StR AL LEFT         &HT_hrm_StR CL DOWN &kp RIGHT   &none   &none
+                                                    &trans       &MC_L3_lh1     &trans  &trans  &tog 3  &trans
             >;
         };
 
