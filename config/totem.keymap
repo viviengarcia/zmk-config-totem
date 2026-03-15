@@ -173,7 +173,7 @@
             label = "È (Unicode Macro)";
         };
 
-        ecr: mc_e_circ {
+        ecrc: mc_e_circ {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
