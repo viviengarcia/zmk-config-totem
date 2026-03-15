@@ -1328,7 +1328,7 @@
                   &kp PIPE   &kp AT     &kp HASH        &kp DOLLAR      &kp AMPS                                &kp EXCLAMATION &kp QUESTION    &ocrc         &ccdl  &euro
                   &kp MINUS  &kp PLUS   &hmls SL STAR   &hmls ML SLASH  &kp DOUBLE_QUOTES                       &kp UNDERSCORE  &hm_ugv ML 0    &hm_ucrc SL 0 &utma  &kp PERCENT
             &esc0 &kp TILDE  &kp GRAVE  &hmls CL BSLH   &hmls AL EQUAL  &trans                                  &trans          &hm_egv AL 0    &hm_ecrc CL 0 &etma  &kp CARET   &trans
-                                                        &trans          &tog 1              &trans  &mc_eacute  &trans          &trans
+                                                        &trans          &tog 1              &trans  &eac  &trans          &trans
             >;
         };
 
