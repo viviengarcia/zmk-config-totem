@@ -914,24 +914,20 @@
         //     tapping-term-ms = <150>;
         // };
 
-        // t: [.] td: [-]
-
-        dtmn: td_dot_minus {
+        // t: [,] td: [']
+        cmsq: td_comma_singlequote {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [PERIOD] -> [MINUS]";
             #binding-cells = <0>;
-            bindings = <&kp PERIOD>, <&kp MINUS>;
+            bindings = <&kp COMMA>, <&kp SQT>;
 
             tapping-term-ms = <200>;
         };
 
-        // t: [,] td: [']
-
-        cmsq: td_comma_singlequote {
+        // t: [.] td: [-]
+        prmn: td_period_minus {
             compatible = "zmk,behavior-tap-dance";
-            label = "Double-tap [COMMA] -> [SINGLE_QUOTE]";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp SQT>;
+            bindings = <&kp PERIOD>, <&kp MINUS>;
 
             tapping-term-ms = <200>;
         };
@@ -1003,22 +999,18 @@
         // };
 
         // LS[,] -> [;]
-
-        ov_comSemic: ov_comSemic {
+        cmsc: ov_comma_semicolon {
             compatible = "zmk,behavior-mod-morph";
-            label = "Shifted [,] -> [;]";
-            bindings = <&kp COMMA>, <&kp SEMICOLON>;
+            bindings = <&cmsq>, <&kp SEMICOLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // LS[.] -> [:]
-
-        ov_dotColon: ov_dotColon {
+        prcl: ov_period_colon {
             compatible = "zmk,behavior-mod-morph";
-            label = "Shifted [.] -> [:]";
-            bindings = <&kp PERIOD>, <&kp COLON>;
+            bindings = <&dtmn>, <&kp COLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -1315,7 +1307,7 @@
             display-name = "Chars - Main";
             bindings = <
         &kp G   &kp Q   &kp Y       &kp W         &kp J                         &kp B   &kp H       &kp M       &agrv   &kp F
-        &kp S   &kp A   &hmls SL N  &hmls ML U    &cmsq                         &dtmn   &hmrs ML E  &hmrs SL T  &kp O   &kp L
+        &kp S   &kp A   &hmls SL N  &hmls ML U    &cmsq                         &prmn   &hmrs ML E  &hmrs SL T  &kp O   &kp L
 &kp ESC &kp Z   &kp X   &hmls CL C  &hmls AL V    &kp TAB                       &sscw   &hmrs AL I  &hmrs CL D  &kp P   &kp K  &kp ENTER
                                     &kp ML        &sl 1     &kp SPACE   &kp R   &sl 3   &lnch
             >;
@@ -1325,10 +1317,10 @@
         chx {
        	   	display-name = "Chars - eXtended";
             bindings = <
-                  &kp PIPE   &kp AT     &kp HASH        &kp DOLLAR      &kp AMPS                                &kp EXCLAMATION &kp QUESTION    &ocrc         &ccdl  &euro
-                  &kp MINUS  &kp PLUS   &hmls SL STAR   &hmls ML SLASH  &kp DOUBLE_QUOTES                       &kp UNDERSCORE  &hm_ugv ML 0    &hm_ucrc SL 0 &utma  &kp PERCENT
-            &esc0 &kp TILDE  &kp GRAVE  &hmls CL BSLH   &hmls AL EQUAL  &trans                                  &trans          &hm_egv AL 0    &hm_ecrc CL 0 &etma  &kp CARET   &trans
-                                                        &trans          &tog 1              &trans  &eac  &trans          &trans
+                &kp PIPE    &kp AT      &kp HASH        &kp DOLLAR      &kp AMPS                            &kp EXCLAMATION &kp QUESTION    &ocrc           &ccdl   &euro
+                &kp MINUS   &kp PLUS    &hmls SL STAR   &hmls ML SLASH  &kp DOUBLE_QUOTES                   &kp UNDERSCORE  &hm_ugv ML 0    &hm_ucrc SL 0   &utma   &kp PERCENT
+        &esc0   &kp TILDE   &kp GRAVE   &hmls CL BSLH   &hmls AL EQUAL  &trans                              &trans          &hm_egv AL 0    &hm_ecrc CL 0   &etma   &kp CARET   &trans
+                                                        &trans          &tog 1              &trans  &eac    &trans          &trans
             >;
         };
 
@@ -1347,10 +1339,10 @@
         wms {
        	   	display-name = "WM / Select";
             bindings = <
-                    &none   &kp KP_N7   &kp KP_N8   &kp KP_N9    &kp KP_N0                      &trans  &kp MINUS                   &kp EQUAL           &none       &none
-                    &none   &kp KP_N4   &hmls SL KP_N5   &hmls ML KP_N6    &kp PERIOD                     &trans  &hmrs ML BACKSPACE    &hmrs SL UP   &kp DEL     &none
-&esc0    &none   &kp KP_N1   &hmls CL KP_N2   &hmls AL KP_N3    &kp LS(LGUI)                   &trans  &hmrs AL LEFT         &hmrs CL DOWN &kp RIGHT   &none   &none
-                                                    &trans       &ladh     &trans  &trans  &tog 3  &trans
+                &none   &kp KP_N7   &kp KP_N8       &kp KP_N9       &kp KP_N0                       &trans  &kp MINUS           &kp EQUAL       &none       &none
+                &none   &kp KP_N4   &hmls SL KP_N5  &hmls ML KP_N6  &kp PERIOD                      &trans  &hmrs ML BACKSPACE  &hmrs SL UP     &kp DEL     &none
+        &esc0   &none   &kp KP_N1   &hmls CL KP_N2  &hmls AL KP_N3  &kp LS(LGUI)                    &trans  &hmrs AL LEFT       &hmrs CL DOWN   &kp RIGHT   &none   &none
+                                                    &trans          &ladh           &trans  &trans  &tog 3  &trans
             >;
         };
 
@@ -1369,10 +1361,10 @@
         hrm {
        	   	display-name = "Homerow Mods";
             bindings = <
-        &trans  &trans  &trans    &trans     &trans                  &trans  &trans      &trans       &trans  &trans
-        &trans  &trans  &trans    &trans     &trans                  &trans  &trans &trans &trans  &trans
-&trans  &trans  &trans  &trans    &trans     &trans                  &trans  &trans &trans &trans  &trans  &trans
-                                  &trans     &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans                  &trans  &trans &trans &trans  &trans
+                &trans  &trans  &trans  &trans  &trans                  &trans  &trans &trans &trans  &trans
+        &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans &trans &trans  &trans  &trans
+                                        &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -1380,10 +1372,10 @@
         dvc {
        	   	display-name = "Device";
             bindings = <
-                    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                    &trans  &trans  &trans  &trans  &trans
-                    &bt BT_PRV      &bt BT_NXT      &none           &none           &none                           &trans  &trans  &trans  &trans  &trans
-&esc0    &none           &none           &none           &none           &trans                          &trans  &trans  &trans  &trans  &trans  &trans
-                                                                    &trans          &trans          &trans  &trans  &trans  &trans
+                &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                    &trans  &trans  &trans  &trans  &trans
+                &bt BT_PRV      &bt BT_NXT      &none           &none           &none                           &trans  &trans  &trans  &trans  &trans
+        &esc0   &none           &none           &none           &none           &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+                                                                &trans          &trans          &trans  &trans  &trans  &trans
             >;
         };
 
