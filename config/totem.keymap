@@ -72,7 +72,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "à (Unicode Macro)";
+            // label = "à (Unicode Macro)";
         };
 
         Agrv: mc_A_grave {
@@ -86,7 +86,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "À (Unicode Macro)";
+            // label = "À (Unicode Macro)";
         };
 
         acrc: mc_a_circonflex {
@@ -100,7 +100,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "â (Unicode Macro)";
+            // label = "â (Unicode Macro)";
         };
 
         Acrc: mc_A_circonflex {
@@ -114,7 +114,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Â (Unicode Macro)";
+            // label = "Â (Unicode Macro)";
         };
 
         eac: mc_e_acute {
@@ -128,7 +128,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "é (Unicode Macro)";
+            // label = "é (Unicode Macro)";
         };
 
         Eac: mc_E_acute {
@@ -142,7 +142,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "É (Unicode Macro)";
+            // label = "É (Unicode Macro)";
         };
 
         egrv: mc_e_grave {
@@ -156,7 +156,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "è (Unicode Macro)";
+            // label = "è (Unicode Macro)";
         };
 
         Egrv: mc_E_grave {
@@ -170,7 +170,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "È (Unicode Macro)";
+            // label = "È (Unicode Macro)";
         };
 
         ecrc: mc_e_circ {
@@ -184,7 +184,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "ê (Unicode Macro)";
+            // label = "ê (Unicode Macro)";
         };
 
         Ecrc: mc_E_circ {
@@ -198,7 +198,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Ê (Unicode Macro)";
+            // label = "Ê (Unicode Macro)";
         };
 
         etma: mc_e_trema {
@@ -212,7 +212,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "ë (Unicode Macro)";
+            // label = "ë (Unicode Macro)";
         };
 
         Etma: mc_E_trema {
@@ -226,7 +226,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Ë (Unicode Macro)";
+            // label = "Ë (Unicode Macro)";
         };
 
         icrc: mc_i_circ {
@@ -240,7 +240,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "î (Unicode Macro)";
+            // label = "î (Unicode Macro)";
         };
 
         Icrc: mc_I_circ {
@@ -254,7 +254,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Î (Unicode Macro)";
+            // label = "Î (Unicode Macro)";
         };
 
         ocrc: mc_ocirc {
@@ -268,7 +268,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "ô (Unicode Macro)";
+            // label = "ô (Unicode Macro)";
         };
 
         Ocrc: mc_ocirc_caps {
@@ -282,7 +282,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Ô (Unicode Macro)";
+            // label = "Ô (Unicode Macro)";
         };
 
         ugrv: mc_ugrave {
@@ -296,7 +296,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "ù (Unicode Macro)";
+            // label = "ù (Unicode Macro)";
         };
 
         Ugrv: mc_ugrave_caps {
@@ -310,7 +310,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Ù (Unicode Macro)";
+            // label = "Ù (Unicode Macro)";
         };
 
         ucrc: mc_ucirc {
@@ -324,7 +324,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "û (Unicode Macro)";
+            // label = "û (Unicode Macro)";
         };
 
         Ucrc: mc_ucirc_caps {
@@ -338,7 +338,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Û (Unicode Macro)";
+            // label = "Û (Unicode Macro)";
         };
 
         utma: mc_utrema {
@@ -352,7 +352,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "ü (Unicode Macro)";
+            // label = "ü (Unicode Macro)";
         };
 
         Utma: mc_utrema_caps {
@@ -366,7 +366,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Ü (Unicode Macro)";
+            // label = "Ü (Unicode Macro)";
         };
 
         gmto: mc_guillmt_opn {
@@ -380,7 +380,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "« (Unicode Macro)";
+            // label = "« (Unicode Macro)";
         };
 
         gmtc: mc_guillmt_cls {
@@ -394,7 +394,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "» (Unicode Macro)";
+            // label = "» (Unicode Macro)";
         };
 
         ae: mc_ae {
@@ -408,7 +408,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "æ (Unicode Macro)";
+            // label = "æ (Unicode Macro)";
         };
 
         AE: mc_ae_caps {
@@ -422,7 +422,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Æ (Unicode Macro)";
+            // label = "Æ (Unicode Macro)";
         };
 
         oe: mc_oe {
@@ -450,7 +450,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Œ (Unicode Macro)";
+            // label = "Œ (Unicode Macro)";
         };
 
         ccdl: mc_ccedil {
@@ -464,7 +464,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "ç (Unicode Macro)";
+            // label = "ç (Unicode Macro)";
         };
 
         Ccdl: mc_ccedil_caps {
@@ -478,7 +478,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "Ç (Unicode Macro)";
+            // label = "Ç (Unicode Macro)";
         };
 
         euro: mc_euro {
@@ -492,7 +492,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "€ (Unicode Macro)";
+            // label = "€ (Unicode Macro)";
         };
 
         esc0: mc_esc_tog0_all {
@@ -502,12 +502,12 @@
             label = "ESC + Toggle all layers off";
         };
 
-        ldrk: mc_ldrkey {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&to 0 &kp F13>;
-            label = "Switch to Alpha before launching Leader Key";
-        };
+        // ldrk: mc_ldrkey {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&to 0 &kp F13>;
+        //     label = "Switch to Alpha before launching Leader Key";
+        // };
 
         // mc_los_wmsl: mc_los_wmsl {
         //     compatible = "zmk,behavior-macro";
