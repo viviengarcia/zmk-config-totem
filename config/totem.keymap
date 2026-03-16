@@ -1010,7 +1010,7 @@
         // LS[.] -> [:]
         prcl: ov_period_colon {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&dtmn>, <&kp COLON>;
+            bindings = <&prmn>, <&kp COLON>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
