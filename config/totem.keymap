@@ -75,19 +75,19 @@
             // label = "à (Unicode Macro)";
         };
 
-        Agrv: mc_A_grave {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N0>,
-                <&macro_release>,
-                <&kp LALT>;
+        // a_grv: mc_a_grave {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N0>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "À (Unicode Macro)";
-        };
+        //     // label = "À (Unicode Macro)";
+        // };
 
         acrc: mc_a_circonflex {
             compatible = "zmk,behavior-macro";
@@ -103,19 +103,19 @@
             // label = "â (Unicode Macro)";
         };
 
-        Acrc: mc_A_circonflex {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N2>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Acrc: mc_A_circonflex {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N2>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Â (Unicode Macro)";
-        };
+        //     // label = "Â (Unicode Macro)";
+        // };
 
         eac: mc_e_acute {
             compatible = "zmk,behavior-macro";
@@ -131,19 +131,19 @@
             // label = "é (Unicode Macro)";
         };
 
-        Eac: mc_E_acute {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N9>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Eac: mc_E_acute {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N9>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "É (Unicode Macro)";
-        };
+        //     // label = "É (Unicode Macro)";
+        // };
 
         egrv: mc_e_grave {
             compatible = "zmk,behavior-macro";
@@ -159,19 +159,19 @@
             // label = "è (Unicode Macro)";
         };
 
-        Egrv: mc_E_grave {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N8>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Egrv: mc_E_grave {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N8>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "È (Unicode Macro)";
-        };
+        //     // label = "È (Unicode Macro)";
+        // };
 
         ecrc: mc_e_circ {
             compatible = "zmk,behavior-macro";
@@ -187,19 +187,19 @@
             // label = "ê (Unicode Macro)";
         };
 
-        Ecrc: mc_E_circ {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(A)>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Ecrc: mc_E_circ {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(A)>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Ê (Unicode Macro)";
-        };
+        //     // label = "Ê (Unicode Macro)";
+        // };
 
         etma: mc_e_trema {
             compatible = "zmk,behavior-macro";
@@ -215,19 +215,19 @@
             // label = "ë (Unicode Macro)";
         };
 
-        Etma: mc_E_trema {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(B)>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Etma: mc_E_trema {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(B)>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Ë (Unicode Macro)";
-        };
+        //     // label = "Ë (Unicode Macro)";
+        // };
 
         icrc: mc_i_circ {
             compatible = "zmk,behavior-macro";
@@ -243,19 +243,19 @@
             // label = "î (Unicode Macro)";
         };
 
-        Icrc: mc_I_circ {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(E)>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Icrc: mc_I_circ {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp LS(E)>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Î (Unicode Macro)";
-        };
+        //     // label = "Î (Unicode Macro)";
+        // };
 
         ocrc: mc_ocirc {
             compatible = "zmk,behavior-macro";
@@ -271,19 +271,19 @@
             // label = "ô (Unicode Macro)";
         };
 
-        Ocrc: mc_ocirc_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp N4>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Ocrc: mc_ocirc_caps {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp N4>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Ô (Unicode Macro)";
-        };
+        //     // label = "Ô (Unicode Macro)";
+        // };
 
         ugrv: mc_ugrave {
             compatible = "zmk,behavior-macro";
@@ -299,19 +299,19 @@
             // label = "ù (Unicode Macro)";
         };
 
-        Ugrv: mc_ugrave_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp N9>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Ugrv: mc_ugrave_caps {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp N9>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Ù (Unicode Macro)";
-        };
+        //     // label = "Ù (Unicode Macro)";
+        // };
 
         ucrc: mc_ucirc {
             compatible = "zmk,behavior-macro";
@@ -327,19 +327,19 @@
             // label = "û (Unicode Macro)";
         };
 
-        Ucrc: mc_ucirc_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp LS(B)>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Ucrc: mc_ucirc_caps {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp LS(B)>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Û (Unicode Macro)";
-        };
+        //     // label = "Û (Unicode Macro)";
+        // };
 
         utma: mc_utrema {
             compatible = "zmk,behavior-macro";
@@ -355,19 +355,19 @@
             // label = "ü (Unicode Macro)";
         };
 
-        Utma: mc_utrema_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp LS(C)>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Utma: mc_utrema_caps {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(D) &kp LS(C)>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Ü (Unicode Macro)";
-        };
+        //     // label = "Ü (Unicode Macro)";
+        // };
 
         gmto: mc_guillmt_opn {
             compatible = "zmk,behavior-macro";
@@ -411,19 +411,19 @@
             // label = "æ (Unicode Macro)";
         };
 
-        AE: mc_ae_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N6>,
-                <&macro_release>,
-                <&kp LALT>;
+        // AE: mc_ae_caps {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N6>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Æ (Unicode Macro)";
-        };
+        //     // label = "Æ (Unicode Macro)";
+        // };
 
         oe: mc_oe {
             compatible = "zmk,behavior-macro";
@@ -439,19 +439,19 @@
             label = "œ (Unicode Macro)";
         };
 
-        OE: mc_oe_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N1 &kp N5 &kp N2>,
-                <&macro_release>,
-                <&kp LALT>;
+        // OE: mc_oe_caps {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N1 &kp N5 &kp N2>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Œ (Unicode Macro)";
-        };
+        //     // label = "Œ (Unicode Macro)";
+        // };
 
         ccdl: mc_ccedil {
             compatible = "zmk,behavior-macro";
@@ -467,19 +467,19 @@
             // label = "ç (Unicode Macro)";
         };
 
-        Ccdl: mc_ccedil_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LALT>,
-                <&macro_tap>,
-                <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N7>,
-                <&macro_release>,
-                <&kp LALT>;
+        // Ccdl: mc_ccedil_caps {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings =
+        //         <&macro_press>,
+        //         <&kp LALT>,
+        //         <&macro_tap>,
+        //         <&kp U &kp PLUS &kp N0 &kp N0 &kp LS(C) &kp N7>,
+        //         <&macro_release>,
+        //         <&kp LALT>;
 
-            // label = "Ç (Unicode Macro)";
-        };
+        //     // label = "Ç (Unicode Macro)";
+        // };
 
         euro: mc_euro {
             compatible = "zmk,behavior-macro";
@@ -1314,10 +1314,10 @@
         chm {
             display-name = "Chars - Main";
             bindings = <
-        &kp G   &kp Q   &kp Y               &kp W               &kp J                           &kp B       &kp H               &kp M               &agrv  &kp F
-        &kp S   &kp A   &hmls SL N    &hmls ML U    &cmsq                     &dtmn &hmrs ML E    &hmrs SL T    &kp O       &kp L
-&kp ESC &kp Z   &kp X   &hmls CL C    &hmls AL V    &kp TAB                         &sscw      &hmrs AL I    &hmrs CL D    &kp P       &kp K  &kp ENTER
-                                            &kp ML              &sl 1       &kp SPACE   &kp R   &sl 3       &lnch
+        &kp G   &kp Q   &kp Y       &kp W         &kp J                         &kp B   &kp H       &kp M       &agrv   &kp F
+        &kp S   &kp A   &hmls SL N  &hmls ML U    &cmsq                         &dtmn   &hmrs ML E  &hmrs SL T  &kp O   &kp L
+&kp ESC &kp Z   &kp X   &hmls CL C  &hmls AL V    &kp TAB                       &sscw   &hmrs AL I  &hmrs CL D  &kp P   &kp K  &kp ENTER
+                                    &kp ML        &sl 1     &kp SPACE   &kp R   &sl 3   &lnch
             >;
         };
 
