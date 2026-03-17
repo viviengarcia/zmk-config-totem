@@ -14,6 +14,7 @@ tools/
 
 # West projects from config/west.yml
 zmk/
+zmk_bhv/
 
 # MacOS junk
 .DS_Store
