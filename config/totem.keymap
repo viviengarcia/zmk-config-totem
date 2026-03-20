@@ -86,6 +86,7 @@ label= "BASE"                              ;
 
                 &kp Q       &kp W       &kp F       &kp P       &kp G           &kp J       &kp L       &kp U       &kp Y       &kp SEMI
                 &kp A       &kp R       &kp S       &kp T       &kp D           &kp H       &kp N       &kp E       &kp I       &kp O
+                &mt LGUI A  &mt LALT R  &mt LCTRL S &mt LSHFT T &kp D           &kp H       &mt RSHFT N &mt RCTRL E &mt RALT I  &mt RGUI O
     &kp Z       &kp Z       &kp X       &kp C       &kp V       &kp B           &kp K       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp FSLH
                                         &to SYM     &kp TAB     &lt NAV SPACE   &lt SYM RET &kp BSPC    &kp BSPC
                         >;
@@ -111,9 +112,7 @@ label= "NAVI"                              ;
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
                 &kp ESC     &bt BT_CLR  &kp UP      &kp EQUAL   &kp LBRC        &kp RBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp KP_PLUS
-                &kp LSHFT   &kp LEFT    &kp DOWN    &kp RIGHT   &kp LBKT        &kp RBKT    &trans      &trans      &trans      &trans
     &trans      &kp DEL     &kp PG_UP   &kp CAPS    &kp PG_DN   &kp LPAR        &kp RPAR    &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_MULTIPLY  &trans
-                                        &trans      &trans      &trans          &trans      &kp KP_N0   &trans
                         >;
                 };
 
@@ -131,7 +130,6 @@ label= "SYM"                               ;
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃           ┃  EMAIL1   ┃  EMAIL2   ┃           ┃           ┃           ┃   ┃   VOL-    ┃   VOL+    ┃   LAST    ┃   NEXT    ┃     \     ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                     ┃           ┃    GIF    ┃    NAV    ┃   ┃           ┃           ┃ LSFT trsp ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
@@ -140,6 +138,7 @@ label= "SYM"                               ;
                 &kp RA(A)   &trans      &trans      &trans      &trans          &kp C_MUTE   &htr LSHFT 0 &htr LCTRL 0 &htr LALT 0 &htr LGUI 0
     &trans      &kp RA(F18) &kp RA(F19) &trans      &trans      &trans          &kp C_VOL_DN &kp C_VOL_UP &kp C_PREV   &kp C_NEXT  &kp BSLH   &trans
                                         &to BASE    &gif        &tog NAV        &trans       &kp C_PP     &htr LSHFT &trans
+                                        &to BASE    &gif        &tog NAV        &trans       &kp C_PP       &htr LSHFT 0
                         >;
                 };
         };
