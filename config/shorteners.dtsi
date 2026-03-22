@@ -1,29 +1,33 @@
+#define ___ &trans
+#define XXX &none
+
 #define CM COMMA
-#define FSH FSLH
-#define BSH BSLH
-#define BSP BSPC
 #define SMC SEMI
 #define COL COLON
+#define QST QUESTION
+#define XCL EXCLAMATION
+#define ELI LA(SEMI) // elipsis
 #define STR STAR
 #define MNS MINUS
 #define PLS PLUS
-#define _PR LPAR
-#define PR_ RPAR
-#define _BK LBKT
-#define BK_ RBKT
-#define _BC LBRC
-#define BC_ RBRC
-#define QST QUESTION
-#define XCL EXCLAMATION
 #define HSH HASH
 #define DLR DOLLAR
 #define PCT PERCENT
 #define CRT CARET
 #define USC UNDERSCORE
 #define PIP PIPE
-#define NBS NUBS
 #define GRV GRAVE
 #define TLD TILDE
+#define BSH BSLH
+#define BSP BSPC
+#define FSH FSLH // slash
+#define NBS NUBS // non-US backslash
+#define _PR LPAR
+#define PR_ RPAR
+#define _BK LBKT
+#define BK_ RBKT
+#define _BC LBRC
+#define BC_ RBRC
 
 #define K0 KP_N0
 #define K1 KP_N1
@@ -66,8 +70,8 @@
 #define CPS CAPS
 
 #define MPP C_PLAY_PAUSE
-#define M_P C_PREV
-#define MP_ C_NEXT
+#define M_P C_PREV // play previous track
+#define MP_ C_NEXT // play next track
 #define M_V LEFT // jump back 5 seconds in YouTube video
 #define MV_ RIGHT // jump ahead 5 seconds in YouTube video
 #define M_X J // jump back 10 seconds in YouTube video
@@ -87,5 +91,4 @@
 #define BT4 BT_4
 #define EQL EQUAL
 
-#define ___ &trans
-#define XXX &none
+#define SLP C_SLEEP
