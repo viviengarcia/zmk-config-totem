@@ -33,6 +33,7 @@ COMMAND="$RUNTIME run --rm --workdir /zmk -v $(pwd):/zmk -v /tmp:/temp -v $HOME/
 BUILD_CONFIG="${BUILD_CONFIG:-build.yaml}"
 INCREMENTAL="${INCREMENTAL:-true}" # Set to true to skip -p (pristine) flag for faster incremental builds
 # DOCTDR="${DOCTOR:-true}" # Set to true to help troubleshooting devicetree errors
+BRANCH="${BRANCH:-stable}" # For version naming
 
 log_info() {
   echo -e "\033[1;34m[INFO]\033[0m $1"
@@ -203,7 +204,7 @@ build_target() {
   SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
   local OUT_DIR="$(pwd)/_out/Releases"
-  local BASE_NAME="${artifact_name}"
+  local BASE_NAME="${artifact_name}${BRANCH:-stable}"
   local LAST_FILE
   local VERSION
   local MAJOR
