@@ -20,4 +20,4 @@ zmk/
 
 # Various helpers
 _tools/
-/zmk_bhv
+zmk_bhv/
