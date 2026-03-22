@@ -204,7 +204,7 @@ build_target() {
   SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
   local OUT_DIR="$(pwd)/_out/Releases"
-  local BASE_NAME="${artifact_name}"
+  local BASE_NAME="${artifact_name}${BRANCH:-stable}"
   local LAST_FILE
   local VERSION
   local MAJOR
@@ -298,7 +298,7 @@ build_target() {
       cp "$SOURCE_FW" "$DEST_FILE"
       # semver
 
-			# keymap-drawer generates a svg schema of the keymap
+	  # keymap-drawer generates a svg schema of the keymap
       keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
       keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$NEW_VERSION.svg
 
