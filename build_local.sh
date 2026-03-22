@@ -298,7 +298,7 @@ build_target() {
       cp "$SOURCE_FW" "$DEST_FILE"
       # semver
 
-			# keymap-drawer generates a svg schema of the keymap
+	  # keymap-drawer generates a svg schema of the keymap
       keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
       keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$NEW_VERSION.svg
 
