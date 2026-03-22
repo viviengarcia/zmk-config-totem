@@ -32,7 +32,8 @@ ENV="-e CMAKE_PREFIX_PATH=/zmk/zephyr:${CMAKE_PREFIX_PATH:-}"
 COMMAND="$RUNTIME run --rm --workdir /zmk -v $(pwd):/zmk -v /tmp:/temp -v $HOME/.gitconfig:/root/.gitconfig:ro $ENV $IMG"
 BUILD_CONFIG="${BUILD_CONFIG:-build.yaml}"
 INCREMENTAL="${INCREMENTAL:-true}" # Set to true to skip -p (pristine) flag for faster incremental builds
-DOCTDR="${DOCTOR:-true}" # Set to true to help troubleshooting devicetree errors
+DOCTOR="${DOCTOR:-true}" # Set to true to help troubleshooting devicetree errors
+BRANCH="${BRANCH:-stable}" # For version naming
 
 log_info() {
   echo -e "\033[1;34m[INFO]\033[0m $1"
@@ -264,9 +265,9 @@ build_target() {
       fi
 
       # Add doctor flag to troubleshoot devicetree
-      if [ "$DOCTDR" != "true" ]; then
-        build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
-      fi
+      # if [ "$DOCTOR" != "true" ]; then
+      #   build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
+      # fi
 
       build_args+=("-b" "$board")
       build_args+=("-s" "/zmk/zmk/app")
