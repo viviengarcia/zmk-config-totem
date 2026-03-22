@@ -300,7 +300,8 @@ build_target() {
 
 	  # keymap-drawer generates a svg schema of the keymap
       keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
-      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$NEW_VERSION.svg
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$BRANCH-$NEW_VERSION.svg
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-last.svg
 
       local end_time
       end_time=$(date +%s)

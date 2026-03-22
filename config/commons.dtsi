@@ -79,16 +79,16 @@
 #define M_C LA(LEFT) // previous chapter in YouTube video
 #define MC_ LA(RIGHT) // next chapter in YouTube video
 #define M_S COMMA	// slower in Youtube video
-#define M_S PERIOD	// faster in Youtube video
+#define MS_ PERIOD	// faster in Youtube video
 
-#define _BT BT_PREV
-#define BT_ BT_NXT
-#define BTX BT_CLEAR
-#define BT0 BT_0
-#define BT1 BT_1
-#define BT2 BT_2
-#define BT3 BT_3
-#define BT4 BT_4
+#define BTP &bt BT_PRV
+#define BTN &bt BT_NXT
+#define BTX &bt BT_CLR
+#define BT0 &bt BT_SEL 0
+#define BT1 &bt BT_SEL 1
+#define BT2 &bt BT_SEL 2
+#define BT3 &bt BT_SEL 3
+#define BT4 &bt BT_SEL 4
 #define EQL EQUAL
 
 #define SLP C_SLEEP
