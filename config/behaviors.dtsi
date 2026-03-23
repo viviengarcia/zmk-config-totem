@@ -1,10 +1,6 @@
-/ {
-    behaviors {
-	    &mt {
-	      quick-tap-ms = <180>;
-	      global-quick-tap;
-	      flavor = "tap-preferred";
-	      tapping-term-ms = <200>;
-	    };
-    };
-};
+&mt {
+   quick-tap-ms = <180>;
+   global-quick-tap;
+   flavor = "tap-preferred";
+   tapping-term-ms = <200>;
+   };
