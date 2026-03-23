@@ -4,6 +4,6 @@
     "background_coloring": "disabled",
     "active_line_width": 1
   },
-  "tab_size": 4,
-  "hard_tabs": true
+  "tab_size": 3,
+  "hard_tabs": false
 }
