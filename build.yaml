@@ -22,8 +22,8 @@ include:
     - board: xiao_ble
       shield: totem_left
       snippet: studio-rpc-usb-uart
-      artifact-name: totem_L-zmk
+      artifact-name: totem_L
     - board: xiao_ble
       shield: totem_right
-      artifact-name: totem_R-zmk
+      artifact-name: totem_R
 # there is no settingsreset (needed) for the XIAO
