@@ -1,7 +1,6 @@
 # Build artifacts
 _out/
 build/
-artifacts/
 
 # ZMK
 zephyr/
@@ -10,7 +9,6 @@ zephyr/
 # West managed directories
 .west/
 modules/
-tools/
 
 # West projects from config/west.yml
 zmk/
@@ -20,3 +18,4 @@ zmk/
 
 # Various helpers
 _tools/
+zmk_bhv/
