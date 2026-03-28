@@ -241,11 +241,11 @@ build_target() {
           MINOR=0
           PATCH=0
           ;;
-      m|*)
+      m)
           MINOR=$((MINOR + 1))
           PATCH=0
           ;;
-      s)
+      s|*)
           PATCH=$((PATCH + 1))
           ;;
   esac
