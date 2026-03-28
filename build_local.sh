@@ -33,7 +33,6 @@ COMMAND="$RUNTIME run --rm --workdir /zmk -v $(pwd):/zmk -v /tmp:/temp -v $HOME/
 BUILD_CONFIG="${BUILD_CONFIG:-build.yaml}"
 INCREMENTAL="${INCREMENTAL:-true}" # Set to true to skip -p (pristine) flag for faster incremental builds
 DOCTOR="${DOCTOR:-true}" # Set to true to help troubleshooting devicetree errors
-# BRANCH="${BRANCH:-stable}" # For version naming
 
 BRANCH="$(git branch --show-current)"
 
