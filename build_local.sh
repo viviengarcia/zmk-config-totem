@@ -25,7 +25,7 @@
 
 set -euo pipefail
 
-# Configuration
+# CONFIGURATION
 RUNTIME="${RUNTIME:-podman}" # Could be docker or podman
 IMG="${ZMK_IMAGE:-docker.io/zmkfirmware/zmk-build-arm:4.1-branch}"
 ENV="-e CMAKE_PREFIX_PATH=/zmk/zephyr:${CMAKE_PREFIX_PATH:-}"
@@ -142,8 +142,7 @@ ensure_host_gitconfig_safe() {
 }
 
 # Populate host gitconfig early so container runs use it
-# disable if in INCREMENTAL mode to prevent an issue where .gitconfig starts to
-# be bloated with the same 2 lines repeated ad infinitum
+# disable if in INCREMENTAL mode to prevent an issue where .gitconfig starts to be bloated with the same 2 lines repeated ad infinitum
 # ensure_host_gitconfig_safe
 
 # Parse west.yml and extract project names (these become directories)
@@ -204,7 +203,7 @@ build_target() {
   local start_time
   start_time=$(date +%s)
 
-  # semver
+  # SEMVER
   # renaming part
   SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
@@ -223,6 +222,7 @@ build_target() {
   # On cherche les fichiers qui correspondent au nom de l'artefact
   LAST_FILE=$(ls -1 "$OUT_DIR"/${BASE_NAME}-*.uf2 2>/dev/null | sort -V | tail -n 1)
 
+  # Determination de la version a incrémenter
   if [[ -z "$LAST_FILE" ]]; then
       # Si aucun fichier n'existe, on initialise à 0.0.0
       MAJOR=0; MINOR=0; PATCH=0
@@ -234,7 +234,7 @@ build_target() {
       PATCH=$(echo "$VERSION" | cut -d. -f3)
   fi
 
-  # 2. Logique d'incrémentation selon $SEMB
+  # 2. Logique d'incrémentation selon $SEMB (major/minor/patch)
   case "$SEMB" in
       l)
           MAJOR=$((MAJOR + 1))
@@ -252,8 +252,9 @@ build_target() {
 
 	NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
 	DEST_FILE="${OUT_DIR}/${BASE_NAME}-${NEW_VERSION}.uf2"
-	# semver
+	# SEMVER
 
+	# MAIN BUILD LOOP
   local found=0
   while IFS='|' read -r board shield snippet cmake_args artifact_name; do
     if [ "$artifact_name" = "$target_name" ]; then
@@ -299,11 +300,11 @@ build_target() {
 
       check_build_artifact "./build/${artifact_name}/zephyr/zmk.uf2" "${artifact_name} build"
 
-      # semver
+      # SEMVER
       cp "$SOURCE_FW" "$DEST_FILE"
-      # semver
+      # SEMVER
 
-	  # keymap-drawer generates a svg schema of the keymap
+	  # KEYMAP-DRAWER generates a svg schema of the keymap
       keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
       keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$BRANCH-$NEW_VERSION.svg
       keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-last.svg
@@ -557,7 +558,7 @@ EOF
   log_success "Updated .gitignore with $(wc -l <"$gitignore_file") entries"
 }
 
-# Copy build artifacts to a defined directory
+# DUPLICATE & RENAME BUILD ARTIFACTS to a defined directory
 copy_artifacts() {
   DEST="${1:-./artifacts}"
   mkdir -p "$DEST"
@@ -609,7 +610,7 @@ Commands:
   help             Show this help message
 
 Environment Variables:
-  KEYBOARD        Name of the keyboard being built (default: extracted from directory name)
+  KEYBOARD      Name of the keyboard being built (default: extracted from directory name)
   RUNTIME       Container runtime (default: podman, can be docker)
   ZMK_IMAGE     ZMK build image (default: docker.io/zmkfirmware/zmk-build-arm:4.1-branch)
   BUILD_CONFIG  Build configuration file (default: build.yaml)
