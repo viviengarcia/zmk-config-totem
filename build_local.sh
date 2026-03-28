@@ -32,13 +32,16 @@ ENV="-e CMAKE_PREFIX_PATH=/zmk/zephyr:${CMAKE_PREFIX_PATH:-}"
 COMMAND="$RUNTIME run --rm --workdir /zmk -v $(pwd):/zmk -v /tmp:/temp -v $HOME/.gitconfig:/root/.gitconfig:ro $ENV $IMG"
 BUILD_CONFIG="${BUILD_CONFIG:-build.yaml}"
 INCREMENTAL="${INCREMENTAL:-true}" # Set to true to skip -p (pristine) flag for faster incremental builds
-DOCTOR="${DOCTOR:-true}" # Set to true to help troubleshooting devicetree errors
 
-BRANCH="$(git branch --show-current)"
+# build context: dev (feat/fix), try (debug/test), strenghten (release/merge)
+local CONTEXT="${CONTEXT:-d}"
+# check current active branch
+local BRANCH="$(git branch --show-current)"
 
-if [ -z $BRANCH ]; then
-   $BRANCH=""
-fi
+DOCTOR="${DOCTOR:-false}" # Set to true to help troubleshooting devicetree errors
+
+# we assign an empty string if BRANCH == "main", else we add "-" before
+[[ "$BRANCH" == "main" ]] && BRANCH="" || BRANCH="-$BRANCH"
 
 log_info() {
   echo -e "\033[1;34m[INFO]\033[0m $1"
@@ -205,10 +208,18 @@ build_target() {
 
   # SEMVER
   # renaming part
-  SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
+  SEMB="${SEMB:--m}" # Values: m=minor (default) / l=major / s=patch (bugfix). For artefacts' semantic versions renaming. Indicate what digit to increment
+  local CTX_DIR
+  case "$CONTEXT" in
+  	"-d") CTX_DIR="d" ;;
+	"-t") CTX_DIR="t" ;;
+	"-r") CTX_DIR="Releases" ;;
+   *) echo "❌ Flag inconnu: $flag"; return 1 ;;
+  esac
+
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
-  local OUT_DIR="$(pwd)/_out/Releases"
-  local BASE_NAME="${artifact_name}-$BRANCH"
+  local OUT_DIR="$(pwd)/_out/$KEYBOARD/$CTX_DIR/"
+  local BASE_NAME="${artifact_name}$BRANCH"
   local LAST_FILE
   local VERSION
   local MAJOR
@@ -216,7 +227,6 @@ build_target() {
   local PATCH
   local NEW_VERSION
   local DEST_FILE
-  # local SEMB="${SEMB:-minor}"
 
   # 1. Trouver la dernière version existante
   # On cherche les fichiers qui correspondent au nom de l'artefact
@@ -236,21 +246,29 @@ build_target() {
 
   # 2. Logique d'incrémentation selon $SEMB (major/minor/patch)
   case "$SEMB" in
-      l)
+      -l)
           MAJOR=$((MAJOR + 1))
           MINOR=0
           PATCH=0
           ;;
-      m)
+      -m)
           MINOR=$((MINOR + 1))
           PATCH=0
           ;;
-      s|*)
+      -s|*)
           PATCH=$((PATCH + 1))
           ;;
   esac
 
-	NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+
+	if [[ "$CONTEXT" == "-t" ]]; then
+		VERSION=$(echo "$LAST_FILE" | grep -oE '[0-9]+')
+		VERSION=$((VERSION + 1))
+		NEW_VERSION="${VERSION}"
+	else
+		NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+	fi
+
 	DEST_FILE="${OUT_DIR}/${BASE_NAME}-${NEW_VERSION}.uf2"
 	# SEMVER
 
@@ -271,9 +289,9 @@ build_target() {
       fi
 
       # Add doctor flag to troubleshoot devicetree
-      # if [ "$DOCTOR" != "true" ]; then
-      #   build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
-      # fi
+      if [ "$DOCTOR" != "true" ]; then
+        build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
+      fi
 
       build_args+=("-b" "$board")
       build_args+=("-s" "/zmk/zmk/app")
@@ -306,8 +324,8 @@ build_target() {
 
 	  # KEYMAP-DRAWER generates a svg schema of the keymap
       keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
-      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$BRANCH-$NEW_VERSION.svg
-      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-last.svg
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/totem/Releases/totem-$NEW_VERSION.svg
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_tools/totem-last.svg
 
       local end_time
       end_time=$(date +%s)
@@ -534,7 +552,6 @@ update_gitignore() {
 
 # Build artifacts
 build/
-artifacts/
 
 # ZMK
 zephyr/
