@@ -34,11 +34,11 @@ BUILD_CONFIG="${BUILD_CONFIG:-build.yaml}"
 INCREMENTAL="${INCREMENTAL:-true}" # Set to true to skip -p (pristine) flag for faster incremental builds
 
 # build context: dev (feat/fix), try (debug/test), strenghten (release/merge)
-local CONTEXT="${CONTEXT:-d}"
+CONTEXT="${CONTEXT:-d}"
 # check current active branch
-local BRANCH="$(git branch --show-current)"
+BRANCH="$(git branch --show-current)"
 
-DOCTOR="${DOCTOR:-false}" # Set to true to help troubleshooting devicetree errors
+# DOCTOR="${DOCTOR:-false}" # Set to true to help troubleshooting devicetree errors
 
 # we assign an empty string if BRANCH == "main", else we add "-" before
 [[ "$BRANCH" == "main" ]] && BRANCH="" || BRANCH="-$BRANCH"
@@ -208,17 +208,21 @@ build_target() {
 
   # SEMVER
   # renaming part
-  SEMB="${SEMB:--m}" # Values: m=minor (default) / l=major / s=patch (bugfix). For artefacts' semantic versions renaming. Indicate what digit to increment
+  SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=patch (bugfix). For artefacts' semantic versions renaming. Indicate what digit to increment
+
   local CTX_DIR
   case "$CONTEXT" in
-  	"-d") CTX_DIR="d" ;;
-	"-t") CTX_DIR="t" ;;
-	"-r") CTX_DIR="Releases" ;;
-   *) echo "❌ Flag inconnu: $flag"; return 1 ;;
+  	d) CTX_DIR="d" ;;
+	t) CTX_DIR="t" ;;
+	r) CTX_DIR="_releases" ;;
+   # *) echo "❌ Flag inconnu: $flag"; return 1 ;;
   esac
 
+  local BR_DIR
+  [[ -z "$BRANCH" ]] && BR_DIR="" || BR_DIR="$(git branch --show-current)"
+
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
-  local OUT_DIR="$(pwd)/_out/$KEYBOARD/$CTX_DIR/"
+  local OUT_DIR="$(pwd)/_out/$KEYBOARD/$CTX_DIR/$BR_DIR"
   local BASE_NAME="${artifact_name}$BRANCH"
   local LAST_FILE
   local VERSION
@@ -246,22 +250,22 @@ build_target() {
 
   # 2. Logique d'incrémentation selon $SEMB (major/minor/patch)
   case "$SEMB" in
-      -l)
+      l)
           MAJOR=$((MAJOR + 1))
           MINOR=0
           PATCH=0
           ;;
-      -m)
+      m)
           MINOR=$((MINOR + 1))
           PATCH=0
           ;;
-      -s|*)
+      s|*)
           PATCH=$((PATCH + 1))
           ;;
   esac
 
-
-	if [[ "$CONTEXT" == "-t" ]]; then
+	# replace semver with iteration number if try build
+	if [[ "$CONTEXT" == "t" ]]; then
 		VERSION=$(echo "$LAST_FILE" | grep -oE '[0-9]+')
 		VERSION=$((VERSION + 1))
 		NEW_VERSION="${VERSION}"
@@ -289,9 +293,9 @@ build_target() {
       fi
 
       # Add doctor flag to troubleshoot devicetree
-      if [ "$DOCTOR" != "true" ]; then
-        build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
-      fi
+      # if [ "$DOCTOR" != "true" ]; then
+      #   build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
+      # fi
 
       build_args+=("-b" "$board")
       build_args+=("-s" "/zmk/zmk/app")
