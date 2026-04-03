@@ -327,9 +327,9 @@ build_target() {
       # SEMVER
 
 	  # KEYMAP-DRAWER generates a svg schema of the keymap
-      keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
-      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/totem/Releases/totem-$NEW_VERSION.svg
-      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_tools/totem-last.svg
+      keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/$KEYBOARD.yaml
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >$OUT_DIR/$KEYBOARD-$NEW_VERSION.svg
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_tools/$KEYBOARD-last.svg
 
       local end_time
       end_time=$(date +%s)
