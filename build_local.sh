@@ -25,14 +25,23 @@
 
 set -euo pipefail
 
-# Configuration
+# CONFIGURATION
 RUNTIME="${RUNTIME:-podman}" # Could be docker or podman
 IMG="${ZMK_IMAGE:-docker.io/zmkfirmware/zmk-build-arm:4.1-branch}"
 ENV="-e CMAKE_PREFIX_PATH=/zmk/zephyr:${CMAKE_PREFIX_PATH:-}"
 COMMAND="$RUNTIME run --rm --workdir /zmk -v $(pwd):/zmk -v /tmp:/temp -v $HOME/.gitconfig:/root/.gitconfig:ro $ENV $IMG"
 BUILD_CONFIG="${BUILD_CONFIG:-build.yaml}"
 INCREMENTAL="${INCREMENTAL:-true}" # Set to true to skip -p (pristine) flag for faster incremental builds
-DOCTDR="${DOCTOR:-true}" # Set to true to help troubleshooting devicetree errors
+
+# build context: dev (feat/fix), try (debug/test), strenghten (release/merge)
+CONTEXT="${CONTEXT:-d}"
+# check current active branch
+BRANCH="$(git branch --show-current)"
+
+# DOCTOR="${DOCTOR:-false}" # Set to true to help troubleshooting devicetree errors
+
+# we assign an empty string if BRANCH == "main", else we add "-" before
+[[ "$BRANCH" == "main" ]] && BRANCH="" || BRANCH="-$BRANCH"
 
 log_info() {
   echo -e "\033[1;34m[INFO]\033[0m $1"
@@ -52,9 +61,9 @@ THIS_SCRIPT=$(readlink -f $0)
 SCRIPT_DIR=$(dirname $THIS_SCRIPT)
 SCRIPT_DIR_NAME=$(basename $SCRIPT_DIR)
 case $SCRIPT_DIR_NAME in
-zmk-config-totem) KEYBOARD="totem" ;; # For backwards compatibility
-zmk-config-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-config-} ;;
-zmk-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-} ;;
+	zmk-config-totem) KEYBOARD="totem" ;; # For backwards compatibility
+	zmk-config-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-config-} ;;
+	zmk-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-} ;;
 *)
   if [ -z "${KEYBOARD:+set}" ]; then
     log_error "KEYBOARD not set and cannot be found from directory name: $SCRIPT_DIR_NAME"
@@ -136,8 +145,7 @@ ensure_host_gitconfig_safe() {
 }
 
 # Populate host gitconfig early so container runs use it
-# disable if in INCREMENTAL mode to prevent an issue where .gitconfig starts to
-# be bloated with the same 2 lines repeated ad infinitum
+# disable if in INCREMENTAL mode to prevent an issue where .gitconfig starts to be bloated with the same 2 lines repeated ad infinitum
 # ensure_host_gitconfig_safe
 
 # Parse west.yml and extract project names (these become directories)
@@ -198,12 +206,24 @@ build_target() {
   local start_time
   start_time=$(date +%s)
 
-  # semver
+  # SEMVER
   # renaming part
-  SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=bugfix   For artefacts' semantic versions renaming. Indicate what digit to increment
+  SEMB="${SEMB:-m}" # Values: m=minor (default) / l=major / s=patch (bugfix). For artefacts' semantic versions renaming. Indicate what digit to increment
+
+  local CTX_DIR
+  case "$CONTEXT" in
+  	d) CTX_DIR="d" ;;
+	t) CTX_DIR="t" ;;
+	r) CTX_DIR="_releases" ;;
+   # *) echo "❌ Flag inconnu: $flag"; return 1 ;;
+  esac
+
+  local BR_DIR
+  [[ -z "$BRANCH" ]] && BR_DIR="" || BR_DIR="$(git branch --show-current)"
+
   local SOURCE_FW="$(pwd)/build/${artifact_name}/zephyr/zmk.uf2"
-  local OUT_DIR="$(pwd)/_out/Releases"
-  local BASE_NAME="${artifact_name}"
+  local OUT_DIR="$(pwd)/_out/$KEYBOARD/$CTX_DIR/$BR_DIR"
+  local BASE_NAME="${artifact_name}$BRANCH"
   local LAST_FILE
   local VERSION
   local MAJOR
@@ -211,12 +231,12 @@ build_target() {
   local PATCH
   local NEW_VERSION
   local DEST_FILE
-  # local SEMB="${SEMB:-minor}"
 
   # 1. Trouver la dernière version existante
   # On cherche les fichiers qui correspondent au nom de l'artefact
   LAST_FILE=$(ls -1 "$OUT_DIR"/${BASE_NAME}-*.uf2 2>/dev/null | sort -V | tail -n 1)
 
+  # Determination de la version a incrémenter
   if [[ -z "$LAST_FILE" ]]; then
       # Si aucun fichier n'existe, on initialise à 0.0.0
       MAJOR=0; MINOR=0; PATCH=0
@@ -228,26 +248,35 @@ build_target() {
       PATCH=$(echo "$VERSION" | cut -d. -f3)
   fi
 
-  # 2. Logique d'incrémentation selon $SEMB
+  # 2. Logique d'incrémentation selon $SEMB (major/minor/patch)
   case "$SEMB" in
       l)
           MAJOR=$((MAJOR + 1))
           MINOR=0
           PATCH=0
           ;;
-      m|*)
+      m)
           MINOR=$((MINOR + 1))
           PATCH=0
           ;;
-      s)
+      s|*)
           PATCH=$((PATCH + 1))
           ;;
   esac
 
-	NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
-	DEST_FILE="${OUT_DIR}/${BASE_NAME}-${NEW_VERSION}.uf2"
-	# semver
+	# replace semver with iteration number if try build
+	if [[ "$CONTEXT" == "t" ]]; then
+		VERSION=$(echo "$LAST_FILE" | grep -oE '[0-9]+')
+		VERSION=$((VERSION + 1))
+		NEW_VERSION="${VERSION}"
+	else
+		NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+	fi
 
+	DEST_FILE="${OUT_DIR}/${BASE_NAME}-${NEW_VERSION}.uf2"
+	# SEMVER
+
+	# MAIN BUILD LOOP
   local found=0
   while IFS='|' read -r board shield snippet cmake_args artifact_name; do
     if [ "$artifact_name" = "$target_name" ]; then
@@ -264,9 +293,9 @@ build_target() {
       fi
 
       # Add doctor flag to troubleshoot devicetree
-      if [ "$DOCTDR" != "true" ]; then
-        build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
-      fi
+      # if [ "$DOCTOR" != "true" ]; then
+      #   build_args+=("-DZEPHYR_SCA_VARIANT=dtdoctor")
+      # fi
 
       build_args+=("-b" "$board")
       build_args+=("-s" "/zmk/zmk/app")
@@ -293,13 +322,14 @@ build_target() {
 
       check_build_artifact "./build/${artifact_name}/zephyr/zmk.uf2" "${artifact_name} build"
 
-      # semver
+      # SEMVER
       cp "$SOURCE_FW" "$DEST_FILE"
-      # semver
+      # SEMVER
 
-			# keymap-drawer generates a svg schema of the keymap
-      keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/totem.yaml
-      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_out/Releases/totem-$NEW_VERSION.svg
+	  # KEYMAP-DRAWER generates a svg schema of the keymap
+      keymap -c _tools/drawr-config.yaml parse -z config/totem.keymap >_tools/$KEYBOARD.yaml
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >$OUT_DIR/$KEYBOARD-$NEW_VERSION.svg
+      keymap -c _tools/drawr-config.yaml draw _tools/totem.yaml >_tools/$KEYBOARD-last.svg
 
       local end_time
       end_time=$(date +%s)
@@ -526,7 +556,6 @@ update_gitignore() {
 
 # Build artifacts
 build/
-artifacts/
 
 # ZMK
 zephyr/
@@ -550,7 +579,7 @@ EOF
   log_success "Updated .gitignore with $(wc -l <"$gitignore_file") entries"
 }
 
-# Copy build artifacts to a defined directory
+# DUPLICATE & RENAME BUILD ARTIFACTS to a defined directory
 copy_artifacts() {
   DEST="${1:-./artifacts}"
   mkdir -p "$DEST"
@@ -602,7 +631,7 @@ Commands:
   help             Show this help message
 
 Environment Variables:
-  KEYBOARD        Name of the keyboard being built (default: extracted from directory name)
+  KEYBOARD      Name of the keyboard being built (default: extracted from directory name)
   RUNTIME       Container runtime (default: podman, can be docker)
   ZMK_IMAGE     ZMK build image (default: docker.io/zmkfirmware/zmk-build-arm:4.1-branch)
   BUILD_CONFIG  Build configuration file (default: build.yaml)
