@@ -61,9 +61,9 @@ THIS_SCRIPT=$(readlink -f $0)
 SCRIPT_DIR=$(dirname $THIS_SCRIPT)
 SCRIPT_DIR_NAME=$(basename $SCRIPT_DIR)
 case $SCRIPT_DIR_NAME in
-zmk-config-totem) KEYBOARD="totem" ;; # For backwards compatibility
-zmk-config-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-config-} ;;
-zmk-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-} ;;
+	zmk-config-totem) KEYBOARD="totem" ;; # For backwards compatibility
+	zmk-config-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-config-} ;;
+	zmk-*) KEYBOARD=${SCRIPT_DIR_NAME#zmk-} ;;
 *)
   if [ -z "${KEYBOARD:+set}" ]; then
     log_error "KEYBOARD not set and cannot be found from directory name: $SCRIPT_DIR_NAME"
