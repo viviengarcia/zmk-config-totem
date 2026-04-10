@@ -23,6 +23,13 @@
 # License: Same as ZMK (MIT)
 #
 
+# TODO
+# change _releases directory to r
+# make dev & try artifacts go to d
+# rename Artifacts accordingly to
+# # branch: ${keyboard_part}-${issue_flag}${issue_id}_${branch_iteration}.uf2
+# # release: ${keyboard_part}-${semantic_versionning}.uf2
+
 set -euo pipefail
 
 # CONFIGURATION
